@@ -4,15 +4,15 @@
   "description": "AI4 Spanish Website Design — ai4websitediseno.com — Apropos Group LLC",
   "main": "index.js",
   "scripts": {
-    "build": "echo 'No build step required'",
+    "build": "echo 'Static site - no build required'",
     "dev": "netlify dev"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0",
+    "@supabase/supabase-js": "^2.105.4",
     "stripe": "^14.0.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "author": "Apropos Group LLC",
   "license": "PRIVATE"
