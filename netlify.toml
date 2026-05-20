@@ -1,28 +1,20 @@
-functionsDirectory = "C:\\Users\\Jeff\\Documents\\Codex\\2026-05-11\\check-supabase-mcp\\ai4-template-upload-work\\live-spanish\\LIVE_SPANISH_AI4WEBSITEDESIGN_COM\\netlify\\functions"
-functionsDirectoryOrigin = "config-v1"
-headersOrigin = "config"
-redirectsOrigin = "config"
-plugins = []
-
 [build]
-publish = "C:\\Users\\Jeff\\Documents\\Codex\\2026-05-11\\check-supabase-mcp\\ai4-template-upload-work\\live-spanish\\LIVE_SPANISH_AI4WEBSITEDESIGN_COM"
-publishOrigin = "config"
-functions = "C:\\Users\\Jeff\\Documents\\Codex\\2026-05-11\\check-supabase-mcp\\ai4-template-upload-work\\live-spanish\\LIVE_SPANISH_AI4WEBSITEDESIGN_COM\\netlify\\functions"
+publish = "."
+functions = "netlify/functions"
+command = "npm run build"
 
-  [build.environment]
-  NODE_VERSION = "18"
+[build.environment]
+NODE_VERSION = "20"
 
-  [build.processing]
+[build.processing]
 
-    [build.processing.css]
+  [build.processing.css]
 
-    [build.processing.html]
+  [build.processing.html]
 
-    [build.processing.images]
+  [build.processing.images]
 
-    [build.processing.js]
-
-  [build.services]
+  [build.processing.js]
 
 [functions]
 
@@ -52,32 +44,14 @@ to = "/index.html"
 status = 200
 force = false
 
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
 [[redirects]]
 from = "/en"
 to = "https://ai4websitedesign.com"
 status = 301
 force = false
 
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
-
 [[redirects]]
 from = "/*"
 to = "/index.html"
 status = 200
 force = false
-
-  [redirects.query]
-
-  [redirects.conditions]
-
-  [redirects.headers]
