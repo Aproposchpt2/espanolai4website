@@ -1,0 +1,83 @@
+functionsDirectory = "C:\\Users\\Jeff\\Documents\\Codex\\2026-05-11\\check-supabase-mcp\\ai4-template-upload-work\\live-spanish\\LIVE_SPANISH_AI4WEBSITEDESIGN_COM\\netlify\\functions"
+functionsDirectoryOrigin = "config-v1"
+headersOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+
+[build]
+publish = "C:\\Users\\Jeff\\Documents\\Codex\\2026-05-11\\check-supabase-mcp\\ai4-template-upload-work\\live-spanish\\LIVE_SPANISH_AI4WEBSITEDESIGN_COM"
+publishOrigin = "config"
+functions = "C:\\Users\\Jeff\\Documents\\Codex\\2026-05-11\\check-supabase-mcp\\ai4-template-upload-work\\live-spanish\\LIVE_SPANISH_AI4WEBSITEDESIGN_COM\\netlify\\functions"
+
+  [build.environment]
+  NODE_VERSION = "18"
+
+  [build.processing]
+
+    [build.processing.css]
+
+    [build.processing.html]
+
+    [build.processing.images]
+
+    [build.processing.js]
+
+  [build.services]
+
+[functions]
+
+  [functions."*"]
+  node_bundler = "esbuild"
+
+[[headers]]
+for = "/thankyou.html"
+
+  [headers.values]
+  Cache-Control = "no-cache, no-store, must-revalidate"
+  Pragma = "no-cache"
+  Expires = "0"
+
+[[headers]]
+for = "/*"
+
+  [headers.values]
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+  Content-Language = "es"
+
+[[redirects]]
+from = "/"
+to = "/index.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/en"
+to = "https://ai4websitedesign.com"
+status = 301
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]

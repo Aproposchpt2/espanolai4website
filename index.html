@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4 Website Design — Sitios web personalizados lanzados el mismo día</title>
+<meta name="description" content="AI4 Website Design crea sitios web profesionales y personalizados alrededor de tu visión, con entrega de archivo o lanzamiento completo disponible en tan solo 24 horas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#030816;
+  --bg2:#061225;
+  --bg3:#08182F;
+  --bg4:#0B1020;
+  --panel:rgba(8,24,47,.72);
+  --panel-strong:rgba(11,16,32,.92);
+  --panel-soft:rgba(255,255,255,.035);
+  --line:rgba(184,196,217,.14);
+  --line-strong:rgba(45,184,255,.34);
+  --blue:#1EA7FF;
+  --blue2:#2DB8FF;
+  --blue3:#39C5FF;
+  --blue4:#5BD3FF;
+  --silver:#D5DEEA;
+  --silver2:#E6EDF7;
+  --white:#F5F8FF;
+  --muted:#AEBED3;
+  --muted2:#90A3BC;
+  --dark-text:#061225;
+  --glow:rgba(30,167,255,.36);
+  --glow-soft:rgba(45,184,255,.16);
+  --shadow:0 28px 90px rgba(0,0,0,.42);
+  --shadow-blue:0 0 42px rgba(30,167,255,.22);
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Inter',sans-serif;
+  --display:'Syne',sans-serif;
+  --r-sm:10px;
+  --r-md:16px;
+  --r-lg:24px;
+  --r-xl:34px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(30,167,255,.18),transparent 26%),
+    radial-gradient(circle at 82% 10%,rgba(91,211,255,.10),transparent 30%),
+    radial-gradient(circle at 50% 55%,rgba(45,184,255,.08),transparent 42%),
+    linear-gradient(180deg,var(--bg) 0%,#02050e 48%,var(--bg2) 100%);
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(45,184,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(45,184,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.8),rgba(0,0,0,.18) 58%,rgba(0,0,0,.05));
+}
+body::after{
+  content:'';
+  position:fixed;
+  top:0;
+  left:-20%;
+  width:140%;
+  height:1px;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(91,211,255,.82),transparent);
+  box-shadow:0 0 34px rgba(30,167,255,.85);
+  opacity:.45;
+}
+a{color:inherit}
+button,input{font:inherit}
+img{max-width:100%;display:block}
+.page-shell{position:relative;z-index:1;overflow:hidden}
+.section{
+  position:relative;
+  padding:6rem 2rem;
+}
+.section-inner{
+  width:min(1140px,100%);
+  margin:0 auto;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:600;
+  color:var(--blue4);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.eyebrow::before{
+  content:'';
+  width:34px;
+  height:1px;
+  background:linear-gradient(90deg,var(--blue),transparent);
+  box-shadow:0 0 16px var(--glow);
+}
+.section-title{
+  font-family:var(--display);
+  font-size:clamp(2rem,5vw,4.1rem);
+  line-height:1.02;
+  letter-spacing:-.055em;
+  color:var(--white);
+  margin-bottom:1rem;
+}
+.section-title span,
+.gradient-text{
+  background:linear-gradient(135deg,var(--white) 0%,var(--silver) 34%,var(--blue4) 68%,var(--blue2) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.section-copy{
+  max-width:760px;
+  color:var(--muted);
+  font-size:1.05rem;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.65rem;
+  min-height:48px;
+  border-radius:999px;
+  padding:.85rem 1.35rem;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-weight:800;
+  font-size:.92rem;
+  letter-spacing:-.01em;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease;
+}
+.btn-primary{
+  color:#03101f;
+  background:linear-gradient(135deg,var(--white),var(--blue4) 44%,var(--blue));
+  border-color:rgba(245,248,255,.58);
+  box-shadow:0 0 36px rgba(30,167,255,.34),inset 0 1px 0 rgba(255,255,255,.74);
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 52px rgba(30,167,255,.48),0 18px 42px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.88);
+}
+.btn-secondary{
+  color:var(--white);
+  background:rgba(255,255,255,.045);
+  border-color:rgba(213,222,234,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.btn-secondary:hover{
+  transform:translateY(-2px);
+  border-color:var(--line-strong);
+  box-shadow:0 0 34px rgba(30,167,255,.16),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.btn-dark{
+  color:var(--white);
+  background:linear-gradient(135deg,rgba(6,18,37,.98),rgba(8,24,47,.88));
+  border-color:rgba(91,211,255,.36);
+  box-shadow:0 0 28px rgba(30,167,255,.15),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.btn-dark:hover{
+  transform:translateY(-2px);
+  border-color:rgba(91,211,255,.64);
+  box-shadow:0 0 42px rgba(30,167,255,.25),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.btn svg{flex:0 0 auto;transition:transform .2s ease}
+.btn:hover svg{transform:translateX(4px)}
+.panel{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.018)),
+    rgba(8,24,47,.66);
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.panel::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.12),transparent 24%),
+    radial-gradient(circle at 20% 0%,rgba(45,184,255,.18),transparent 34%);
+  opacity:.88;
+}
+.panel > *{position:relative;z-index:1}
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .75s cubic-bezier(.23,1,.32,1),transform .75s cubic-bezier(.23,1,.32,1);
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.40s}
+
+/* Navigation */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:900;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  min-height:76px;
+  padding:.75rem clamp(1rem,4vw,2.5rem);
+  background:rgba(3,8,22,.82);
+  backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(184,196,217,.11);
+}
+.nav-brand{
+  display:flex;
+  align-items:center;
+  gap:.78rem;
+  color:var(--white);
+  text-decoration:none;
+  min-width:0;
+}
+.nav-logo-mark{
+  width:58px;
+  height:36px;
+  border-radius:12px;
+  object-fit:cover;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(91,211,255,.22);
+  box-shadow:0 0 24px rgba(30,167,255,.18);
+}
+.nav-brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.05;
+  min-width:0;
+}
+.nav-brand-name{
+  font-family:var(--display);
+  font-size:.92rem;
+  font-weight:800;
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+.nav-brand-sub{
+  font-family:var(--mono);
+  font-size:.58rem;
+  color:var(--muted2);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.nav-right{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:.7rem;
+}
+.nav-link{
+  color:var(--muted);
+  font-size:.84rem;
+  font-weight:700;
+  text-decoration:none;
+  transition:color .2s ease;
+  white-space:nowrap;
+}
+.nav-link:hover{color:var(--white)}
+.nav-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:#03101f;
+  background:linear-gradient(135deg,var(--white),var(--blue4) 45%,var(--blue));
+  border:1px solid rgba(245,248,255,.58);
+  border-radius:999px;
+  padding:.62rem 1rem;
+  font-size:.82rem;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(30,167,255,.25),inset 0 1px 0 rgba(255,255,255,.74);
+  transition:transform .2s ease,box-shadow .2s ease;
+  white-space:nowrap;
+}
+.nav-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 42px rgba(30,167,255,.42),inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+/* Hero */
+#landing{
+  min-height:100vh;
+  padding:8.4rem 2rem 5.6rem;
+  display:flex;
+  align-items:center;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.04fr) minmax(340px,.76fr);
+  gap:2.4rem;
+  align-items:start;
+}
+.hero-main,
+.hero-console{
+  min-width:0;
+}
+.hero-main{
+  position:relative;
+  z-index:2;
+}
+.hero-console{
+  position:relative;
+  z-index:3;
+}
+.logo-credibility{
+  margin-bottom:2rem;
+}
+.logo-plate{
+  position:relative;
+  width:min(760px,100%);
+  margin-bottom:1.25rem;
+  padding:clamp(1rem,2.2vw,1.6rem);
+  border:1px solid rgba(91,211,255,.22);
+  border-radius:var(--r-xl);
+  background:
+    radial-gradient(circle at 50% 100%,rgba(30,167,255,.30),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.018));
+  box-shadow:0 0 76px rgba(30,167,255,.22),inset 0 1px 0 rgba(255,255,255,.12);
+  overflow:hidden;
+}
+.logo-plate::before{
+  content:'';
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:18%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue4),transparent);
+  box-shadow:0 0 24px var(--blue);
+}
+.hero-logo{
+  width:100%;
+  max-height:260px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 32px rgba(30,167,255,.28));
+}
+.logo-fallback-text{display:none}
+.logo-missing .logo-fallback-text{
+  display:block;
+  font-family:var(--display);
+  font-size:clamp(2.5rem,8vw,6.4rem);
+  color:var(--white);
+  text-align:center;
+  letter-spacing:-.06em;
+}
+.credibility-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.65rem;
+}
+.credibility-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  color:var(--silver);
+  border:1px solid rgba(91,211,255,.18);
+  background:rgba(255,255,255,.035);
+  border-radius:999px;
+  padding:.42rem .72rem;
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.credibility-pill::before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--blue4);
+  box-shadow:0 0 12px var(--blue);
+}
+.hero-title{
+  max-width:9.2ch;
+  font-family:var(--display);
+  font-size:clamp(2.8rem,5.8vw,5.7rem);
+  line-height:.94;
+  letter-spacing:-.078em;
+  color:var(--white);
+  margin-bottom:1.35rem;
+  word-break:normal;
+  overflow-wrap:anywhere;
+}
+.hero-title span{
+  display:block;
+  background:linear-gradient(135deg,var(--white) 0%,var(--silver) 30%,var(--blue4) 72%,var(--blue2) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-shadow:0 0 40px rgba(30,167,255,.12);
+}
+.signature-statement{
+  position:relative;
+  margin:0 0 1.45rem;
+  padding:1.25rem 1.35rem;
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(1.18rem,2.5vw,1.8rem);
+  line-height:1.24;
+  letter-spacing:-.035em;
+  border:1px solid rgba(91,211,255,.34);
+  border-radius:var(--r-lg);
+  background:linear-gradient(135deg,rgba(30,167,255,.15),rgba(255,255,255,.035));
+  box-shadow:0 0 42px rgba(30,167,255,.13),inset 0 1px 0 rgba(255,255,255,.11);
+}
+.signature-statement::before{
+  content:'';
+  position:absolute;
+  top:-1px;
+  left:8%;
+  width:42%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue4),transparent);
+  box-shadow:0 0 22px var(--blue);
+}
+.hero-copy{
+  max-width:760px;
+  color:var(--silver);
+  font-size:1.1rem;
+  margin-bottom:1.65rem;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.85rem;
+  align-items:center;
+  margin-bottom:1.4rem;
+}
+.timing-note{
+  color:var(--muted2);
+  font-size:.9rem;
+}
+.timing-note strong{color:var(--blue4)}
+.hero-console{
+  padding:1.25rem;
+  border-radius:var(--r-xl);
+}
+.console-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:1rem;
+}
+.console-dots{display:flex;gap:.42rem}
+.console-dots span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(213,222,234,.28);
+}
+.console-label{
+  font-family:var(--mono);
+  font-size:.62rem;
+  color:var(--blue4);
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.console-card{
+  padding:1.1rem;
+  border:1px solid rgba(184,196,217,.12);
+  border-radius:var(--r-lg);
+  background:rgba(3,8,22,.46);
+  margin-bottom:.85rem;
+}
+.console-kicker{
+  font-family:var(--mono);
+  font-size:.62rem;
+  color:var(--muted2);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:.35rem;
+}
+.console-title{
+  color:var(--white);
+  font-weight:800;
+  font-size:1rem;
+  margin-bottom:.2rem;
+}
+.console-copy{
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.55;
+}
+.console-status{
+  display:grid;
+  gap:.72rem;
+  margin-top:1rem;
+}
+.status-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:.72rem .8rem;
+  border:1px solid rgba(91,211,255,.16);
+  border-radius:var(--r-md);
+  background:rgba(255,255,255,.03);
+}
+.status-row span:first-child{
+  color:var(--muted);
+  font-size:.82rem;
+}
+.status-row span:last-child{
+  font-family:var(--mono);
+  font-size:.68rem;
+  color:var(--blue4);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+/* Signature divider */
+.signature-band{
+  padding:0 2rem 6rem;
+}
+.signature-panel{
+  width:min(1140px,100%);
+  margin:0 auto;
+  padding:2.3rem;
+  text-align:center;
+  border-radius:var(--r-xl);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(91,211,255,.22),transparent 42%),
+    linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  border:1px solid rgba(91,211,255,.24);
+  box-shadow:0 0 80px rgba(30,167,255,.16),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.signature-panel p{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(1.45rem,3.4vw,3.1rem);
+  line-height:1.13;
+  letter-spacing:-.055em;
+}
+
+/* Why different */
+.diff-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+  margin-top:2.25rem;
+}
+.diff-card{
+  min-height:190px;
+  padding:1.35rem;
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+.diff-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(91,211,255,.36);
+  box-shadow:0 18px 48px rgba(0,0,0,.24),0 0 34px rgba(30,167,255,.11),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.diff-num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  margin-bottom:1rem;
+  border-radius:12px;
+  color:#03101f;
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:800;
+  background:linear-gradient(135deg,var(--white),var(--blue4));
+  box-shadow:0 0 24px rgba(30,167,255,.22);
+}
+.diff-card h3{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:1.03rem;
+  letter-spacing:-.025em;
+  margin-bottom:.45rem;
+}
+.diff-card p{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.62;
+}
+
+/* Offer */
+.offer-wrap{
+  display:grid;
+  grid-template-columns:minmax(0,.88fr) minmax(360px,1.12fr);
+  gap:1.4rem;
+  align-items:stretch;
+  margin-top:2.25rem;
+}
+.price-card{
+  padding:2rem;
+  border-color:rgba(91,211,255,.34);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(91,211,255,.22),transparent 48%),
+    linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+}
+.price-label{
+  font-family:var(--mono);
+  color:var(--blue4);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.price-title{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(2rem,4vw,3.25rem);
+  line-height:1;
+  letter-spacing:-.055em;
+  margin-bottom:.7rem;
+}
+.price{
+  display:flex;
+  align-items:flex-end;
+  gap:.4rem;
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(3.2rem,8vw,5.8rem);
+  line-height:.9;
+  letter-spacing:-.08em;
+  margin:1.4rem 0 .8rem;
+  text-shadow:0 0 36px rgba(30,167,255,.2);
+}
+.price small{
+  font-family:var(--mono);
+  font-size:.74rem;
+  letter-spacing:.12em;
+  color:var(--muted2);
+  text-transform:uppercase;
+  margin-bottom:.72rem;
+}
+.price-card p{
+  color:var(--silver);
+  font-size:1rem;
+  margin-bottom:1.2rem;
+}
+.offer-details{
+  display:grid;
+  gap:1rem;
+}
+.detail-card{
+  padding:1.25rem;
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  background:rgba(255,255,255,.035);
+}
+.detail-card h3{
+  color:var(--white);
+  font-size:1rem;
+  font-weight:800;
+  margin-bottom:.45rem;
+}
+.detail-card p{
+  color:var(--muted);
+  font-size:.92rem;
+}
+.check-list{
+  list-style:none;
+  display:grid;
+  gap:.6rem;
+  margin-top:1rem;
+}
+.check-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:.62rem;
+  color:var(--muted);
+  font-size:.94rem;
+}
+.check-list li::before{
+  content:'';
+  width:9px;
+  height:9px;
+  margin-top:.5rem;
+  border-radius:50%;
+  flex:0 0 auto;
+  background:var(--blue4);
+  box-shadow:0 0 14px var(--blue);
+}
+.notice{
+  margin-top:1rem;
+  padding:.95rem 1rem;
+  border:1px solid rgba(91,211,255,.2);
+  border-radius:var(--r-md);
+  background:rgba(30,167,255,.07);
+  color:var(--silver);
+  font-size:.9rem;
+}
+
+/* Delivery */
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.25rem;
+  margin-top:2.2rem;
+}
+.delivery-card{
+  padding:1.6rem;
+  border:1px solid var(--line);
+  border-radius:var(--r-xl);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018)),
+    rgba(8,24,47,.44);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.delivery-card.featured{
+  border-color:rgba(91,211,255,.35);
+  box-shadow:0 0 52px rgba(30,167,255,.13),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.delivery-tag{
+  display:inline-flex;
+  margin-bottom:1rem;
+  padding:.34rem .65rem;
+  border-radius:999px;
+  font-family:var(--mono);
+  font-size:.64rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--blue4);
+  background:rgba(30,167,255,.09);
+  border:1px solid rgba(91,211,255,.2);
+}
+.delivery-card h3{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:1.45rem;
+  letter-spacing:-.04em;
+  margin-bottom:.55rem;
+}
+.delivery-card p{color:var(--muted);font-size:.96rem}
+.delivery-card ul{
+  list-style:none;
+  display:grid;
+  gap:.55rem;
+  margin-top:1rem;
+}
+.delivery-card li{
+  color:var(--silver);
+  font-size:.92rem;
+  display:flex;
+  gap:.55rem;
+}
+.delivery-card li::before{
+  content:'→';
+  color:var(--blue4);
+  flex:0 0 auto;
+}
+.have-way{
+  margin-top:1.4rem;
+  padding:1.35rem;
+  text-align:center;
+  border-radius:var(--r-lg);
+  border:1px solid rgba(91,211,255,.22);
+  background:rgba(255,255,255,.035);
+}
+.have-way strong{
+  display:block;
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(1.5rem,3.3vw,2.5rem);
+  line-height:1;
+  letter-spacing:-.05em;
+  margin-bottom:.5rem;
+}
+
+/* Full launch */
+.full-launch-card{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr);
+  gap:2rem;
+  align-items:center;
+  padding:2rem;
+  margin-top:2.2rem;
+}
+.launch-badge{
+  display:inline-flex;
+  color:#03101f;
+  background:linear-gradient(135deg,var(--white),var(--blue4));
+  border-radius:999px;
+  padding:.38rem .7rem;
+  font-family:var(--mono);
+  font-weight:800;
+  font-size:.65rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.full-launch-card h3{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(2rem,4vw,3.6rem);
+  line-height:1;
+  letter-spacing:-.06em;
+  margin-bottom:.8rem;
+}
+.full-launch-card p{color:var(--silver);margin-bottom:1.2rem}
+.launch-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.8rem;
+  list-style:none;
+}
+.launch-list li{
+  padding:.9rem;
+  border:1px solid rgba(184,196,217,.12);
+  border-radius:var(--r-md);
+  background:rgba(3,8,22,.36);
+  color:var(--muted);
+  font-size:.9rem;
+}
+.launch-list strong{
+  display:block;
+  color:var(--white);
+  margin-bottom:.15rem;
+}
+
+/* Offer architecture */
+.offer-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+  margin-top:2.2rem;
+}
+.package-card{
+  padding:1.35rem;
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  background:rgba(255,255,255,.035);
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+}
+.package-card.featured{
+  border-color:rgba(91,211,255,.35);
+  background:linear-gradient(180deg,rgba(30,167,255,.10),rgba(255,255,255,.026));
+}
+.package-type{
+  font-family:var(--mono);
+  color:var(--blue4);
+  font-size:.62rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:.8rem;
+}
+.package-card h3{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:1.2rem;
+  letter-spacing:-.035em;
+  line-height:1.08;
+  margin-bottom:.5rem;
+}
+.package-price{
+  color:var(--silver2);
+  font-family:var(--display);
+  font-size:1.9rem;
+  line-height:1;
+  letter-spacing:-.05em;
+  margin-bottom:.75rem;
+}
+.package-price.text{
+  font-size:1rem;
+  letter-spacing:0;
+  font-family:var(--sans);
+  font-weight:800;
+}
+.package-card p{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.55;
+  margin-bottom:1.1rem;
+}
+.package-card .btn{
+  width:100%;
+  margin-top:auto;
+  min-height:44px;
+  padding:.72rem .9rem;
+  font-size:.82rem;
+}
+
+/* Steps */
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;
+  margin-top:2.2rem;
+}
+.step-card{
+  padding:1.35rem;
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  background:rgba(255,255,255,.035);
+  position:relative;
+}
+.step-num{
+  color:var(--blue4);
+  font-family:var(--display);
+  font-size:2.1rem;
+  font-weight:800;
+  line-height:1;
+  margin-bottom:.9rem;
+  text-shadow:0 0 24px rgba(30,167,255,.22);
+}
+.step-card h3{
+  color:var(--white);
+  font-size:1rem;
+  font-weight:800;
+  margin-bottom:.4rem;
+}
+.step-card p{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.58;
+}
+
+/* Audience */
+.audience-wrap{
+  display:grid;
+  grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  gap:2rem;
+  align-items:start;
+}
+.audience-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem;
+  margin-top:.4rem;
+}
+.audience-chip{
+  color:var(--silver);
+  border:1px solid rgba(91,211,255,.18);
+  background:rgba(255,255,255,.035);
+  border-radius:999px;
+  padding:.62rem .86rem;
+  font-weight:700;
+  font-size:.9rem;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* Support */
+.support-panel{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:2rem;
+  align-items:center;
+  padding:2rem;
+}
+.support-title{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:1.02;
+  letter-spacing:-.06em;
+  margin-bottom:1rem;
+}
+.support-list{
+  display:grid;
+  gap:.8rem;
+  list-style:none;
+}
+.support-list li{
+  padding:1rem;
+  border-radius:var(--r-md);
+  border:1px solid rgba(184,196,217,.12);
+  background:rgba(3,8,22,.34);
+  color:var(--silver);
+}
+.support-list strong{
+  display:block;
+  color:var(--blue4);
+  margin-bottom:.2rem;
+}
+
+/* Final CTA */
+.final-cta{
+  text-align:center;
+  padding:5rem 2rem 6rem;
+}
+.final-card{
+  width:min(1040px,100%);
+  margin:0 auto;
+  padding:clamp(2rem,5vw,4rem);
+  border-radius:var(--r-xl);
+  border:1px solid rgba(91,211,255,.26);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(91,211,255,.24),transparent 42%),
+    linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  box-shadow:0 0 90px rgba(30,167,255,.18),inset 0 1px 0 rgba(255,255,255,.11);
+}
+.final-card h2{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(2.2rem,5vw,4.6rem);
+  line-height:1;
+  letter-spacing:-.065em;
+  margin-bottom:1rem;
+}
+.final-card p{
+  color:var(--silver);
+  max-width:740px;
+  margin:0 auto 1.6rem;
+  font-size:1.05rem;
+}
+.final-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.85rem;
+}
+
+/* Footer */
+footer{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:1rem;
+  padding:1.5rem clamp(1rem,4vw,2.5rem);
+  border-top:1px solid rgba(184,196,217,.11);
+  background:rgba(3,8,22,.84);
+}
+.footer-brand{
+  color:var(--white);
+  font-family:var(--display);
+  font-weight:800;
+  font-size:.9rem;
+}
+.footer-tagline{
+  color:var(--blue4);
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.footer-copy,.footer-badge{
+  color:var(--muted2);
+  font-family:var(--mono);
+  font-size:.66rem;
+}
+.footer-badge{
+  border:1px solid rgba(91,211,255,.18);
+  border-radius:999px;
+  padding:.22rem .58rem;
+}
+.footer-links{
+  display:flex;
+  gap:1rem;
+  list-style:none;
+  flex-wrap:wrap;
+}
+.footer-links a{
+  color:var(--muted2);
+  font-size:.78rem;
+  text-decoration:none;
+  transition:color .2s ease;
+}
+.footer-links a:hover{color:var(--white)}
+
+/* Modal */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(10px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1.5rem;
+  opacity:0;
+  transition:opacity .3s;
+}
+.modal-overlay.open{opacity:1}
+.modal-box{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(30,167,255,.17),transparent 44%),
+    linear-gradient(180deg,rgba(8,24,47,.98),rgba(3,8,22,.98));
+  border:1px solid rgba(91,211,255,.34);
+  border-radius:var(--r-xl);
+  padding:2.5rem;
+  max-width:470px;
+  width:100%;
+  position:relative;
+  transform:translateY(20px);
+  transition:transform .3s;
+  box-shadow:0 0 86px rgba(30,167,255,.22),0 30px 90px rgba(0,0,0,.5);
+}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-box::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:8%;
+  right:8%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue4),transparent);
+  box-shadow:0 0 28px var(--blue);
+}
+.modal-close{
+  position:absolute;
+  top:1rem;
+  right:1rem;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(184,196,217,.14);
+  color:var(--muted2);
+  font-size:.95rem;
+  cursor:pointer;
+  transition:color .2s,border-color .2s;
+  line-height:1;
+}
+.modal-close:hover{color:var(--white);border-color:rgba(91,211,255,.35)}
+.modal-icon{
+  width:58px;
+  height:58px;
+  margin:0 auto 1rem;
+  border-radius:18px;
+  background:linear-gradient(135deg,var(--white),var(--blue4));
+  color:#03101f;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--display);
+  font-weight:900;
+  box-shadow:0 0 34px rgba(30,167,255,.3);
+}
+.modal-title{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:1.75rem;
+  line-height:1.05;
+  text-align:center;
+  margin-bottom:.55rem;
+  color:var(--white);
+  letter-spacing:-.045em;
+}
+.modal-sub{
+  font-size:.92rem;
+  color:var(--muted);
+  text-align:center;
+  line-height:1.65;
+  margin-bottom:1.5rem;
+}
+.modal-field{margin-bottom:.75rem}
+.modal-label{
+  display:block;
+  font-size:.76rem;
+  font-weight:800;
+  color:var(--silver);
+  letter-spacing:.02em;
+  margin-bottom:.4rem;
+}
+.modal-input{
+  width:100%;
+  background:#ffffff;
+  border:1px solid rgba(91,211,255,.35);
+  border-radius:var(--r-md);
+  padding:.9rem 1rem;
+  font-family:var(--sans);
+  font-size:.94rem;
+  color:#061225;
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.modal-input::placeholder{color:#7b8493}
+.modal-input:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 4px rgba(30,167,255,.16);
+}
+.modal-terms{
+  display:flex;
+  align-items:flex-start;
+  gap:.6rem;
+  margin-bottom:1rem;
+}
+.modal-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  color:#03101f;
+  background:linear-gradient(135deg,var(--white),var(--blue4) 44%,var(--blue));
+  border:1px solid rgba(245,248,255,.58);
+  border-radius:var(--r-md);
+  padding:1rem 1.4rem;
+  cursor:pointer;
+  box-shadow:0 0 34px rgba(30,167,255,.28),inset 0 1px 0 rgba(255,255,255,.76);
+  transition:all .2s;
+  margin-bottom:.75rem;
+  font-weight:900;
+}
+.modal-btn:hover{transform:translateY(-1px);box-shadow:0 0 46px rgba(30,167,255,.4),inset 0 1px 0 rgba(255,255,255,.9)}
+.modal-btn:disabled{opacity:.68;cursor:not-allowed;transform:none}
+.modal-note{
+  font-family:var(--mono);
+  font-size:.64rem;
+  color:var(--muted2);
+  text-align:center;
+  letter-spacing:.05em;
+  margin-bottom:.75rem;
+}
+.modal-signin{
+  text-align:center;
+  font-size:.86rem;
+  color:var(--muted);
+  padding-top:.7rem;
+  border-top:1px solid rgba(184,196,217,.12);
+}
+.modal-signin a{color:var(--blue4);text-decoration:underline;cursor:pointer;font-weight:800}
+.modal-signin a:hover{color:var(--white)}
+
+/* Earlier collapse for Spanish hero to prevent overlap */
+@media (max-width:1280px){
+  .hero-grid{
+    grid-template-columns:minmax(0,1fr);
+    gap:1.75rem;
+  }
+  .hero-console{
+    max-width:760px;
+    width:100%;
+  }
+  .hero-title{
+    max-width:10.5ch;
+    font-size:clamp(2.7rem,6.2vw,5.2rem);
+  }
+}
+
+@media (max-width:1040px){
+  .offer-wrap,
+  .full-launch-card,
+  .support-panel,
+  .audience-wrap{
+    grid-template-columns:1fr;
+  }
+  .diff-grid{grid-template-columns:repeat(2,1fr)}
+  .offer-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:760px){
+  body{font-size:15px}
+  nav{
+    min-height:70px;
+    padding:.7rem 1rem;
+  }
+  .nav-logo-mark{width:46px;height:32px}
+  .nav-brand-sub{display:none}
+  .nav-brand-name{font-size:.78rem}
+  .nav-right{gap:.5rem}
+  .nav-link{font-size:.76rem}
+  .nav-btn{padding:.56rem .72rem;font-size:.76rem}
+  #landing{padding:7.25rem 1rem 4rem;align-items:flex-start}
+  .section{padding:4.5rem 1rem}
+  .signature-band{padding:0 1rem 4.5rem}
+  .logo-plate{border-radius:22px;padding:.8rem;margin-bottom:1rem}
+  .hero-logo{max-height:190px}
+  .hero-title{
+    max-width:100%;
+    font-size:clamp(2.5rem,14vw,4.3rem);
+    letter-spacing:-.065em;
+  }
+  .signature-statement{padding:1rem;font-size:1.16rem}
+  .hero-actions,.final-actions{align-items:stretch}
+  .btn{width:100%;min-height:50px}
+  .credibility-line{display:grid;grid-template-columns:1fr;gap:.55rem}
+  .credibility-pill{justify-content:center}
+  .signature-panel{padding:1.45rem}
+  .diff-grid,
+  .delivery-grid,
+  .offer-grid,
+  .steps-grid,
+  .launch-list{
+    grid-template-columns:1fr;
+  }
+  .price-card,.full-launch-card,.support-panel{padding:1.35rem}
+  .price{font-size:4rem}
+  .footer-links{width:100%;justify-content:flex-start}
+  .modal-box{padding:2rem 1.25rem}
+}
+@media (max-width:440px){
+  .nav-brand-name{display:none}
+  .nav-link:nth-child(2){display:none}
+  .section-title{letter-spacing:-.045em}
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+  <nav>
+    <a href="#landing" class="nav-brand">
+      <img class="nav-logo-mark" src="AI4-approved-logo.png" alt="Logotipo de AI4 Website Design" onerror="this.style.display='none';document.documentElement.classList.add('logo-missing');">
+      <span class="nav-brand-text">
+        <span class="nav-brand-name">AI4 Website Design</span>
+        <span class="nav-brand-sub">Estudio de lanzamiento el mismo día</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <a href="/login.html" class="nav-link">Iniciar sesión</a>
+      <a href="#" class="nav-link" onclick="showSignUp();return false;">Registrarse</a>
+      <button class="nav-btn" type="button" onclick="showSignUp()">Comenzar hoy</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="landing" class="section">
+      <div class="section-inner hero-grid">
+        <div class="hero-main">
+          <div class="logo-credibility reveal">
+            <div class="logo-plate">
+              <img class="hero-logo" src="AI4-approved-logo.png" alt="Logotipo futurista aprobado de AI4 Website Design" onerror="this.style.display='none';document.documentElement.classList.add('logo-missing');">
+              <div class="logo-fallback-text">AI4 Website Design</div>
+            </div>
+            <div class="credibility-line">
+              <span class="credibility-pill">Sitios web profesionales personalizados</span>
+              <span class="credibility-pill">Entrega de archivo o lanzamiento completo</span>
+              <span class="credibility-pill">Ruta el mismo día disponible</span>
+            </div>
+          </div>
+
+          <div class="eyebrow reveal d1">Sistema premium de lanzamiento web</div>
+          <h1 class="hero-title reveal d2">Sitios web personalizados <span>lanzados el mismo día</span></h1>
+
+          <p class="signature-statement reveal d3">Te ayudamos a estar en internet hoy con un sitio web profesional creado alrededor de tu visión.</p>
+
+          <p class="hero-copy reveal d4">AI4 Website Design les da a emprendedores, creadores, coaches, proveedores de servicios, personas con negocios secundarios y dueños de pequeños negocios una forma más rápida de lanzarse. Comienza con un archivo de sitio web profesional o elige lanzamiento completo y deja que manejemos el camino desde la idea hasta un sitio web en vivo.</p>
+
+          <div class="hero-actions reveal d5">
+            <button class="btn btn-primary" type="button" onclick="showSignUp()">
+              Comenzar mi sitio web hoy
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <a class="btn btn-secondary" href="#offers">Ver opciones de lanzamiento</a>
+          </div>
+
+          <p class="timing-note reveal d5"><strong>Pasa de la idea a un sitio web en vivo en tan solo 24 horas</strong> cuando tu información sea enviada y tus detalles de lanzamiento estén listos.</p>
+        </div>
+
+        <aside class="hero-console panel reveal d3" aria-label="Resumen de lanzamiento de AI4 Website Design">
+          <div class="console-top">
+            <div class="console-dots"><span></span><span></span><span></span></div>
+            <div class="console-label">Ruta de lanzamiento</div>
+          </div>
+          <div class="console-card">
+            <div class="console-kicker">No es un constructor genérico</div>
+            <div class="console-title">Diseño profesional, creado alrededor de tu visión.</div>
+            <p class="console-copy">Tú compartes el negocio, los objetivos, el estilo y la ruta de lanzamiento. AI4 Website Design crea una experiencia web personalizada y te ayuda a avanzar más rápido.</p>
+          </div>
+          <div class="console-card">
+            <div class="console-kicker">Elige la entrega</div>
+            <div class="console-title">Archivo del sitio web o soporte completo para salir en vivo.</div>
+            <p class="console-copy">Mantén el control con entrega de archivo, o elige la configuración completa de lanzamiento para que los pasos técnicos se manejen por ti.</p>
+          </div>
+          <div class="console-status">
+            <div class="status-row"><span>Dirección de diseño</span><span>Personalizado</span></div>
+            <div class="status-row"><span>Oferta del fundador</span><span>$49.99</span></div>
+            <div class="status-row"><span>Soporte de lanzamiento</span><span>Disponible</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="signature-band" aria-label="Mensaje distintivo">
+      <div class="signature-panel reveal">
+        <p>AI4 Website Design no simplemente vende sitios web. Creamos sitios web profesionales, de alta calidad y personalizados, y ayudamos a lanzarlos rápido.</p>
+      </div>
+    </section>
+
+    <section class="section" id="different">
+      <div class="section-inner">
+        <div class="eyebrow reveal">Por qué somos diferentes</div>
+        <h2 class="section-title reveal d1">Por qué AI4 Website Design <span>es diferente</span></h2>
+        <p class="section-copy reveal d2">No deberías tener que luchar con constructores de sitios web confusos, plantillas genéricas, tiempos lentos de diseño o procesos poco claros de dominio y hosting. AI4 Website Design te ofrece una ruta de lanzamiento clara y profesional.</p>
+
+        <div class="diff-grid">
+          <div class="diff-card reveal d1">
+            <div class="diff-num">01</div>
+            <h3>Capacidad de lanzamiento el mismo día</h3>
+            <p>Pasa de la idea a una presencia profesional en internet en tan solo 24 horas cuando tu información y tus detalles de lanzamiento estén listos.</p>
+          </div>
+          <div class="diff-card reveal d2">
+            <div class="diff-num">02</div>
+            <h3>Sitios web con calidad profesional</h3>
+            <p>Tu sitio web se posiciona para verse creíble, pulido y listo para clientes reales desde la primera visita.</p>
+          </div>
+          <div class="diff-card reveal d3">
+            <div class="diff-num">03</div>
+            <h3>Creado alrededor de tu visión</h3>
+            <p>Damos forma al sitio según tu negocio, tu oferta, tu audiencia, tu dirección de marca y tus objetivos en lugar de forzarte a una plantilla genérica.</p>
+          </div>
+          <div class="diff-card reveal d4">
+            <div class="diff-num">04</div>
+            <h3>Proceso simple</h3>
+            <p>Compartes los detalles de tu negocio, eliges tu ruta de lanzamiento y guiamos los siguientes pasos sin una configuración interminable.</p>
+          </div>
+          <div class="diff-card reveal d1">
+            <div class="diff-num">05</div>
+            <h3>Archivo o lanzamiento completo</h3>
+            <p>Elige entrega del archivo del sitio web para lanzarlo tú mismo o elige lanzamiento completo para recibir ayuda con el camino técnico hasta salir en vivo.</p>
+          </div>
+          <div class="diff-card reveal d2">
+            <div class="diff-num">06</div>
+            <h3>Soporte después del lanzamiento</h3>
+            <p>¿Necesitas cambios de imágenes, texto, nuevas secciones o gestión continua? El soporte para el sitio web está disponible después del lanzamiento.</p>
+          </div>
+          <div class="diff-card reveal d3">
+            <div class="diff-num">07</div>
+            <h3>Sin constructores confusos</h3>
+            <p>Evita la frustración de arrastrar y soltar, la presión de una página en blanco, el exceso de complementos y las decisiones inciertas de configuración.</p>
+          </div>
+          <div class="diff-card reveal d4">
+            <div class="diff-num">08</div>
+            <h3>Sin configuración interminable</h3>
+            <p>Hacemos el proceso más fácil de entender para que puedas concentrarte en tu negocio, no en un laberinto técnico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="founders-special">
+      <div class="section-inner">
+        <div class="eyebrow reveal">Oferta introductoria de entrada</div>
+        <h2 class="section-title reveal d1">Oferta del fundador <span>/ Build &amp; Go</span></h2>
+        <p class="section-copy reveal d2">Comienza con un sitio web profesional de una sola página creado alrededor de la idea de tu negocio. Nosotros diseñamos el sitio y te entregamos el archivo. Tú mantienes el control de tu dominio, tu hosting y tu lanzamiento.</p>
+
+        <div class="offer-wrap">
+          <div class="price-card panel reveal d2">
+            <div class="price-label">Oferta del fundador</div>
+            <h3 class="price-title">Build &amp; Go</h3>
+            <div class="price">$49.99 <small>entrega de archivo</small></div>
+            <p>Una opción profesional de entrega de archivo de sitio web para clientes que quieren que AI4 Website Design diseñe el sitio mientras ellos manejan el lanzamiento por su cuenta.</p>
+            <button class="btn btn-primary" type="button" onclick="showSignUp()">
+              Reclamar oferta del fundador
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <div class="offer-details">
+            <div class="detail-card reveal d3">
+              <h3>Qué incluye</h3>
+              <ul class="check-list">
+                <li>Diseño profesional de sitio web de una sola página creado alrededor de la idea de tu negocio.</li>
+                <li>Archivo del sitio web entregado para tu propio lanzamiento por cuenta propia.</li>
+                <li>Punto de entrada claro para emprendedores que quieren comenzar rápido.</li>
+              </ul>
+            </div>
+            <div class="detail-card reveal d4">
+              <h3>Qué no incluye la oferta de $49.99 con entrega de archivo</h3>
+              <ul class="check-list">
+                <li>No incluye lanzamiento completo.</li>
+                <li>No incluye dominio, hosting ni configuración para salir en vivo.</li>
+                <li>No incluye gestión continua a menos que se compre por separado.</li>
+              </ul>
+              <div class="notice">Esta oferta está intencionalmente separada del lanzamiento con servicio completo. Recibes el archivo del sitio web y sigues siendo responsable de tu propio dominio, hosting y lanzamiento.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="delivery">
+      <div class="section-inner">
+        <div class="eyebrow reveal">Hazlo a tu manera</div>
+        <h2 class="section-title reveal d1">Elige la ruta de lanzamiento <span>que mejor se adapte a ti</span></h2>
+        <p class="section-copy reveal d2">Hazlo a tu manera: recibe el archivo del sitio web o deja que manejemos la configuración completa de lanzamiento por ti.</p>
+
+        <div class="delivery-grid">
+          <div class="delivery-card reveal d2">
+            <span class="delivery-tag">Ruta 01</span>
+            <h3>Entrega de archivo</h3>
+            <p>Diseñamos el sitio web y te entregamos el archivo. Tú mantienes el control de tu dominio, tu hosting y tu proceso de lanzamiento.</p>
+            <ul>
+              <li>Ideal para clientes cómodos con lanzarlo por su cuenta.</li>
+              <li>Archivo del sitio web entregado después del diseño.</li>
+              <li>El dominio, el hosting y salir en vivo son manejados por ti.</li>
+            </ul>
+          </div>
+          <div class="delivery-card featured reveal d3">
+            <span class="delivery-tag">Ruta 02</span>
+            <h3>Lanzamiento completo</h3>
+            <p>Diseñamos el sitio web y ayudamos a manejar el camino técnico desde la configuración hasta salir en vivo para que no tengas que enfrentar solo los pasos técnicos.</p>
+            <ul>
+              <li>Asistencia con configuración del dominio.</li>
+              <li>Asistencia con configuración del hosting.</li>
+              <li>Soporte para salir en vivo y guía de lanzamiento.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="have-way reveal d4">
+          <strong>Hazlo a tu manera.</strong>
+          <p>Comienza con entrega de archivo o elige lanzamiento completo cuando quieras que AI4 Website Design ayude a llevar el sitio web desde la idea hasta una presencia en vivo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="full-launch">
+      <div class="section-inner">
+        <div class="eyebrow reveal">Opción de servicio completo</div>
+        <h2 class="section-title reveal d1">Launch &amp; Go <span>para una salida en vivo más fácil</span></h2>
+
+        <div class="full-launch-card panel reveal d2">
+          <div>
+            <span class="launch-badge">Lanzamiento completo</span>
+            <h3>Elige lanzamiento completo y nosotros manejaremos el camino técnico desde el diseño hasta salir en vivo.</h3>
+            <p>Launch &amp; Go es para clientes que quieren que el sitio web sea diseñado, configurado y llevado hacia un sitio web en vivo sin tener que luchar con pasos confusos de dominio, hosting y despliegue.</p>
+            <button class="btn btn-primary" type="button" onclick="showSignUp()">
+              Elegir lanzamiento completo
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <ul class="launch-list">
+            <li><strong>Nosotros diseñamos</strong>Tu sitio se crea alrededor de tu negocio, tu audiencia y tu objetivo de lanzamiento.</li>
+            <li><strong>Ayudamos con el dominio</strong>Recibe ayuda para conectar la ruta de dominio correcta para tu sitio web.</li>
+            <li><strong>Ayudamos con el hosting</strong>Evita la confusión sobre dónde y cómo sale en vivo el sitio.</li>
+            <li><strong>Apoyamos el lanzamiento</strong>Esté en internet el mismo día que tu información sea enviada y tus detalles de lanzamiento estén listos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="offers">
+      <div class="section-inner">
+        <div class="eyebrow reveal">Opciones de lanzamiento</div>
+        <h2 class="section-title reveal d1">Elige mi <span>ruta de lanzamiento</span></h2>
+        <p class="section-copy reveal d2">Comienza con la Oferta del Fundador, elige el lanzamiento con servicio completo, agrupa múltiples sitios o solicita detalles para socio White Label.</p>
+
+        <div class="offer-grid">
+          <div class="package-card featured reveal d1">
+            <div class="package-type">Oferta del fundador / Build &amp; Go</div>
+            <h3>Entrega del archivo del sitio web</h3>
+            <div class="package-price">$49.99</div>
+            <p>Diseñamos el sitio web y te entregamos el archivo. Tú manejas el dominio, el hosting y el lanzamiento.</p>
+            <button class="btn btn-primary" type="button" onclick="showSignUp()">Reclamar oferta del fundador</button>
+          </div>
+          <div class="package-card reveal d2">
+            <div class="package-type">Launch &amp; Go</div>
+            <h3>Opción de lanzamiento completo</h3>
+            <div class="package-price text">Ver detalles del paquete</div>
+            <p>Diseñamos, configuramos y ayudamos a lanzar el sitio web con apoyo en dominio y hosting.</p>
+            <button class="btn btn-dark" type="button" onclick="showSignUp()">Ver paquete de lanzamiento</button>
+          </div>
+          <div class="package-card reveal d3">
+            <div class="package-type">Entrepreneur Bundle</div>
+            <h3>Hasta 5 sitios lanzados</h3>
+            <div class="package-price">$449.99</div>
+            <p>Creado para fundadores, creadores y emprendedores con múltiples marcas que necesitan varios sitios web lanzados.</p>
+            <button class="btn btn-dark" type="button" onclick="showSignUp()">Comenzar solicitud del paquete</button>
+          </div>
+          <div class="package-card reveal d4">
+            <div class="package-type">White Label Partner</div>
+            <h3>Para agencias y consultores</h3>
+            <div class="package-price text">Solo por consulta</div>
+            <p>Para agencias, consultores y proveedores de servicios que necesitan un socio profesional de cumplimiento de sitios web.</p>
+            <a class="btn btn-secondary" href="mailto:support@ai4websitediseno.com?subject=Consulta%20White%20Label%20Partner">Solicitar detalles</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="section-inner">
+        <div class="eyebrow reveal">Cómo funciona</div>
+        <h2 class="section-title reveal d1">Simple desde la <span>idea hasta el lanzamiento</span></h2>
+        <p class="section-copy reveal d2">El proceso está diseñado para ser claro, rápido y fácil de entender, ya sea que elijas entrega de archivo o lanzamiento completo.</p>
+
+        <div class="steps-grid">
+          <div class="step-card reveal d1">
+            <div class="step-num">01</div>
+            <h3>Comparte tu visión</h3>
+            <p>Cuéntanos sobre tu negocio, audiencia, oferta, estilo preferido y el mensaje que quieres que comunique tu sitio web.</p>
+          </div>
+          <div class="step-card reveal d2">
+            <div class="step-num">02</div>
+            <h3>Elige tu ruta</h3>
+            <p>Selecciona entrega de archivo para lanzarlo tú mismo o elige lanzamiento completo si quieres ayuda con el proceso técnico para salir en vivo.</p>
+          </div>
+          <div class="step-card reveal d3">
+            <div class="step-num">03</div>
+            <h3>Diseñamos el sitio web</h3>
+            <p>Tu sitio web se construye alrededor de la idea de tu negocio, no de un lienzo en blanco confuso ni de una plantilla genérica de hágalo usted mismo.</p>
+          </div>
+          <div class="step-card reveal d4">
+            <div class="step-num">04</div>
+            <h3>Recibe o lanza</h3>
+            <p>Recibe el archivo de tu sitio web o avanza por el lanzamiento completo con apoyo en dominio, hosting y salida en vivo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="audience">
+      <div class="section-inner audience-wrap">
+        <div>
+          <div class="eyebrow reveal">Para quién es esto</div>
+          <h2 class="section-title reveal d1">Creado para personas listas <span>para estar en internet</span></h2>
+          <p class="section-copy reveal d2">AI4 Website Design es para dueños de negocios y creadores que necesitan una presencia profesional en internet sin un proceso lento, confuso y tradicional de diseño web.</p>
+        </div>
+
+        <div class="audience-chips reveal d3">
+          <span class="audience-chip">Nuevos emprendedores</span>
+          <span class="audience-chip">Fundadores</span>
+          <span class="audience-chip">Negocios secundarios</span>
+          <span class="audience-chip">Coaches</span>
+          <span class="audience-chip">Entrenadores</span>
+          <span class="audience-chip">Creadores</span>
+          <span class="audience-chip">Consultores</span>
+          <span class="audience-chip">Proveedores de servicios</span>
+          <span class="audience-chip">Dueños de pequeños negocios</span>
+          <span class="audience-chip">Emprendedores con múltiples marcas</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="support">
+      <div class="section-inner">
+        <div class="support-panel panel reveal">
+          <div>
+            <div class="eyebrow">Soporte continuo</div>
+            <h2 class="support-title">¿Necesitas cambios después del lanzamiento? Podemos gestionar tu sitio por ti.</h2>
+            <p class="section-copy">No te dejamos solo después del lanzamiento. Si necesitas actualizaciones, gestión continua o nuevas secciones de contenido, AI4 Website Design puede apoyar tu sitio web a medida que tu negocio crece.</p>
+          </div>
+          <ul class="support-list">
+            <li><strong>Actualizaciones de imágenes</strong>Cambia fotos, visuales, activos de marca o contenido de galería cuando tu negocio cambie.</li>
+            <li><strong>Cambios de texto</strong>Actualiza descripciones de servicios, llamadas a la acción, ofertas, precios y mensajes de la página principal.</li>
+            <li><strong>Nuevas secciones</strong>Agrega nuevos bloques de contenido, secciones de servicios o áreas promocionales.</li>
+            <li><strong>Gestión continua</strong>El soporte continuo del sitio web está disponible como un servicio adicional después del lanzamiento.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="start">
+      <div class="final-card reveal">
+        <div class="eyebrow">Esté en internet hoy</div>
+        <h2>Comienza con tu visión. Termina con una ruta profesional para tu sitio web.</h2>
+        <p>Elige entrega de archivo, lanzamiento completo o una ruta de múltiples sitios. AI4 Website Design hace el proceso claro, premium y creado para avanzar rápido.</p>
+        <div class="final-actions">
+          <button class="btn btn-primary" type="button" onclick="showSignUp()">
+            Estar en internet hoy
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <a class="btn btn-secondary" href="#offers">Ver opciones de lanzamiento</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">ai4websitediseno.com</div>
+    <span class="footer-tagline">Sitios web personalizados lanzados el mismo día</span>
+    <span class="footer-copy">© 2026 Apropos Group LLC</span>
+    <span class="footer-badge">Creado con AI4 Website Design</span>
+    <ul class="footer-links">
+      <li><a href="https://aiflowdeskpro.com">FlowDesk Pro</a></li>
+      <li><a href="https://ai4businesses.org">ai4businesses</a></li>
+      <li><a href="mailto:support@ai4websitediseno.com">Soporte</a></li>
+    </ul>
+  </footer>
+</div>
+
+<!-- SIGN UP MODAL -->
+<div id="signUpModal" style="display:none" class="modal-overlay" onclick="if(event.target===this)closeSignUp()">
+  <div class="modal-box">
+    <button class="modal-close" type="button" onclick="closeSignUp()">✕</button>
+    <div class="modal-icon">AI4</div>
+    <h3 class="modal-title">Crea tu cuenta</h3>
+    <p class="modal-sub">Registrarte es gratis. Comienza tu ruta web en segundos.</p>
+
+    <div class="modal-field">
+      <label class="modal-label">Nombre completo *</label>
+      <input class="modal-input" id="signUpName" type="text" placeholder="Alex Rivera" autocomplete="name">
+    </div>
+    <div class="modal-field">
+      <label class="modal-label">Correo electrónico *</label>
+      <input class="modal-input" id="signUpEmail" type="email" placeholder="alex@tunegocio.com" autocomplete="email">
+    </div>
+    <div class="modal-field" style="margin-bottom:1rem">
+      <label class="modal-label">Número de teléfono <span style="color:var(--muted2);font-weight:500">(opcional — te enviaremos un texto cuando tu sitio esté en vivo)</span></label>
+      <input class="modal-input" id="signUpPhone" type="tel" placeholder="(555) 867-5309" autocomplete="tel">
+    </div>
+
+    <div class="modal-terms">
+      <input type="checkbox" id="signUpTerms" style="width:16px;height:16px;accent-color:var(--blue);flex-shrink:0;margin-top:2px">
+      <label for="signUpTerms" style="font-size:.78rem;color:var(--muted);line-height:1.5;cursor:pointer">
+        Acepto los <a href="#" style="color:var(--blue4);text-decoration:none">Términos de Servicio</a> y la <a href="#" style="color:var(--blue4);text-decoration:none">Política de Privacidad</a>
+      </label>
+    </div>
+
+    <div id="signUpStatus" style="display:none;font-size:.78rem;color:#f87171;margin-bottom:.75rem;text-align:left;padding:.5rem .75rem;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:10px"></div>
+
+    <button class="modal-btn" id="signUpBtn" type="button" onclick="handleSignUp()">
+      Crear mi cuenta — Comenzar →
+    </button>
+    <p class="modal-note">// Sin compromiso · Cancela cuando quieras</p>
+
+    <div class="modal-signin">
+      ¿Ya tienes una cuenta? <a href="/login.html">Inicia sesión aquí</a>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+function showSignUp() {
+  document.getElementById('signUpModal').style.display = 'flex';
+  setTimeout(() => document.getElementById('signUpModal').classList.add('open'), 10);
+  setTimeout(() => document.getElementById('signUpName').focus(), 300);
+}
+
+function closeSignUp() {
+  const modal = document.getElementById('signUpModal');
+  modal.classList.remove('open');
+  setTimeout(() => modal.style.display = 'none', 300);
+}
+
+async function handleSignUp() {
+  const name   = document.getElementById('signUpName').value.trim();
+  const email  = document.getElementById('signUpEmail').value.trim();
+  const phone  = document.getElementById('signUpPhone').value.trim();
+  const btn    = document.getElementById('signUpBtn');
+  const status = document.getElementById('signUpStatus');
+  const terms  = document.getElementById('signUpTerms');
+
+  if (!name) {
+    status.textContent = 'Por favor ingresa tu nombre completo.';
+    status.style.display = 'block'; return;
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    status.textContent = 'Por favor ingresa un correo electrónico válido.';
+    status.style.display = 'block'; return;
+  }
+  if (!terms.checked) {
+    status.textContent = 'Por favor acepta los Términos de Servicio para continuar.';
+    status.style.display = 'block'; return;
+  }
+
+  status.style.display = 'none';
+  btn.textContent = '⏳ Configurando tu cuenta...';
+  btn.disabled = true;
+
+  try {
+    await fetch('/.netlify/functions/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ full_name: name, email, phone })
+    });
+  } catch(err) {
+    console.log('Signup save error:', err.message);
+  }
+
+  sessionStorage.setItem('ai4_user', JSON.stringify({ name, email, phone }));
+  sessionStorage.setItem('ai4_email', email);
+  btn.textContent = '✓ Llevándote al constructor...';
+
+  setTimeout(() => { window.location.href = '/build.html'; }, 800);
+}
+
+window.addEventListener('load', () => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>

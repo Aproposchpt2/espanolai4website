@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI4 Template Demo Review Board</title>
+  <style>
+    :root{
+      --black:#030407;
+      --navy:#071321;
+      --panel:#0a1523;
+      --blue:#54ccff;
+      --white:#f6f8fb;
+      --silver:#aab7c6;
+      --muted:#6d7c8d;
+      --line:rgba(255,255,255,.14);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100svh;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 50% -12%, rgba(84,204,255,.25), transparent 33%),
+        radial-gradient(circle at 12% 82%, rgba(255,255,255,.07), transparent 25%),
+        linear-gradient(135deg,#030407,#071321 48%,#020305);
+      font-family:"Inter","SF Pro Display","Aptos",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    a{color:inherit;text-decoration:none}
+    .shell{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+    header{padding:74px 0 42px}
+    .label{
+      display:inline-flex;gap:10px;align-items:center;
+      color:#a6ecff;
+      border:1px solid rgba(84,204,255,.22);
+      background:rgba(84,204,255,.07);
+      border-radius:999px;
+      padding:10px 13px;
+      text-transform:uppercase;
+      letter-spacing:.17em;
+      font-size:.72rem;
+      font-weight:900;
+    }
+    .label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 16px var(--blue)}
+    h1{
+      max-width:980px;
+      font-size:clamp(3.1rem,7vw,7.4rem);
+      line-height:.86;
+      letter-spacing:-.085em;
+      margin:22px 0 18px;
+    }
+    .lead{
+      max-width:760px;
+      color:var(--silver);
+      line-height:1.75;
+      font-size:1.1rem;
+      margin:0;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      padding:24px 0 70px;
+    }
+    .card{
+      min-height:620px;
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.026));
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 34px 100px rgba(0,0,0,.32);
+    }
+    .art{
+      height:290px;
+      position:relative;
+      border-bottom:1px solid rgba(255,255,255,.1);
+      background:
+        radial-gradient(circle at 50% 15%, rgba(84,204,255,.23), transparent 36%),
+        linear-gradient(135deg,#060910,#0b1b2d);
+      overflow:hidden;
+    }
+    .card:nth-child(1) .art{
+      background:
+        radial-gradient(circle at 16% 14%, rgba(84,204,255,.18), transparent 32%),
+        radial-gradient(circle at 80% 20%, rgba(201,173,112,.15), transparent 30%),
+        linear-gradient(135deg,#040405,#121620);
+    }
+    .card:nth-child(1) .art:before{
+      content:"";position:absolute;inset:42px;border:1px solid rgba(255,255,255,.22);border-radius:46% 46% 10% 10% / 20% 20% 10% 10%;
+    }
+    .card:nth-child(1) .art:after{content:"AI4";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:Georgia,serif;font-size:4.8rem;letter-spacing:-.14em;color:rgba(255,255,255,.72)}
+    .card:nth-child(2) .art:before{
+      content:"";position:absolute;left:28px;right:28px;top:48px;height:128px;border-radius:22px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(135deg,#102c46,#03070d);box-shadow:0 26px 80px rgba(0,0,0,.36);
+    }
+    .card:nth-child(2) .art:after{content:"LAUNCH";position:absolute;left:28px;right:28px;bottom:46px;text-align:center;font-size:2.3rem;font-weight:950;letter-spacing:-.06em;color:rgba(255,255,255,.8)}
+    .card:nth-child(3) .art:before{
+      content:"";position:absolute;width:190px;height:190px;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(84,204,255,.38);background:repeating-radial-gradient(circle, rgba(255,255,255,.1) 0 1px, transparent 1px 28px), conic-gradient(rgba(84,204,255,.38), transparent 24%, transparent);
+      box-shadow:0 0 70px rgba(84,204,255,.22);
+    }
+    .content{padding:26px;display:flex;flex-direction:column;gap:16px;flex:1}
+    .number{color:var(--blue);font-size:.73rem;text-transform:uppercase;letter-spacing:.19em;font-weight:900}
+    h2{font-size:1.72rem;line-height:1.02;letter-spacing:-.045em;margin:0}
+    p{color:var(--silver);line-height:1.66;margin:0}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+    .tag{padding:9px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:var(--silver);font-size:.78rem;background:rgba(255,255,255,.04)}
+    .actions{display:grid;gap:10px;margin-top:8px}
+    .btn{display:flex;justify-content:center;align-items:center;text-align:center;padding:14px 16px;border-radius:14px;font-weight:900;border:1px solid rgba(255,255,255,.15)}
+    .primary{background:linear-gradient(135deg,#e8f8ff,#54ccff);color:#03111d}
+    .secondary{background:rgba(255,255,255,.055);color:var(--white)}
+    .note{
+      border-top:1px solid rgba(255,255,255,.1);
+      padding:22px 0 38px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.94rem;
+    }
+    @media(max-width:980px){.grid{grid-template-columns:1fr}.card{min-height:auto}.art{height:250px}}
+    @media(max-width:620px){.shell{width:min(100% - 24px,var(--max))}header{padding-top:50px}h1{font-size:clamp(3rem,17vw,5rem)}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <div class="label">AI4 template review board</div>
+      <h1>Judge these as website design templates.</h1>
+      <p class="lead">
+        AI4 Website Design is used as the sample subject so the templates can be judged with real copy, real services, and a real offer. These are demo templates for selection, not uploaded live-site replacements.
+      </p>
+    </div>
+  </header>
+
+  <main class="shell grid">
+    <article class="card">
+      <div class="art"></div>
+      <div class="content">
+        <div class="number">Option 01</div>
+        <h2>The Private Signal</h2>
+        <p>Luxury editorial and private-club style. Best when the customer should feel exclusivity, elegance, and status immediately.</p>
+        <div class="tags"><span class="tag">Luxury editorial</span><span class="tag">Private club</span><span class="tag">High status</span></div>
+        <div class="actions">
+          <a class="btn primary" href="template-option-01-private-signal-ai4-demo.html">Open Full Template</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art"></div>
+      <div class="content">
+        <div class="number">Option 02</div>
+        <h2>Launch Gallery</h2>
+        <p>Cinematic showroom and product-drop style. Best when the first viewport should feel like a reveal, event, or launch moment.</p>
+        <div class="tags"><span class="tag">Cinematic</span><span class="tag">Showroom</span><span class="tag">Launch energy</span></div>
+        <div class="actions">
+          <a class="btn primary" href="template-option-02-launch-gallery-ai4-demo.html">Open Full Template</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="art"></div>
+      <div class="content">
+        <div class="number">Option 03</div>
+        <h2>Command Deck</h2>
+        <p>Futuristic control-room style. Best when the brand should feel technical, executive, precise, and premium.</p>
+        <div class="tags"><span class="tag">Futuristic</span><span class="tag">Command center</span><span class="tag">Authority</span></div>
+        <div class="actions">
+          <a class="btn primary" href="template-option-03-command-deck-ai4-demo.html">Open Full Template</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <div class="shell note">
+    Review each option on desktop and mobile. The AI4 subject is only used to make the templates easy to judge with complete content, service positioning, CTA, trust signal, and offer preview.
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+AI4 PREMIUM WEBSITE DESIGN — CREATIVE DIRECTOR CHECKLIST
+
+Before selling or deploying a template, verify:
+
+[ ] The first viewport feels like a reveal, not a generic template.
+[ ] The layout has a memorable visual signature.
+[ ] The template is universal and not locked to a single industry.
+[ ] The page looks premium in a screenshot before reading the copy.
+[ ] The CTA is clear and visually elevated.
+[ ] A trust/status signal is visible.
+[ ] The service preview is integrated into the design, not generic cards only.
+[ ] The mobile version feels intentionally designed.
+[ ] The design avoids ordinary small-business website patterns.
+[ ] The design feels worthy of AI4 Website Design premium positioning.
+
+Quality rule:
+If the page does not make a buyer think "I want that one," reject and rebuild.

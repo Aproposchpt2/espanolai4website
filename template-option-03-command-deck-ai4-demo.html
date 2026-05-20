@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template Option 03 — Command Deck | AI4 Website Design Demo</title>
+  <style>
+    :root{
+      --void:#02050a;
+      --black:#03060b;
+      --navy:#061526;
+      --panel:#08192b;
+      --panel2:#0b2136;
+      --blue:#4bc8ff;
+      --blue2:#a6ecff;
+      --white:#f3f8ff;
+      --silver:#a9b8c9;
+      --muted:#637589;
+      --line:rgba(255,255,255,.14);
+      --glass:rgba(255,255,255,.055);
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(75,200,255,.24), transparent 32%),
+        radial-gradient(circle at 8% 78%, rgba(166,236,255,.09), transparent 26%),
+        linear-gradient(135deg,#02050a 0%,#06111f 46%,#02050a 100%);
+      font-family:"Inter","SF Pro Display","Aptos",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.026) 1px, transparent 1px);
+      background-size:44px 44px;
+      mask-image:radial-gradient(circle at 50% 12%, black, transparent 72%);
+    }
+    a{color:inherit;text-decoration:none}
+    .shell{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
+    .nav{
+      position:sticky; top:0; z-index:20;
+      background:rgba(2,5,10,.72); backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    .nav-inner{height:80px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:13px;color:var(--silver);font-size:.77rem;text-transform:uppercase;letter-spacing:.16em;font-weight:900}
+    .brand-mark{
+      width:42px;height:42px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+      display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),#fff);color:#03111d;
+      letter-spacing:-.07em;box-shadow:0 0 40px rgba(75,200,255,.42);
+    }
+    .nav-links{display:flex;gap:22px;align-items:center;color:var(--silver);font-size:.88rem}
+    .nav-cta{padding:11px 15px;border:1px solid rgba(75,200,255,.35);border-radius:999px;color:var(--blue2);background:rgba(75,200,255,.08)}
+    .hero{
+      min-height:calc(100svh - 80px);
+      padding:54px 0 72px;
+      display:grid;
+      align-items:center;
+    }
+    .command{
+      display:grid;
+      grid-template-columns:1fr 1.05fr;
+      gap:36px;
+      align-items:center;
+    }
+    .console-label{
+      display:inline-grid; grid-auto-flow:column; gap:9px; align-items:center;
+      border:1px solid rgba(75,200,255,.22);
+      background:rgba(75,200,255,.07);
+      color:var(--blue2);
+      padding:9px 12px;
+      border-radius:999px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:.72rem;
+      font-weight:900;
+    }
+    .console-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 18px var(--blue)}
+    h1{
+      margin:22px 0;
+      font-size:clamp(3.6rem,8.8vw,9.6rem);
+      line-height:.82;
+      letter-spacing:-.085em;
+      font-weight:950;
+    }
+    h1 span{
+      display:block;
+      color:transparent;
+      -webkit-text-stroke:1px rgba(243,248,255,.58);
+    }
+    .lead{
+      max-width:670px;
+      color:var(--silver);
+      line-height:1.8;
+      font-size:clamp(1.05rem,1.35vw,1.2rem);
+      margin:0 0 28px;
+    }
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:15px 20px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.16);
+      font-weight:900;transition:.23s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#02101a;box-shadow:0 24px 78px rgba(75,200,255,.25)}
+    .btn-secondary{background:rgba(255,255,255,.055);color:var(--white)}
+    .dashboard{
+      min-height:610px;
+      border:1px solid rgba(75,200,255,.22);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 50% 0, rgba(75,200,255,.18), transparent 38%),
+        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.026));
+      box-shadow:0 44px 130px rgba(0,0,0,.5), inset 0 0 80px rgba(75,200,255,.055);
+      overflow:hidden;
+      position:relative;
+      padding:22px;
+    }
+    .dash-top{
+      display:flex;justify-content:space-between;gap:16px;align-items:center;
+      padding:16px 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.24);
+      border-radius:22px;
+      color:var(--silver);
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:850;
+    }
+    .lights{display:flex;gap:7px}
+    .lights span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.24)}
+    .lights span:first-child{background:var(--blue);box-shadow:0 0 16px var(--blue)}
+    .radar{
+      position:absolute; top:122px; left:50%; transform:translateX(-50%);
+      width:min(76%, 430px); aspect-ratio:1;
+      border-radius:50%;
+      border:1px solid rgba(75,200,255,.28);
+      background:
+        radial-gradient(circle, rgba(75,200,255,.12) 0 2px, transparent 3px),
+        repeating-radial-gradient(circle, rgba(255,255,255,.10) 0 1px, transparent 1px 54px),
+        conic-gradient(from 0deg, rgba(75,200,255,.28), transparent 24%, transparent 100%);
+      box-shadow:0 0 70px rgba(75,200,255,.18), inset 0 0 60px rgba(75,200,255,.08);
+      animation:sweep 9s linear infinite;
+    }
+    @keyframes sweep{to{transform:translateX(-50%) rotate(360deg)}}
+    .dash-grid{
+      position:absolute; left:22px; right:22px; bottom:22px;
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+    }
+    .metric{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:20px;
+      background:rgba(0,0,0,.27);
+      padding:18px 14px;
+      min-height:118px;
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .metric small{color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-weight:900;font-size:.66rem}
+    .metric b{font-size:1.35rem;color:var(--white)}
+    .metric .bar{height:6px;border-radius:999px;background:rgba(255,255,255,.11);overflow:hidden}
+    .metric .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--blue2));border-radius:999px}
+    section{padding:94px 0}
+    .section-head{
+      display:grid; grid-template-columns:.95fr 1.05fr; gap:42px; align-items:end; margin-bottom:42px;
+    }
+    .kicker{color:var(--blue2);text-transform:uppercase;letter-spacing:.22em;font-weight:900;font-size:.74rem;margin-bottom:14px}
+    h2{
+      margin:0;
+      font-size:clamp(2.7rem,6vw,6.8rem);
+      letter-spacing:-.08em;
+      line-height:.88;
+    }
+    .section-head p{margin:0;color:var(--silver);line-height:1.82;font-size:1.05rem;max-width:650px}
+    .systems{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    }
+    .system-card{
+      position:relative;
+      min-height:360px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:26px;
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+      overflow:hidden;
+    }
+    .system-card:after{
+      content:"";
+      position:absolute; width:190px;height:190px;border-radius:50%;
+      right:-72px;top:-72px;
+      border:1px solid rgba(75,200,255,.18);
+      box-shadow:0 0 60px rgba(75,200,255,.16);
+    }
+    .system-card small{color:var(--blue2);letter-spacing:.18em;text-transform:uppercase;font-weight:900}
+    .system-card h3{margin:155px 0 12px;font-size:1.42rem}
+    .system-card p{margin:0;color:var(--silver);line-height:1.65}
+    .flow{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+      border:1px solid rgba(75,200,255,.18);
+      border-radius:34px;
+      padding:16px;
+      background:rgba(255,255,255,.04);
+    }
+    .flow-step{
+      min-height:210px;
+      padding:22px;
+      border-radius:24px;
+      background:rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    .flow-step:before{content:attr(data-step);position:absolute;right:16px;top:12px;font-size:3.6rem;font-weight:950;letter-spacing:-.08em;color:rgba(255,255,255,.08)}
+    .flow-step h3{margin:78px 0 10px;font-size:1.1rem}
+    .flow-step p{margin:0;color:var(--silver);line-height:1.56;font-size:.92rem}
+    .offer-panel{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:16px;
+    }
+    .offer-copy,.offer-price{
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+      padding:38px;
+      min-height:400px;
+    }
+    .offer-copy{display:flex;flex-direction:column;justify-content:center}
+    .offer-copy h2{font-size:clamp(2.6rem,5vw,5.8rem)}
+    .offer-copy p{color:var(--silver);line-height:1.78;max-width:720px}
+    .offer-price{
+      background:linear-gradient(135deg, rgba(75,200,255,.18), rgba(255,255,255,.04));
+      display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .price{font-size:clamp(4.2rem,7vw,8rem);line-height:.78;letter-spacing:-.1em;font-weight:950}
+    .offer-list{display:grid;gap:10px;margin-top:24px}
+    .pill{padding:13px 14px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:var(--white);font-weight:800}
+    .final{
+      padding:108px 0 120px;
+    }
+    .final-card{
+      border:1px solid rgba(75,200,255,.22);
+      border-radius:40px;
+      padding:54px;
+      text-align:center;
+      background:
+        radial-gradient(circle at 50% 0, rgba(75,200,255,.20), transparent 30%),
+        rgba(255,255,255,.045);
+      box-shadow:0 35px 110px rgba(0,0,0,.36);
+    }
+    .final-card h2{max-width:980px;margin:0 auto 22px}
+    .final-card p{max-width:720px;margin:0 auto 30px;color:var(--silver);line-height:1.82}
+    footer{border-top:1px solid rgba(255,255,255,.1);padding:28px 0;color:var(--muted);font-size:.88rem}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media (max-width: 950px){
+      .nav-links a:not(.nav-cta){display:none}
+      .command,.section-head,.offer-panel{grid-template-columns:1fr}
+      .dashboard{min-height:560px}
+      .systems{grid-template-columns:1fr}
+      .flow{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 620px){
+      .shell{width:min(100% - 24px,var(--max))}
+      .nav-inner{height:auto;padding:16px 0;align-items:flex-start}
+      .brand{font-size:.66rem;letter-spacing:.1em}
+      .nav-cta{font-size:.8rem}
+      h1{font-size:clamp(3.5rem,18vw,6.6rem)}
+      .hero-actions .btn{width:100%}
+      .dashboard{min-height:620px;border-radius:25px;padding:14px}
+      .radar{top:140px;width:85%}
+      .dash-grid{grid-template-columns:1fr;left:14px;right:14px;bottom:14px}
+      .metric{min-height:88px}
+      section{padding:72px 0}
+      .flow{grid-template-columns:1fr;padding:12px;border-radius:25px}
+      .offer-copy,.offer-price,.final-card{padding:26px;border-radius:25px;min-height:auto}
+      .footer-row{display:grid}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="#"><span class="brand-mark">A4</span><span>Template Option 03 · Command Deck</span></a>
+      <div class="nav-links">
+        <a href="#systems">Systems</a>
+        <a href="#process">Process</a>
+        <a href="#offer">Offer</a>
+        <a class="nav-cta" href="offer.html">View Purchase Plans</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="shell command">
+      <div>
+        <div class="console-label">AI4 Website Design demo subject</div>
+        <h1>Your website <span>launch command.</span></h1>
+        <p class="lead">
+          A futuristic template option for AI4 Website Design, built to make the service feel controlled, premium, and technically sharp from the first screen.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="offer.html">View Our Purchase Plans</a>
+          <a class="btn btn-secondary" href="#systems">Review the System</a>
+        </div>
+      </div>
+
+      <aside class="dashboard" aria-label="AI4 command deck visual">
+        <div class="dash-top">
+          <span>Premium Website Design and Launch System</span>
+          <div class="lights"><span></span><span></span><span></span></div>
+        </div>
+        <div class="radar"></div>
+        <div class="dash-grid">
+          <div class="metric"><small>Input</small><b>10 Questions</b><div class="bar"><span style="width:72%"></span></div></div>
+          <div class="metric"><small>Preview</small><b>Live Designs</b><div class="bar"><span style="width:88%"></span></div></div>
+          <div class="metric"><small>Offer</small><b>$49.99</b><div class="bar"><span style="width:58%"></span></div></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="systems">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">What We Deliver</div>
+            <h2>Custom Websites built and launched same day</h2>
+          </div>
+          <p>
+            This template presents AI4 like an elite launch system. It works best for brands that want precision, technology, and executive control to define the visitor’s first impression.
+          </p>
+        </div>
+
+        <div class="systems">
+          <article class="system-card"><small>Service 01</small><h3>Same-Day Website Design</h3><p>A polished website direction designed around the customer’s vision.</p></article>
+          <article class="system-card"><small>Service 02</small><h3>Live Design Preview Selection</h3><p>Customers evaluate live design options before making their selection.</p></article>
+          <article class="system-card"><small>Service 03</small><h3>Launch-Ready Delivery</h3><p>A practical path that supports getting a professional online presence moving faster.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <div class="kicker">How It Works</div>
+            <h2>A clean operating sequence.</h2>
+          </div>
+          <p>
+            The template uses a command-center sequence so each step feels deliberate and guided instead of ordinary.
+          </p>
+        </div>
+
+        <div class="flow">
+          <article class="flow-step" data-step="01"><h3>10 simple questions</h3><p>AI4 collects the direction needed to shape the site.</p></article>
+          <article class="flow-step" data-step="02"><h3>Preview live site designs</h3><p>The customer sees design options in a visual format.</p></article>
+          <article class="flow-step" data-step="03"><h3>Make your selection</h3><p>The customer chooses the design that fits their brand.</p></article>
+          <article class="flow-step" data-step="04"><h3>Choose your delivery method</h3><p>The selected direction moves into the delivery path.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="offer">
+      <div class="shell offer-panel">
+        <article class="offer-copy">
+          <div class="kicker">Founder’s Offer</div>
+          <h2>A premium path for getting online.</h2>
+          <p>
+            The offer area is designed to feel like a confident conversion module, not a generic pricing card. It keeps the action clear while preserving the premium command-center feel.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="offer.html">View Our Purchase Plans</a>
+            <a class="btn btn-secondary" href="mailto:jmitchell@ai4websitedesign.com">Contact AI4</a>
+          </div>
+        </article>
+        <aside class="offer-price">
+          <div>
+            <div class="console-label">Exclusive Founder’s Offer</div>
+            <div class="price">$49.99</div>
+          </div>
+          <div class="offer-list">
+            <span class="pill">Custom Designed Site</span>
+            <span class="pill">Delivered Instantly</span>
+            <span class="pill">Ready to Launch</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="shell final-card">
+        <div class="kicker">Get Started</div>
+        <h2>For buyers who want control, speed, and polish.</h2>
+        <p>
+          Use this option when the template library needs a futuristic, executive, high-tech design choice that looks distinct in a screenshot.
+        </p>
+        <a class="btn btn-primary" href="offer.html">View Our Purchase Plans</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <span>AI4 Website Design · Template demo subject</span>
+      <a href="mailto:jmitchell@ai4websitedesign.com">jmitchell@ai4websitedesign.com</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca de Plantillas AI4 Website Design</title>
+  <style>
+    :root{--bg:#06070b;--card:#11131b;--line:rgba(255,255,255,.12);--text:#f8f4ea;--muted:rgba(248,244,234,.68);--gold:#c9a45f;--blue:#4F6EF7;--violet:#7C3AED}
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(201,164,95,.18),transparent 32%),radial-gradient(circle at 90% 8%,rgba(79,110,247,.16),transparent 28%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:36px}
+    a{color:inherit}
+    .top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:36px}
+    h1{font-size:clamp(38px,6vw,82px);line-height:.92;letter-spacing:-.07em;margin:0 0 16px;max-width:980px}
+    h2{font-size:clamp(26px,4vw,48px);line-height:1;letter-spacing:-.05em;margin:0 0 10px}
+    p{color:var(--muted);font-size:18px;line-height:1.6;max-width:840px}
+    .home{display:inline-flex;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:12px 16px;color:var(--muted);white-space:nowrap}
+    .section{margin-top:42px}
+    .label{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .card{min-height:188px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));padding:22px;display:flex;flex-direction:column;justify-content:space-between;color:inherit;text-decoration:none;transition:transform .18s,border-color .18s,background .18s}
+    .card:hover{transform:translateY(-2px);border-color:rgba(201,164,95,.45);background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03))}
+    .card span{color:var(--gold);font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+    .card strong{font-size:23px;line-height:1.08;letter-spacing:-.04em}
+    .card em{color:var(--muted);font-style:normal;font-size:12px;text-transform:uppercase;letter-spacing:.15em}
+    .demo .card{border-color:rgba(79,110,247,.25)}
+    .demo .card span{color:#9fb0ff}
+    .premium .card{border-color:rgba(124,58,237,.23)}
+    .premium .card span{color:#c8b7ff}
+    @media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}.top{display:block}.home{margin-top:8px}}
+    @media(max-width:620px){body{padding:20px}.grid{grid-template-columns:1fr}.card{min-height:160px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <div class="label">AI4 Website Design</div>
+      <h1>Biblioteca de Plantillas</h1>
+      <p>Vista previa de los sistemas actuales, las nuevas plantillas premium y las opciones demo para clientes. Estas páginas son previews estáticos; el constructor y el flujo de compra existente no cambian.</p>
+    </div>
+    <a class="home" href="index.html">Volver al sitio principal</a>
+  </header>
+
+  <section class="section">
+    <div class="label">Sistemas universales actuales</div>
+    <h2>Set actual de 10 plantillas</h2>
+    <div class="grid">
+      <a class="card" href="01-luxury-reveal-system.html"><span>01</span><strong>Luxury Reveal System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="02-executive-presence-system.html"><span>02</span><strong>Executive Presence System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="03-cinematic-conversion-system.html"><span>03</span><strong>Cinematic Conversion System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="04-private-invitation-system.html"><span>04</span><strong>Private Invitation System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="05-digital-showroom-system.html"><span>05</span><strong>Digital Showroom System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="06-command-authority-system.html"><span>06</span><strong>Command Authority System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="07-premium-launch-system.html"><span>07</span><strong>Premium Launch System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="08-portfolio-prestige-system.html"><span>08</span><strong>Portfolio Prestige System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="09-modern-trust-system.html"><span>09</span><strong>Modern Trust System</strong><em>Abrir plantilla</em></a>
+      <a class="card" href="10-elite-brand-experience-system.html"><span>10</span><strong>Elite Brand Experience System</strong><em>Abrir plantilla</em></a>
+    </div>
+  </section>
+
+  <section class="section premium">
+    <div class="label">Nuevos archivos premium</div>
+    <h2>Previews premium independientes</h2>
+    <div class="grid">
+      <a class="card" href="template-luxury-reveal.html"><span>Premium</span><strong>Luxury Reveal</strong><em>Abrir preview</em></a>
+      <a class="card" href="template-executive-presence.html"><span>Premium</span><strong>Executive Presence</strong><em>Abrir preview</em></a>
+      <a class="card" href="template-cinematic-conversion.html"><span>Premium</span><strong>Cinematic Conversion</strong><em>Abrir preview</em></a>
+      <a class="card" href="template-private-invitation.html"><span>Premium</span><strong>Private Invitation</strong><em>Abrir preview</em></a>
+      <a class="card" href="template-digital-showroom.html"><span>Premium</span><strong>Digital Showroom</strong><em>Abrir preview</em></a>
+      <a class="card" href="template-command-authority.html"><span>Premium</span><strong>Command Authority</strong><em>Abrir preview</em></a>
+      <a class="card" href="template-elite-brand-experience.html"><span>Premium</span><strong>Elite Brand Experience</strong><em>Abrir preview</em></a>
+    </div>
+  </section>
+
+  <section class="section demo">
+    <div class="label">Demos para clientes</div>
+    <h2>Opciones demo seleccionables</h2>
+    <div class="grid">
+      <a class="card" href="ai4-template-demo-review-board.html"><span>Review</span><strong>Template Demo Review Board</strong><em>Abrir tablero</em></a>
+      <a class="card" href="template-option-01-private-signal-ai4-demo.html"><span>Opción 01</span><strong>Private Signal</strong><em>Abrir demo</em></a>
+      <a class="card" href="template-option-02-launch-gallery-ai4-demo.html"><span>Opción 02</span><strong>Launch Gallery</strong><em>Abrir demo</em></a>
+      <a class="card" href="template-option-03-command-deck-ai4-demo.html"><span>Opción 03</span><strong>Command Deck</strong><em>Abrir demo</em></a>
+    </div>
+  </section>
+</body>
+</html>
