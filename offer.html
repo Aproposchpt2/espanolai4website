@@ -3,70 +3,1242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elige Tu Paquete — AI4 Diseño Web</title>
+<title>Planes de Compra — AI4 Website Design</title>
+<meta name="description" content="Elige el plan de AI4 Website Design que mejor se adapta a tu próximo sitio web: Oferta Exclusiva de Fundador, Premier o Paquete Business Bundle.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080c10;--bg2:#0f1419;--bg3:#161d25;--accent:#4F6EF7;--accent2:#7C3AED;--green:#3fb950;--gold:#f0a500;--text1:#f0f6fc;--text2:#c9d1d9;--text3:#8b949e;--border:rgba(255,255,255,.07);--border-m:rgba(255,255,255,.14);--mono:'JetBrains Mono',monospace;--sans:'Lato',sans-serif;--display:'Syne',sans-serif}*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg);color:var(--text2);min-height:100vh;display:flex;flex-direction:column}nav{background:rgba(8,12,16,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}.nav-brand{font-family:var(--display);font-size:.95rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-tag{font-family:var(--mono);font-size:.6rem;color:var(--green);letter-spacing:.1em;display:flex;align-items:center;gap:6px}.nav-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}.page-hero{padding:52px 24px 30px;text-align:center;max-width:860px;margin:0 auto}.success-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.2);border-radius:999px;padding:7px 18px;margin-bottom:20px;font-family:var(--mono);font-size:.65rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase}.page-hero h1{font-family:var(--display);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:800;color:var(--text1);line-height:1.1;margin-bottom:12px;letter-spacing:-.02em}.page-hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.page-hero p{font-size:1rem;color:var(--text3);line-height:1.7;max-width:630px;margin:0 auto}.urgency-bar{background:linear-gradient(135deg,rgba(240,165,0,.12),rgba(240,165,0,.06));border:1px solid rgba(240,165,0,.25);border-radius:12px;padding:14px 24px;max-width:680px;margin:20px auto 0;display:flex;align-items:center;justify-content:center;gap:10px}.urgency-text{font-family:var(--mono);font-size:.72rem;color:var(--gold);letter-spacing:.04em;font-weight:700}.urgency-text span{color:var(--text1)}.preview-strip{margin:26px auto 34px;max-width:820px;padding:0 24px}.preview-strip-inner{border-radius:16px;border:1px solid var(--border-m);overflow:hidden;background:var(--bg2)}.strip-bar{padding:8px 14px;background:var(--bg3);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}.s-dot{width:8px;height:8px;border-radius:50%}.strip-url{font-family:var(--mono);font-size:.65rem;color:var(--text3);margin-left:8px}.strip-preview{height:200px;overflow:hidden;position:relative}.strip-preview iframe{width:100%;height:600%;border:none;transform:scale(.167);transform-origin:top left;pointer-events:none}.strip-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--bg2) 100%)}.pricing-section{max-width:1060px;margin:0 auto;padding:0 24px 16px}.pricing-label{font-family:var(--mono);font-size:.62rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;text-align:center;margin-bottom:20px}.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}.price-card{border-radius:20px;border:2px solid var(--border);background:var(--bg2);padding:28px 24px;display:flex;flex-direction:column;position:relative;transition:all .3s}.price-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(79,110,247,.1)}.price-card.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 20px 40px rgba(79,110,247,.15)}.price-card.featured::before{content:'MÁS POPULAR';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-family:var(--mono);font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:5px 16px;border-radius:999px;white-space:nowrap}.card-icon{font-size:1.8rem;margin-bottom:10px}.card-label{font-family:var(--mono);font-size:.58rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}.card-name{font-family:var(--display);font-size:1.4rem;font-weight:800;color:var(--text1);margin-bottom:4px}.card-tagline{font-size:.78rem;color:var(--text3);line-height:1.5;margin-bottom:14px}.site-count{display:inline-flex;align-items:center;gap:6px;background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2);border-radius:8px;padding:5px 12px;margin-bottom:12px;font-family:var(--mono);font-size:.65rem;color:var(--gold);font-weight:700;width:max-content}.site-count-num{font-size:1rem;font-weight:900}.card-price{margin-bottom:6px;display:flex;align-items:baseline;gap:2px}.price-amt{font-family:var(--display);font-size:2.6rem;font-weight:800;color:var(--text1);line-height:1}.price-cents{font-family:var(--display);font-size:1.3rem;font-weight:800;color:var(--text1)}.price-type{font-size:.8rem;color:var(--text3);margin-left:6px}.per-site{font-size:.72rem;color:var(--green);margin-bottom:12px;font-family:var(--mono);font-weight:700;line-height:1.45}.bundle-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}.bundle-pill{font-family:var(--mono);font-size:.58rem;padding:3px 10px;border-radius:999px;border:1px solid rgba(240,165,0,.25);color:var(--gold);background:rgba(240,165,0,.06)}.card-divider{height:1px;background:var(--border);margin:4px 0 16px}.card-includes{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:8px;flex:1}.card-includes li{display:flex;align-items:flex-start;gap:8px;font-size:.8rem;color:var(--text2);line-height:1.45}.card-includes li::before{content:'✓';font-weight:700;font-size:.82rem;flex-shrink:0;margin-top:1px;color:var(--accent)}.card-includes li.gold::before{color:var(--gold)}.card-includes li.green::before{color:var(--green)}.btn-gold,.btn-primary{display:block;width:100%;padding:14px;border-radius:12px;border:none;cursor:pointer;font-family:var(--display);font-size:.92rem;font-weight:700;letter-spacing:.02em;text-align:center;text-decoration:none;transition:all .25s}.btn-gold{background:linear-gradient(135deg,var(--gold),#e09400);color:#000;box-shadow:0 8px 20px rgba(240,165,0,.2)}.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 20px rgba(79,110,247,.25)}.btn-gold:hover,.btn-primary:hover{transform:translateY(-2px)}.btn-gold:disabled,.btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}.btn-note{text-align:center;font-size:.68rem;color:var(--text3);margin-top:8px;font-family:var(--mono);line-height:1.45}.domain-disclosure{max-width:1060px;margin:0 auto 18px;padding:0 24px}.domain-box{border:1px solid rgba(240,165,0,.25);background:linear-gradient(135deg,rgba(240,165,0,.09),rgba(79,110,247,.05));border-radius:16px;padding:18px 20px}.domain-title{font-family:var(--mono);font-size:.65rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}.domain-copy{font-size:.84rem;line-height:1.7;color:var(--text2)}.accept-box{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:14px;border-radius:12px;background:rgba(8,12,16,.5);border:1px solid var(--border-m)}.accept-box input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent);flex-shrink:0}.accept-box label{font-size:.82rem;line-height:1.6;color:var(--text2);cursor:pointer}.accept-warning{display:none;margin-top:10px;font-family:var(--mono);font-size:.68rem;color:var(--gold)}.msp-banner{max-width:1060px;margin:0 auto 48px;padding:0 24px}.msp-card{background:linear-gradient(135deg,rgba(79,110,247,.1),rgba(124,58,237,.08));border:1px solid rgba(79,110,247,.25);border-radius:20px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}.msp-tag{font-family:var(--mono);font-size:.6rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}.msp-title{font-family:var(--display);font-size:1.2rem;font-weight:700;color:var(--text1);margin-bottom:6px}.msp-desc{font-size:.85rem;color:var(--text3);line-height:1.65;max-width:560px}.msp-right{flex-shrink:0;text-align:center}.msp-price{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--text1);margin-bottom:12px;line-height:1.4}.btn-msp{display:inline-block;padding:12px 28px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-family:var(--display);font-size:.85rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:all .25s;white-space:nowrap}.trust-bar{padding:20px 24px 40px;text-align:center}.trust-items{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 24px;max-width:760px;margin:0 auto}.trust-item{display:flex;align-items:center;gap:7px;font-size:.76rem;color:var(--text3)}.trust-item span{color:var(--green);font-weight:700}.page-footer{margin-top:auto;padding:12px 20px;background:var(--bg2);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}.footer-left{font-size:.65rem;color:var(--text3)}.footer-links{display:flex;gap:14px}.footer-links a{font-size:.65rem;color:var(--accent);text-decoration:none}@media(max-width:860px){.pricing-grid{grid-template-columns:1fr}.preview-strip-inner{display:none}.msp-card{flex-direction:column;text-align:center}.page-footer{flex-direction:column;gap:8px}.urgency-bar{align-items:flex-start;text-align:left}}@media(max-width:520px){nav{padding:0 1rem}.nav-tag{display:none}.page-hero{padding-top:38px}.price-card{padding:24px 20px}}
-</style>
-<style>
-.promo-redemption{margin:0 0 16px;padding:14px;border:1px solid rgba(240,165,0,.25);border-radius:12px;background:rgba(240,165,0,.07)}
-.promo-label{font-family:var(--mono);font-size:.58rem;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
-.promo-copy{font-size:.75rem;color:var(--text3);line-height:1.5;margin-bottom:10px}
-.promo-row{display:flex;gap:8px}
-.promo-input{min-width:0;flex:1;border:1px solid var(--border-m);border-radius:10px;background:rgba(8,12,16,.7);color:var(--text1);padding:12px;font-family:var(--mono);font-size:.75rem;text-transform:uppercase}
-.promo-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(240,165,0,.12)}
-.promo-btn{width:auto;min-width:128px;padding:12px;font-size:.78rem}
-.promo-status{display:none;margin-top:9px;font-family:var(--mono);font-size:.66rem;line-height:1.45;color:var(--text3)}
+:root{
+  --bg:#080c10;
+  --bg2:#0f1419;
+  --bg3:#161d25;
+  --panel:#101720;
+  --accent:#4F6EF7;
+  --accent2:#7C3AED;
+  --green:#3fb950;
+  --gold:#f0a500;
+  --text1:#f0f6fc;
+  --text2:#c9d1d9;
+  --text3:#8b949e;
+  --border:rgba(255,255,255,.07);
+  --border-m:rgba(255,255,255,.14);
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Lato',sans-serif;
+  --display:'Syne',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:
+    radial-gradient(circle at 18% 12%,rgba(79,110,247,.18),transparent 26%),
+    radial-gradient(circle at 84% 6%,rgba(124,58,237,.16),transparent 30%),
+    linear-gradient(180deg,var(--bg) 0%,#06090d 100%);
+  color:var(--text2);
+  min-height:100vh;
+}
+a{color:inherit}
+button,input,textarea{font:inherit}
+nav{
+  background:rgba(8,12,16,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.nav-brand{
+  font-family:var(--display);
+  font-size:.95rem;
+  font-weight:700;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-decoration:none;
+}
+.nav-links{display:flex;align-items:center;gap:1rem}
+.nav-links a{
+  color:var(--text3);
+  text-decoration:none;
+  font-size:.78rem;
+  font-weight:700;
+}
+.nav-links a:hover{color:var(--text1)}
+.nav-tag{
+  font-family:var(--mono);
+  font-size:.6rem;
+  color:var(--green);
+  letter-spacing:.1em;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  text-transform:uppercase;
+}
+.nav-tag::before{
+  content:'';
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.page-hero{
+  padding:58px 24px 32px;
+  text-align:center;
+  max-width:920px;
+  margin:0 auto;
+}
+.success-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(63,185,80,.08);
+  border:1px solid rgba(63,185,80,.2);
+  border-radius:999px;
+  padding:7px 18px;
+  margin-bottom:20px;
+  font-family:var(--mono);
+  font-size:.65rem;
+  color:var(--green);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.page-hero h1{
+  font-family:var(--display);
+  font-size:clamp(2.1rem,5vw,4.1rem);
+  font-weight:800;
+  color:var(--text1);
+  line-height:1.05;
+  margin-bottom:14px;
+  letter-spacing:-.035em;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-hero p{
+  font-size:1.02rem;
+  color:var(--text3);
+  line-height:1.7;
+  max-width:720px;
+  margin:0 auto;
+}
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+.btn-outline{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:12px 22px;
+  border-radius:999px;
+  border:1px solid var(--border-m);
+  color:var(--text1);
+  text-decoration:none;
+  font-weight:800;
+  background:rgba(255,255,255,.035);
+}
+.btn-outline:hover{border-color:rgba(79,110,247,.55)}
+
+.preview-strip{margin:20px auto 34px;max-width:820px;padding:0 24px}
+.preview-strip-inner{border-radius:16px;border:1px solid var(--border-m);overflow:hidden;background:var(--bg2)}
+.strip-bar{padding:8px 14px;background:var(--bg3);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.s-dot{width:8px;height:8px;border-radius:50%}
+.strip-url{font-family:var(--mono);font-size:.65rem;color:var(--text3);margin-left:8px}
+.strip-preview{height:180px;overflow:hidden;position:relative}
+.strip-preview iframe{width:100%;height:600%;border:none;transform:scale(.167);transform-origin:top left;pointer-events:none}
+.strip-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--bg2) 100%)}
+
+.section{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px 44px;
+}
+.section-label{
+  font-family:var(--mono);
+  font-size:.62rem;
+  color:var(--text3);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-align:center;
+  margin-bottom:20px;
+}
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:18px;
+}
+.price-card{
+  border-radius:22px;
+  border:2px solid var(--border);
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018)),var(--bg2);
+  padding:28px 24px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(79,110,247,.10)}
+.price-card.featured{
+  border-color:var(--accent);
+  box-shadow:0 0 0 1px var(--accent),0 20px 46px rgba(79,110,247,.18);
+}
+.price-card.featured::before{
+  content:'MÁS PREFERIDO';
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  font-family:var(--mono);
+  font-size:.58rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  padding:5px 16px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+.card-label{
+  font-family:var(--mono);
+  font-size:.58rem;
+  color:var(--text3);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.card-name{
+  font-family:var(--display);
+  font-size:1.45rem;
+  font-weight:800;
+  color:var(--text1);
+  margin-bottom:4px;
+}
+.card-tagline{font-size:.82rem;color:var(--text3);line-height:1.55;margin-bottom:14px}
+.card-price{
+  margin-bottom:8px;
+  display:flex;
+  align-items:baseline;
+  gap:2px;
+}
+.price-amt{
+  font-family:var(--display);
+  font-size:2.7rem;
+  font-weight:800;
+  color:var(--text1);
+  line-height:1;
+}
+.price-cents{
+  font-family:var(--display);
+  font-size:1.3rem;
+  font-weight:800;
+  color:var(--text1);
+}
+.price-type{font-size:.8rem;color:var(--text3);margin-left:6px}
+.card-divider{height:1px;background:var(--border);margin:10px 0 16px}
+.card-includes{
+  list-style:none;
+  margin-bottom:24px;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  flex:1;
+}
+.card-includes li{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  font-size:.84rem;
+  color:var(--text2);
+  line-height:1.45;
+}
+.card-includes li::before{
+  content:'✓';
+  font-weight:700;
+  font-size:.82rem;
+  flex-shrink:0;
+  margin-top:1px;
+  color:var(--accent);
+}
+.card-includes li.gold::before{color:var(--gold)}
+.card-includes li.green::before{color:var(--green)}
+.btn-gold,.btn-primary{
+  display:block;
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-family:var(--display);
+  font-size:.92rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-align:center;
+  text-decoration:none;
+  transition:all .25s;
+}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#e09400);color:#000;box-shadow:0 8px 20px rgba(240,165,0,.2)}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 8px 20px rgba(79,110,247,.25)}
+.btn-gold:hover,.btn-primary:hover{transform:translateY(-2px)}
+.btn-note{text-align:center;font-size:.68rem;color:var(--text3);margin-top:8px;font-family:var(--mono);line-height:1.45}
+
+.promo-redemption{
+  margin:16px 0 4px;
+  padding:15px;
+  border:1px solid rgba(240,165,0,.25);
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(240,165,0,.08),rgba(79,110,247,.045));
+}
+.promo-label{
+  font-family:var(--mono);
+  font-size:.62rem;
+  color:var(--gold);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:9px;
+}
+.promo-copy{
+  font-size:.76rem;
+  color:var(--text3);
+  line-height:1.55;
+  margin-bottom:12px;
+}
+.promo-open-btn{
+  width:100%;
+  border:0;
+  padding:13px 16px;
+}
+.promo-status{
+  display:none;
+  margin-top:10px;
+  font-size:.76rem;
+  line-height:1.55;
+  color:var(--green);
+}
 .promo-status.error{color:var(--gold)}
 .promo-status.success{color:var(--green)}
-@media(max-width:520px){.promo-row{flex-direction:column}.promo-btn{width:100%}}
+.promo-modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:rgba(3,6,10,.78);
+  backdrop-filter:blur(14px);
+}
+.promo-modal.open{display:flex}
+.promo-modal-card{
+  width:min(520px,100%);
+  border:1px solid rgba(240,165,0,.28);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(18,26,35,.98),rgba(8,12,16,.98));
+  box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 55px rgba(240,165,0,.12);
+  padding:24px;
+  position:relative;
+}
+.promo-modal-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:1px solid var(--border-m);
+  background:rgba(255,255,255,.04);
+  color:var(--text2);
+  cursor:pointer;
+  font-size:1.2rem;
+  line-height:1;
+}
+.promo-modal-close:hover{color:var(--text1);border-color:rgba(240,165,0,.35)}
+.promo-modal-title{
+  font-family:var(--display);
+  font-size:1.55rem;
+  line-height:1.05;
+  margin:4px 42px 10px 0;
+  color:var(--text1);
+}
+.promo-modal-copy{
+  color:var(--text3);
+  font-size:.92rem;
+  line-height:1.6;
+  margin-bottom:18px;
+}
+.promo-modal-field label{
+  display:block;
+  font-family:var(--mono);
+  font-size:.68rem;
+  color:var(--gold);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.promo-input{
+  width:100%;
+  border-radius:14px;
+  border:1px solid var(--border-m);
+  background:rgba(8,12,16,.7);
+  color:var(--text1);
+  padding:15px 16px;
+  outline:none;
+  font-family:var(--mono);
+  font-size:1rem;
+  text-transform:uppercase;
+}
+.promo-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(240,165,0,.12)}
+.promo-btn{
+  width:100%;
+  border:0;
+  padding:14px 16px;
+  margin-top:14px;
+  white-space:nowrap;
+}
+.promo-modal-note{
+  margin-top:12px;
+  color:var(--text3);
+  font-size:.72rem;
+  line-height:1.5;
+  font-family:var(--mono);
+}
+
+.domain-disclosure{max-width:1120px;margin:0 auto 26px;padding:0 24px}
+.domain-box{
+  border:1px solid rgba(240,165,0,.25);
+  background:linear-gradient(135deg,rgba(240,165,0,.09),rgba(79,110,247,.05));
+  border-radius:16px;
+  padding:18px 20px;
+}
+.domain-title{
+  font-family:var(--mono);
+  font-size:.65rem;
+  color:var(--gold);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.domain-copy{font-size:.84rem;line-height:1.7;color:var(--text2)}
+.accept-box{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  margin-top:14px;
+  padding:14px;
+  border-radius:12px;
+  background:rgba(8,12,16,.5);
+  border:1px solid var(--border-m);
+}
+.accept-box input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent);flex-shrink:0}
+.accept-box label{font-size:.82rem;line-height:1.6;color:var(--text2);cursor:pointer}
+.accept-warning{display:none;margin-top:10px;font-family:var(--mono);font-size:.68rem;color:var(--gold)}
+
+.care-plan-teaser,.msp-banner{
+  max-width:1120px;
+  margin:0 auto 42px;
+  padding:0 24px;
+}
+.care-plan-card,.msp-card{
+  background:linear-gradient(135deg,rgba(79,110,247,.1),rgba(124,58,237,.08));
+  border:1px solid rgba(79,110,247,.25);
+  border-radius:22px;
+  padding:30px 32px;
+}
+.care-plan-card{
+  max-width:640px;
+  margin:0 auto;
+  text-align:center;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(240,165,0,.12),transparent 38%),
+    linear-gradient(135deg,rgba(79,110,247,.1),rgba(240,165,0,.07));
+  border-color:rgba(240,165,0,.24);
+}
+.care-plan-kicker,.msp-tag{
+  font-family:var(--mono);
+  font-size:.6rem;
+  color:var(--gold);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.msp-tag{color:var(--accent)}
+.care-plan-title,.msp-title{
+  font-family:var(--display);
+  font-size:1.35rem;
+  font-weight:800;
+  color:var(--text1);
+  margin-bottom:8px;
+}
+.care-plan-desc,.msp-desc{
+  font-size:.9rem;
+  color:var(--text3);
+  line-height:1.7;
+  max-width:650px;
+}
+.care-plan-desc{margin:0 auto 14px}
+.care-plan-note{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:2px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(240,165,0,.22);
+  background:rgba(8,12,16,.38);
+  color:var(--text2);
+  font-family:var(--mono);
+  font-size:.66rem;
+  line-height:1.45;
+}
+.care-plan-note::before{
+  content:'✓';
+  color:var(--green);
+  font-weight:800;
+}
+
+.care-plan-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-top:24px;
+  text-align:left;
+}
+.care-plan-option{
+  background:rgba(8,12,16,.55);
+  border:1px solid var(--border-m);
+  border-radius:16px;
+  padding:20px;
+}
+.care-plan-option h3{
+  font-family:var(--display);
+  color:var(--text1);
+  font-size:1rem;
+  margin-bottom:8px;
+}
+.care-plan-price{
+  color:var(--gold);
+  font-family:var(--mono);
+  font-size:.78rem;
+  margin-bottom:10px;
+}
+.care-plan-option p{
+  color:var(--text3);
+  line-height:1.65;
+  font-size:.84rem;
+  margin-bottom:14px;
+}
+.care-plan-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  font-family:var(--display);
+  font-size:.82rem;
+  font-weight:800;
+  text-decoration:none;
+}
+.care-plan-btn.gold{
+  background:linear-gradient(135deg,var(--gold),#d99000);
+  color:#050607;
+}
+.care-plan-guardrail{
+  margin-top:18px;
+  color:var(--text3);
+  font-size:.78rem;
+  line-height:1.65;
+}
+.btn-msp{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  font-family:var(--display);
+  font-size:.85rem;
+  font-weight:700;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:all .25s;
+  white-space:nowrap;
+}
+.btn-msp:hover{transform:translateY(-2px)}
+.msp-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.msp-right{flex-shrink:0;text-align:center}
+.msp-price{
+  font-family:var(--display);
+  font-size:1rem;
+  font-weight:700;
+  color:var(--text1);
+  margin-bottom:12px;
+  line-height:1.4;
+}
+.msp-form-wrap{display:none;width:100%;margin-top:22px;padding-top:22px;border-top:1px solid var(--border)}
+.msp-form-wrap.open{display:block}
+.msp-form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.msp-field.full{grid-column:1/-1}
+.msp-field label{
+  display:block;
+  margin-bottom:6px;
+  font-family:var(--mono);
+  font-size:.62rem;
+  color:var(--text3);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.msp-input,.msp-textarea{
+  width:100%;
+  border-radius:10px;
+  border:1px solid var(--border-m);
+  background:rgba(8,12,16,.55);
+  color:var(--text1);
+  padding:12px 13px;
+  outline:none;
+}
+.msp-input:focus,.msp-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,110,247,.12)}
+.msp-textarea{min-height:110px;resize:vertical}
+.msp-submit-row{grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.msp-status{display:none;font-size:.8rem;color:var(--green)}
+.msp-status.error{color:var(--gold)}
+
+.trust-bar{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.02);
+  padding:16px 24px;
+  margin-top:10px;
+}
+.trust-items{
+  max-width:1120px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px 26px;
+  justify-content:center;
+}
+.trust-item{
+  font-family:var(--mono);
+  font-size:.68rem;
+  color:var(--text3);
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.trust-item span{color:var(--green)}
+
+.page-footer{
+  padding:28px 24px 34px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  max-width:1120px;
+  margin:0 auto;
+  color:var(--text3);
+  font-size:.8rem;
+}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{color:var(--text3);text-decoration:none}
+.footer-links a:hover{color:var(--text1)}
+
+@media(max-width:920px){
+  .pricing-grid{grid-template-columns:1fr}
+  .price-card.featured{order:-1}
+  .msp-form{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  nav{padding:0 1rem}
+  .nav-links a:not(.nav-tag){display:none}
+  .page-hero{padding:42px 18px 22px}
+  .preview-strip,.section,.domain-disclosure,.care-plan-teaser,.msp-banner{padding-left:16px;padding-right:16px}
+  .care-plan-card,.msp-card{padding:22px 20px}
+  .btn-msp{width:100%;text-align:center}
+  .page-footer{flex-direction:column;text-align:center}
+}
+@media(max-width:520px){
+  .promo-modal-card{padding:22px 18px}
+  .promo-modal-title{font-size:1.35rem}
+  .care-plan-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<nav><div class="nav-brand">ai4websitediseno</div><div class="nav-tag">Tu sitio está listo</div></nav>
+<nav>
+  <a class="nav-brand" href="index.html">ai4websitedesign</a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="#care-plans">Planes de Cuidado</a>
+    <span class="nav-tag">Planes de compra</span>
+  </div>
+</nav>
+
 <div class="page-hero">
-  <div class="success-badge">✓ Página Principal Construida Exitosamente</div>
-  <h1>Tu Sitio Está Listo.<br><span>Vamos a Lanzarlo.</span></h1>
-  <p>Tu página principal personalizada está construida y esperando. Elige tu paquete y nosotros manejamos el lanzamiento, hosting y el crédito de registro de dominio estándar incluido.</p>
-  <div class="urgency-bar"><div class="urgency-text">⚡ <span>Sistema de Lanzamiento el Mismo Día</span> — Sitio · Crédito de Dominio · Hosting · Entrega</div></div>
+  <div class="success-badge">✓ AI4 Website Design</div>
+  <h1>Elige Tu <span>Plan de Compra</span></h1>
+  <p>Selecciona el plan que mejor se adapta a la forma en que deseas avanzar. Comienza con la Oferta Exclusiva de Fundador, elige el plan Premier más preferido, o selecciona el Paquete Business Bundle para un lanzamiento más completo y listo para operar.</p>
+  <div class="hero-actions">
+    <a class="btn-outline" href="#plans">Ver Planes</a>
+    <a class="btn-outline" href="#care-plans">Conocer Planes de Cuidado</a>
+  </div>
 </div>
-<div class="preview-strip"><div class="preview-strip-inner"><div class="strip-bar"><div class="s-dot" style="background:#ff5f57"></div><div class="s-dot" style="background:#febc2e"></div><div class="s-dot" style="background:#28c840"></div><div class="strip-url" id="strip-url">tunegocio.com</div></div><div class="strip-preview"><iframe id="site-preview-frame" sandbox="allow-same-origin"></iframe><div class="strip-overlay"></div></div></div></div>
-<div class="pricing-section">
-  <div class="pricing-label">// Elige Tu Paquete — Precios Activos Actuales</div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="card-icon">🌐</div><div class="card-label">Paquete 1</div><div class="card-name">Business Starter</div><div class="card-tagline">Una presencia en línea completa para lanzar una idea, servicio o negocio.</div><div class="site-count"><span class="site-count-num">1</span> Sitio Incluido</div><div class="card-price"><div class="price-amt">$49</div><div class="price-cents">.99</div><div class="price-type">único pago</div></div><div class="per-site">1 lanzamiento de sitio web</div><div class="bundle-pills"><span class="bundle-pill">Página Web</span><span class="bundle-pill">Crédito de Dominio</span><span class="bundle-pill">Hosting</span><span class="bundle-pill">Lanzamiento</span></div><div class="card-divider"></div>
-      <ul class="card-includes"><li class="gold">1 página principal personalizada</li><li class="gold">1 crédito de registro de dominio estándar hasta $20 para el primer año</li><li class="gold">Hosting profesional administrado</li><li class="gold">Proceso de lanzamiento manejado por nosotros</li><li class="green">Diseño responsive para móviles</li><li class="green">Archivo HTML de respaldo enviado a tu correo</li><li class="green">Ideal para una marca o negocio inicial</li></ul>
-      <div class="promo-redemption" id="founder-promo-box"><div class="promo-label">Código Promo Oferta del Fundador</div><div class="promo-copy">Ingresa tu código aprobado para recibir tu archivo del sitio sin pasar por Stripe.</div><div class="promo-row"><input class="promo-input" id="founder-promo-code" name="founder_promo_code" type="text" autocomplete="off" placeholder="INGRESA CÓDIGO" aria-label="Código promo Oferta del Fundador"><button class="btn-gold promo-btn" id="founder-promo-submit" type="button">Canjear</button></div><div class="promo-status" id="founder-promo-status" aria-live="polite"></div></div>
-      <button class="btn-gold checkout-btn" data-plan="starter">Poner Mi Sitio en Línea →</button><div class="btn-note">Pago único · Crédito de dominio estándar incluido</div>
+
+<div class="preview-strip">
+  <div class="preview-strip-inner">
+    <div class="strip-bar">
+      <div class="s-dot" style="background:#ff5f57"></div>
+      <div class="s-dot" style="background:#febc2e"></div>
+      <div class="s-dot" style="background:#28c840"></div>
+      <div class="strip-url" id="strip-url">tunegocio.com</div>
     </div>
-    <div class="price-card featured">
-      <div class="card-icon">🚀</div><div class="card-label">Paquete 2</div><div class="card-name">Premier</div><div class="card-tagline">Hasta tres lanzamientos de sitios para varias ideas, marcas, proyectos o clientes.</div><div class="site-count"><span class="site-count-num">3</span> Sitios Incluidos</div><div class="card-price"><div class="price-amt">$249</div><div class="price-cents">.99</div><div class="price-type">único pago</div></div><div class="per-site">Hasta 3 lanzamientos de sitio web</div><div class="bundle-pills"><span class="bundle-pill">3 Páginas Web</span><span class="bundle-pill">Créditos de Dominio</span><span class="bundle-pill">Hosting</span><span class="bundle-pill">Lanzamiento</span></div><div class="card-divider"></div>
-      <ul class="card-includes"><li class="gold">Hasta 3 páginas principales personalizadas</li><li class="gold">Crédito de dominio estándar hasta $20 por sitio para el primer año</li><li class="gold">Hosting administrado para cada sitio lanzado</li><li class="gold">Flujo guiado para construir sitios adicionales</li><li class="green">Diseño responsive en cada sitio</li><li class="green">Ideal para múltiples ideas, marcas o clientes</li><li class="green">Mejor opción para comenzar con más de un proyecto</li></ul>
-      <button class="btn-primary checkout-btn" data-plan="premier">Poner 3 Sitios en Línea →</button><div class="btn-note">Pago único · Hasta 3 lanzamientos</div>
-    </div>
-    <div class="price-card">
-      <div class="card-icon">💼</div><div class="card-label">Paquete 3</div><div class="card-name">Pro</div><div class="card-tagline">Hasta cinco lanzamientos para una cartera mayor de negocios, marcas o proyectos.</div><div class="site-count"><span class="site-count-num">5</span> Sitios Incluidos</div><div class="card-price"><div class="price-amt">$449</div><div class="price-cents">.99</div><div class="price-type">único pago</div></div><div class="per-site">Hasta 5 lanzamientos de sitio web</div><div class="bundle-pills"><span class="bundle-pill">5 Páginas Web</span><span class="bundle-pill">Créditos de Dominio</span><span class="bundle-pill">Hosting</span><span class="bundle-pill">Lanzamiento</span></div><div class="card-divider"></div>
-      <ul class="card-includes"><li class="gold">Hasta 5 páginas principales personalizadas</li><li class="gold">Crédito de dominio estándar hasta $20 por sitio para el primer año</li><li class="gold">Hosting administrado para cada sitio lanzado</li><li class="gold">Flujo guiado para construir sitios adicionales</li><li class="green">Diseño responsive en cada sitio</li><li class="green">Ideal para agencias pequeñas, side hustles o múltiples marcas</li><li class="green">Mayor capacidad de lanzamiento en una sola compra</li></ul>
-      <button class="btn-gold checkout-btn" data-plan="pro">Poner 5 Sitios en Línea →</button><div class="btn-note">Pago único · Hasta 5 lanzamientos</div>
+    <div class="strip-preview">
+      <iframe id="site-preview-frame" sandbox="allow-same-origin"></iframe>
+      <div class="strip-overlay"></div>
     </div>
   </div>
 </div>
-<div class="domain-disclosure"><div class="domain-box"><div class="domain-title">// Crédito de Dominio Incluido</div><div class="domain-copy">Incluye un crédito de registro de dominio estándar de hasta $20 para el primer año. Los dominios premium, extensiones especiales, renovaciones y upgrades de dominio pueden costar extra.</div><div class="accept-box"><input id="domain-accept" type="checkbox"><label for="domain-accept">Entiendo que mi compra incluye un crédito de registro de dominio estándar de hasta $20 para el primer año. Los dominios premium, extensiones especiales, renovaciones y upgrades de dominio pueden costar extra.</label></div><div class="accept-warning" id="accept-warning">Marca la casilla de aceptación del crédito de dominio para continuar al pago seguro.</div></div></div>
-<div class="msp-banner"><div class="msp-card"><div><div class="msp-tag">// Para Agencias y Socios IT</div><div class="msp-title">Partner MSP — Consulta Requerida</div><div class="msp-desc">Para socios que desean volumen, automatización administrada, soporte de implementación y una relación operativa más avanzada. Este programa se maneja por consulta para asegurar el ajuste correcto.</div></div><div class="msp-right"><div class="msp-price">Inquiry Only<br><span style="font-size:.78rem;color:var(--text3);font-family:var(--sans);font-weight:400;">Sin precio público</span></div><a class="btn-msp" href="mailto:support@ai4websitedesign.com?subject=Consulta Partner MSP">Solicitar Consulta →</a></div></div></div>
-<div class="trust-bar"><div class="trust-items"><div class="trust-item"><span>⚡</span> Lanzamiento el mismo día</div><div class="trust-item"><span>🌐</span> Crédito de dominio estándar incluido</div><div class="trust-item"><span>🏠</span> Hosting administrado</div><div class="trust-item"><span>🔒</span> Pago seguro con Stripe</div><div class="trust-item"><span>📱</span> Diseño responsive</div><div class="trust-item"><span>✓</span> Precios activos mostrados claramente</div></div></div>
-<div class="page-footer"><div class="footer-left">Con tecnología de Apropos Group LLC</div><div class="footer-links"><a href="https://ai4businesses.org" target="_blank" rel="noopener">AI4Businesses.org</a><a href="https://aiflowdeskpro.com" target="_blank" rel="noopener">FlowDesk Pro</a></div></div>
+
+<div class="section" id="plans">
+  <div class="section-label">// Oferta Exclusiva de Fundador · Premier · Business Bundle</div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="card-label">Oferta 1</div>
+      <div class="card-name">Oferta Exclusiva de Fundador</div>
+      <div class="card-tagline">Oferta de entrada accesible para clientes que desean un sitio web diseñado profesionalmente y entregado al instante.</div>
+      <div class="card-price"><div class="price-amt">$49</div><div class="price-cents">.99</div><div class="price-type">pago único</div></div>
+      <div class="card-divider"></div>
+      <ul class="card-includes">
+        <li class="gold">Sitio diseñado a la medida</li>
+        <li class="gold">Entregado al instante</li>
+        <li class="gold">Listo para lanzar</li>
+      </ul>
+      <div class="promo-redemption" id="founder-promo-box">
+        <div class="promo-label">Código Promocional de Fundador</div>
+        <div class="promo-copy">¿Tienes un código promocional aprobado de la Oferta de Fundador? Abre el formulario seguro de canje sin entrar al checkout de Stripe.</div>
+        <button class="btn-gold promo-open-btn" id="founder-promo-open" type="button">Canjear Código Promocional</button>
+        <div class="promo-status" id="founder-promo-status" aria-live="polite"></div>
+      </div>
+      <button class="btn-gold checkout-btn" data-plan="starter" data-requires-domain="false" data-price-id="price_1TUGCcBMRgYNYb8Dn3CxoxYp">Elegir Oferta de Fundador →</button>
+      <div class="btn-note">Pago único · Checkout seguro con Stripe</div>
+    </div>
+
+    <div class="price-card featured">
+      <div class="card-label">Oferta 2</div>
+      <div class="card-name">Premier</div>
+      <div class="card-tagline">Para clientes que desean un paquete web más sólido con mayor valor listo para lanzamiento.</div>
+      <div class="card-price"><div class="price-amt">$119</div><div class="price-cents">.99</div><div class="price-type">pago único</div></div>
+      <div class="card-divider"></div>
+      <ul class="card-includes">
+        <li class="gold">Paquete web personalizado con configuración más sólida para lanzamiento</li>
+        <li class="gold">Secciones profesionales orientadas al cliente</li>
+        <li class="green">Experiencia de diseño adaptable a móviles</li>
+        <li class="green">Soporte de hosting administrado y ruta de lanzamiento</li>
+        <li class="green">Aceptación del crédito de dominio estándar antes del checkout</li>
+      </ul>
+      <button class="btn-primary checkout-btn" data-plan="premier" data-requires-domain="true" data-price-id="price_1TUGR4BMRgYNYb8DuvuSKrmc">Elegir Premier →</button>
+      <div class="btn-note">Más preferido · Requiere aceptación del crédito de dominio</div>
+    </div>
+
+    <div class="price-card">
+      <div class="card-label">Oferta 3 · Listo para negocio</div>
+      <div class="card-name">Business Bundle</div>
+      <div class="card-tagline">Para clientes que desean un paquete de lanzamiento más completo y listo para operar.</div>
+      <div class="card-price"><div class="price-amt">$249</div><div class="price-cents">.99</div><div class="price-type">pago único</div></div>
+      <div class="card-divider"></div>
+      <ul class="card-includes">
+        <li class="gold">Lanzamiento del sitio incluido</li>
+        <li class="gold">Primer año de hosting incluido</li>
+        <li class="green">Sistema personalizado de captación de clientes</li>
+        <li class="green">Asistencia para configuración de procesamiento de pagos</li>
+        <li class="green">Sistema de entrega online listo para negocio</li>
+        <li class="green">Negocio operativo al momento de la entrega</li>
+      </ul>
+      <button class="btn-gold checkout-btn" data-plan="business" data-requires-domain="false" data-price-id="price_1TUGEABMRgYNYb8D3Xr3Tpcv">Elegir Business Bundle →</button>
+      <div class="btn-note">Pago único · Checkout seguro con Stripe</div>
+    </div>
+  </div>
+</div>
+
+<div class="care-plan-teaser" id="care-plans">
+  <div class="care-plan-card">
+    <div class="care-plan-kicker">// Servicios de Administración del Sitio</div>
+    <div class="care-plan-title">Conviértete en Miembro Suscriptor</div>
+    <p class="care-plan-desc">Después de que tu sitio web sea entregado o lanzado, puedes continuar recibiendo soporte mediante Servicios de Administración del Sitio. Los miembros suscriptores pueden solicitar actualizaciones, pequeños cambios de contenido y soporte mensual según el plan seleccionado.</p>
+    <div class="care-plan-note">Care Package I se ofrece al momento de la compra inicial del paquete. Care Package II permanece disponible cuando se compra más adelante.</div>
+
+    <div class="care-plan-grid">
+      <div class="care-plan-option">
+        <h3>Premier Care Package I</h3>
+        <div class="care-plan-price">$19.99/mes al comprar inicialmente</div>
+        <p>Diseñado para clientes que desean una ruta práctica de soporte con hasta 5 actualizaciones del sitio web por mes.</p>
+        <a class="care-plan-btn" href="https://buy.stripe.com/eVqfZgfIec4TdRxeDm7EQ0T" data-price-id="price_1TUGFVBMRgYNYb8Dwd1k25Cm">Elegir Premier Care Package I →</a>
+      </div>
+
+      <div class="care-plan-option">
+        <h3>Premier Care Package II</h3>
+        <div class="care-plan-price">$39.99/mes cuando se compra después</div>
+        <p>Diseñado para clientes que deciden después y desean soporte continuo con hasta 5 actualizaciones del sitio web por mes.</p>
+        <a class="care-plan-btn" href="https://buy.stripe.com/3cIdR87bI8SH14L52M7EQ0S" data-price-id="price_1TUGH3BMRgYNYb8D39FUrz37">Elegir Premier Care Package II →</a>
+      </div>
+
+      <div class="care-plan-option">
+        <h3>Business Care Plan I</h3>
+        <div class="care-plan-price">$99.99/mes al comprar inicialmente</div>
+        <p>Diseñado para clientes del Business Bundle que desean soporte más amplio y actualizaciones continuas para el sitio lanzado.</p>
+        <a class="care-plan-btn gold" href="https://buy.stripe.com/5kQ4gygMied14gXcve7EQ0R" data-price-id="price_1TUGJCBMRgYNYb8DN4whAMaa">Elegir Business Care Plan I →</a>
+      </div>
+
+      <div class="care-plan-option">
+        <h3>Business Care Plan II</h3>
+        <div class="care-plan-price">$199.99/mes cuando se compra después</div>
+        <p>Diseñado para soporte posterior con una ruta de administración más completa para tu presencia online.</p>
+        <a class="care-plan-btn gold" href="https://buy.stripe.com/eVq5kC8fMed1aFl66Q7EQ0Q" data-price-id="price_1TUGH3BMRgYNYb8D39FUrz37">Elegir Business Care Plan II →</a>
+      </div>
+    </div>
+
+    <div class="care-plan-guardrail">Las actualizaciones mensuales pueden incluir cambios de texto, reemplazo de imágenes, ediciones básicas de secciones, actualizaciones de enlaces, pequeños ajustes de diseño y refrescos de contenido. Rediseños grandes, páginas nuevas, integraciones avanzadas, automatización personalizada, configuración de terceros o reconstrucciones mayores pueden requerir una cotización separada.</div>
+  </div>
+</div>
+
+<div class="domain-disclosure">
+  <div class="domain-box">
+    <div class="domain-title">// Aceptación de Crédito de Dominio para Premier</div>
+    <div class="domain-copy">Incluye un crédito de registro de dominio estándar de hasta $20 para el primer año. Dominios premium, extensiones especiales, renovaciones y mejoras de dominio pueden tener costo adicional.</div>
+    <div class="accept-box">
+      <input id="domain-accept" type="checkbox">
+      <label for="domain-accept">Entiendo que mi compra incluye un crédito de registro de dominio estándar de hasta $20 para el primer año. Dominios premium, extensiones especiales, renovaciones y mejoras de dominio pueden tener costo adicional.</label>
+    </div>
+    <div class="accept-warning" id="accept-warning">Marca la casilla de aceptación del crédito de dominio para continuar al checkout seguro de Premier.</div>
+  </div>
+</div>
+
+<div class="msp-banner">
+  <div class="msp-card">
+    <div>
+      <div class="msp-tag">// Para Agencias y Socios de IT</div>
+      <div class="msp-title">Partner MSP — Requiere Consulta</div>
+      <div class="msp-desc">Para socios que desean volumen, automatización administrada, soporte de implementación y una relación operativa más avanzada. Este programa se maneja mediante consulta para asegurar el ajuste correcto.</div>
+    </div>
+    <div class="msp-right">
+      <div class="msp-price">Solo consulta<br><span style="font-size:.78rem;color:var(--text3);font-family:var(--sans);font-weight:400;">Sin precio público</span></div>
+      <button class="btn-msp" id="open-msp-form" type="button" onclick="openMspForm()">Solicitar Consulta →</button>
+    </div>
+    <div class="msp-form-wrap" id="msp-form-wrap">
+      <form class="msp-form" id="msp-form" onsubmit="submitMspInquiry(event)">
+        <div class="msp-field">
+          <label for="msp-name">Nombre</label>
+          <input class="msp-input" id="msp-name" name="full_name" type="text" autocomplete="name" required>
+        </div>
+        <div class="msp-field">
+          <label for="msp-email">Correo electrónico</label>
+          <input class="msp-input" id="msp-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="msp-field">
+          <label for="msp-phone">Teléfono</label>
+          <input class="msp-input" id="msp-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="msp-field">
+          <label for="msp-company">Empresa</label>
+          <input class="msp-input" id="msp-company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="msp-field full">
+          <label for="msp-message">¿Qué deseas lanzar o administrar?</label>
+          <textarea class="msp-textarea" id="msp-message" name="message" placeholder="Cuéntanos sobre volumen, sitios de clientes, automatización o metas de implementación administrada."></textarea>
+        </div>
+        <div class="msp-submit-row">
+          <button class="btn-msp" id="msp-submit" type="submit">Enviar Solicitud de Consulta →</button>
+          <div class="msp-status" id="msp-status">Solicitud enviada — te contactaremos por correo electrónico.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-items">
+    <div class="trust-item"><span>✓</span> Checkout seguro con Stripe</div>
+    <div class="trust-item"><span>✓</span> Planes de compra actuales</div>
+    <div class="trust-item"><span>✓</span> Diseño adaptable a móviles</div>
+    <div class="trust-item"><span>✓</span> Aceptación de crédito de dominio cuando aplica</div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-left">Powered by Apropos Group LLC</div>
+  <div class="footer-links">
+    <a href="https://ai4businesses.org" target="_blank" rel="noopener">AI4Businesses.org</a>
+    <a href="https://aiflowdeskpro.com" target="_blank" rel="noopener">FlowDesk Pro</a>
+    <a href="mailto:jmitchell@ai4websitedesign.com">Contacto</a>
+  </div>
+</div>
+
+<div class="promo-modal" id="founder-promo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="founder-promo-modal-title">
+  <div class="promo-modal-card">
+    <button class="promo-modal-close" id="founder-promo-close" type="button" aria-label="Cerrar formulario de código promocional">×</button>
+    <div class="promo-label">Código Promocional de Fundador</div>
+    <div class="promo-modal-title" id="founder-promo-modal-title">Canjear Oferta de Fundador</div>
+    <div class="promo-modal-copy">Ingresa el código promocional LAUNCHFREE a continuación. Esta ruta de canje envía por correo electrónico el archivo seleccionado del sitio web starter sin entrar al checkout de Stripe.</div>
+    <div class="promo-modal-field">
+      <label for="founder-promo-code">Código promocional</label>
+      <input class="promo-input" id="founder-promo-code" name="founder_promo_code" type="text" autocomplete="off" placeholder="LAUNCHFREE" aria-label="Código promocional de la Oferta de Fundador">
+    </div>
+    <button class="btn-gold promo-btn" id="founder-promo-submit" type="button">Enviar Código Promocional</button>
+    <div class="promo-modal-note">El código promocional se verifica de forma segura antes de iniciar el cumplimiento. La promoción gratuita cubre un archivo de diseño starter; soporte de lanzamiento y complementos de negocio siguen siendo mejoras pagadas.</div>
+    <div class="promo-status" id="founder-promo-modal-status" aria-live="polite"></div>
+  </div>
+</div>
+
 <script>
 'use strict';
-const STRIPE_LINKS={starter:'https://buy.stripe.com/7sY5kCeEa5GvdRx3YI7EQ0x',premier:'https://buy.stripe.com/fZu3cugMi8SH9Bh1QA7EQ0C',pro:'https://buy.stripe.com/9B614m9jQc4T14LeDm7EQ0D'};
-window.addEventListener('DOMContentLoaded',()=>{let siteData={};try{siteData=JSON.parse(sessionStorage.getItem('ai4_site_data')||'{}')}catch(e){}if(siteData.businessName){document.getElementById('strip-url').textContent=siteData.businessName.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'').slice(0,20)+'.com'}const builtHtml=sessionStorage.getItem('ai4_built_html');if(builtHtml)document.getElementById('site-preview-frame').srcdoc=builtHtml;const accept=document.getElementById('domain-accept');const buttons=[...document.querySelectorAll('.checkout-btn')];function refresh(){buttons.forEach(b=>b.disabled=!accept.checked);if(accept.checked)document.getElementById('accept-warning').style.display='none'}accept.addEventListener('change',refresh);buttons.forEach(btn=>btn.addEventListener('click',()=>goPackage(btn.dataset.plan)));refresh();});
-function goPackage(type){const accept=document.getElementById('domain-accept');if(!accept.checked){document.getElementById('accept-warning').style.display='block';document.querySelector('.domain-disclosure').scrollIntoView({behavior:'smooth',block:'center'});return}sessionStorage.setItem('ai4_purchase_type',type);sessionStorage.setItem('ai4_domain_credit_accepted','true');const link=STRIPE_LINKS[type];if(!link){window.location.href='/';return}window.location.href=link;}
-function safeStoredValue(key){try{return sessionStorage.getItem(key)||localStorage.getItem(key)||'';}catch(e){try{return sessionStorage.getItem(key)||'';}catch(_){return '';}}}
-function getAi4StoredData(){let siteData={};try{siteData=JSON.parse(sessionStorage.getItem('ai4_site_data')||'{}');}catch(e){siteData={};}return{purchaseType:safeStoredValue('ai4_purchase_type')||'',user_id:safeStoredValue('ai4_user_id')||siteData.user_id||'',site_id:safeStoredValue('ai4_site_id')||siteData.site_id||'',build_id:safeStoredValue('ai4_build_id')||siteData.build_id||safeStoredValue('ai4_site_id')||siteData.site_id||'',build_persisted:safeStoredValue('ai4_build_persisted')||'',built_html:safeStoredValue('ai4_built_html')||'',email:safeStoredValue('ai4_email')||siteData.email||'',phone:safeStoredValue('ai4_phone')||siteData.phone||'',name:safeStoredValue('ai4_full_name')||safeStoredValue('ai4_name')||siteData.full_name||siteData.name||'',company:siteData.businessName||siteData.business_name||'',siteData};}
-function setPromoStatus(message,type=''){const status=document.getElementById('founder-promo-status');if(!status)return;status.textContent=message||'';status.classList.remove('error','success');if(type)status.classList.add(type);status.style.display=message?'block':'none';}
-async function redeemFounderPromo(){const input=document.getElementById('founder-promo-code');const btn=document.getElementById('founder-promo-submit');const stored=getAi4StoredData();const promoCode=input?input.value.trim():'';if(!promoCode){setPromoStatus('Ingresa tu código promo de la Oferta del Fundador.','error');if(input)input.focus();return;}if(!stored.email){setPromoStatus('No encontramos tu email de registro. Regresa al inicio y completa el registro primero.','error');return;}if(!stored.site_id&&!stored.built_html){setPromoStatus('No encontramos el sitio seleccionado. Regresa al constructor y selecciona tu sitio otra vez.','error');return;}if(btn){btn.disabled=true;btn.textContent='Canjeando...';}setPromoStatus('Canjeando tu código promo...','');const payload={promo_code:promoCode,user_id:stored.user_id,site_id:stored.site_id,build_id:stored.build_id,email:stored.email,full_name:stored.name,phone:stored.phone,business_name:stored.company,site_data:stored.siteData,built_html:stored.built_html,language:'es'};try{const res=await fetch('/.netlify/functions/redeem-founder-promo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await res.json().catch(()=>({}));if(!res.ok||data.error)throw new Error(data.error||'No se pudo canjear el código promo');sessionStorage.setItem('ai4_founder_promo_redeemed','true');if(data.redemption_id)sessionStorage.setItem('ai4_founder_promo_redemption_id',data.redemption_id);if(data.site_id)sessionStorage.setItem('ai4_site_id',data.site_id);if(data.build_id)sessionStorage.setItem('ai4_build_id',data.build_id);setPromoStatus('Código canjeado. Tu archivo index.html fue enviado por email.','success');if(btn)btn.textContent='Canjeado ✓';if(input)input.disabled=true;}catch(err){console.error('Founder promo redemption error:',err);setPromoStatus(err.message||'No se pudo canjear este código ahora.','error');if(btn){btn.disabled=false;btn.textContent='Canjear';}}}
-const founderPromoSubmit=document.getElementById('founder-promo-submit');if(founderPromoSubmit)founderPromoSubmit.addEventListener('click',redeemFounderPromo);const founderPromoInput=document.getElementById('founder-promo-code');if(founderPromoInput)founderPromoInput.addEventListener('keydown',event=>{if(event.key==='Enter')redeemFounderPromo();});
+
+const STRIPE_LINKS = {
+  starter: 'https://buy.stripe.com/eVq00i7bIb0PfZFdzi7EQ0V',
+  premier: 'https://buy.stripe.com/aFa6oGanU7OD3cTeDm7EQ0W',
+  business: 'https://buy.stripe.com/cNicN42Vs4Cr8xd0Mw7EQ0U'
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+  let siteData = {};
+  try {
+    siteData = JSON.parse(sessionStorage.getItem('ai4_site_data') || '{}');
+  } catch(e) {
+    siteData = {};
+  }
+
+  const stripUrl = document.getElementById('strip-url');
+  if (stripUrl && siteData.businessName) {
+    stripUrl.textContent = siteData.businessName
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]/g, '')
+      .slice(0, 20) + '.com';
+  }
+
+  const builtHtml = sessionStorage.getItem('ai4_built_html');
+  const frame = document.getElementById('site-preview-frame');
+  if (builtHtml && frame) frame.srcdoc = builtHtml;
+
+  const accept = document.getElementById('domain-accept');
+  const warning = document.getElementById('accept-warning');
+  const buttons = [...document.querySelectorAll('.checkout-btn')];
+
+  if (accept) {
+    accept.addEventListener('change', () => {
+      if (accept.checked && warning) warning.style.display = 'none';
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => goPackage(btn.dataset.plan, btn.dataset.requiresDomain === 'true'));
+  });
+
+  const promoOpen = document.getElementById('founder-promo-open');
+  const promoClose = document.getElementById('founder-promo-close');
+  const promoModal = document.getElementById('founder-promo-modal');
+  const promoSubmit = document.getElementById('founder-promo-submit');
+  const promoInput = document.getElementById('founder-promo-code');
+
+  if (promoOpen) promoOpen.addEventListener('click', openFounderPromoModal);
+  if (promoClose) promoClose.addEventListener('click', closeFounderPromoModal);
+  if (promoModal) {
+    promoModal.addEventListener('click', (event) => {
+      if (event.target === promoModal) closeFounderPromoModal();
+    });
+  }
+  if (promoSubmit) promoSubmit.addEventListener('click', redeemFounderPromo);
+  if (promoInput) {
+    promoInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') redeemFounderPromo();
+    });
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeFounderPromoModal();
+  });
+});
+
+function goPackage(type, requiresDomainCredit) {
+  const accept = document.getElementById('domain-accept');
+  const warning = document.getElementById('accept-warning');
+
+  if (requiresDomainCredit && accept && !accept.checked) {
+    if (warning) warning.style.display = 'block';
+    document.querySelector('.domain-disclosure')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  sessionStorage.setItem('ai4_purchase_type', type);
+  if (requiresDomainCredit) {
+    sessionStorage.setItem('ai4_domain_credit_accepted', 'true');
+  } else {
+    sessionStorage.removeItem('ai4_domain_credit_accepted');
+  }
+
+  const link = STRIPE_LINKS[type];
+  if (!link) {
+    window.location.href = '/';
+    return;
+  }
+  window.location.href = link;
+}
+
+function safeStoredValue(key) {
+  try {
+    return sessionStorage.getItem(key) || localStorage.getItem(key) || '';
+  } catch(e) {
+    try { return sessionStorage.getItem(key) || ''; } catch(_) { return ''; }
+  }
+}
+
+function readJsonStorage(key) {
+  try { return JSON.parse(sessionStorage.getItem(key) || localStorage.getItem(key) || '{}'); }
+  catch(e) { return {}; }
+}
+
+function getAi4StoredData() {
+  const siteData = readJsonStorage('ai4_site_data');
+  const answers = readJsonStorage('ai4_answers');
+  const merged = { ...answers, ...siteData };
+  return {
+    siteData: merged,
+    purchaseType: safeStoredValue('ai4_purchase_type') || '',
+    user_id: safeStoredValue('ai4_user_id') || merged.user_id || '',
+    site_id: safeStoredValue('ai4_site_id') || merged.site_id || '',
+    build_id: safeStoredValue('ai4_build_id') || merged.build_id || safeStoredValue('ai4_site_id') || merged.site_id || '',
+    build_persisted: safeStoredValue('ai4_build_persisted') || '',
+    built_html: safeStoredValue('ai4_built_html') || '',
+    email: safeStoredValue('ai4_email') || merged.email || merged.userEmail || '',
+    phone: safeStoredValue('ai4_phone') || merged.phone || merged.userPhone || '',
+    name: safeStoredValue('ai4_full_name') || safeStoredValue('ai4_name') || merged.full_name || merged.name || merged.userFullName || '',
+    company: merged.businessName || merged.brandName || merged.company || merged.business_name || ''
+  };
+}
+
+function openFounderPromoModal() {
+  const modal = document.getElementById('founder-promo-modal');
+  const input = document.getElementById('founder-promo-code');
+  if (!modal) return;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => { if (input && !input.disabled) input.focus(); }, 50);
+}
+
+function closeFounderPromoModal() {
+  const modal = document.getElementById('founder-promo-modal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function setPromoStatus(message, type = '') {
+  const targets = [
+    document.getElementById('founder-promo-status'),
+    document.getElementById('founder-promo-modal-status')
+  ].filter(Boolean);
+
+  targets.forEach((status) => {
+    status.textContent = message || '';
+    status.classList.remove('error', 'success');
+    if (type) status.classList.add(type);
+    status.style.display = message ? 'block' : 'none';
+  });
+}
+
+async function redeemFounderPromo() {
+  const input = document.getElementById('founder-promo-code');
+  const btn = document.getElementById('founder-promo-submit');
+  const stored = getAi4StoredData();
+  const promoCode = input ? input.value.trim() : '';
+
+  if (!promoCode) {
+    setPromoStatus('Ingresa tu código promocional de la Oferta de Fundador.', 'error');
+    if (input) input.focus();
+    return;
+  }
+
+  if (!stored.email) {
+    setPromoStatus('No se encontró tu correo de registro. Regresa a la página de inicio y completa el registro primero.', 'error');
+    return;
+  }
+
+  if (!stored.site_id && !stored.built_html) {
+    setPromoStatus('No se encontró el diseño de sitio web seleccionado. Regresa al constructor y selecciona tu sitio nuevamente.', 'error');
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Canjeando...';
+  }
+  setPromoStatus('Canjeando tu código promocional de la Oferta de Fundador...', '');
+
+  const payload = {
+    promo_code: promoCode,
+    user_id: stored.user_id,
+    site_id: stored.site_id,
+    build_id: stored.build_id,
+    email: stored.email,
+    full_name: stored.name,
+    phone: stored.phone,
+    business_name: stored.company,
+    site_data: stored.siteData,
+    built_html: stored.built_html,
+    language: 'es',
+    source_url: window.location.href
+  };
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 25000);
+
+    const res = await fetch('/.netlify/functions/redeem-founder-promo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.error) {
+      throw new Error(data.error || 'No se pudo canjear la promoción.');
+    }
+
+    sessionStorage.setItem('ai4_founder_promo_redeemed', 'true');
+    if (data.redemption_id) sessionStorage.setItem('ai4_founder_promo_redemption_id', data.redemption_id);
+    if (data.site_id) sessionStorage.setItem('ai4_site_id', data.site_id);
+    if (data.build_id) sessionStorage.setItem('ai4_build_id', data.build_id);
+
+    setPromoStatus(data.message || 'Promoción canjeada. Tu archivo de diseño starter ha sido enviado por correo electrónico como index.html.', 'success');
+    if (btn) btn.textContent = 'Canjeado ✓';
+    if (input) input.disabled = true;
+    const openBtn = document.getElementById('founder-promo-open');
+    if (openBtn) {
+      openBtn.textContent = 'Promoción Canjeada ✓';
+      openBtn.disabled = true;
+    }
+    setTimeout(closeFounderPromoModal, 1200);
+  } catch (err) {
+    console.error('Founder promo redemption error:', err);
+    const friendlyMessage = err.name === 'AbortError'
+      ? 'La solicitud tardó demasiado. Revisa los logs de Netlify Function para redeem-founder-promo e inténtalo otra vez.'
+      : (err.message || 'No se puede canjear este código promocional en este momento.');
+    setPromoStatus(friendlyMessage, 'error');
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = 'Enviar Código Promocional';
+    }
+  }
+}
+
+function openMspForm() {
+  const wrap = document.getElementById('msp-form-wrap');
+  if (!wrap) return;
+  wrap.classList.add('open');
+
+  const stored = getAi4StoredData();
+  const name = document.getElementById('msp-name');
+  const email = document.getElementById('msp-email');
+  const phone = document.getElementById('msp-phone');
+  const company = document.getElementById('msp-company');
+
+  if (name && !name.value) name.value = stored.name;
+  if (email && !email.value) email.value = stored.email;
+  if (phone && !phone.value) phone.value = stored.phone;
+  if (company && !company.value) company.value = stored.company;
+
+  wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => { if (name && !name.value) name.focus(); else if (email && !email.value) email.focus(); }, 350);
+}
+
+async function submitMspInquiry(event) {
+  event.preventDefault();
+
+  const form = document.getElementById('msp-form');
+  const btn = document.getElementById('msp-submit');
+  const status = document.getElementById('msp-status');
+  const stored = getAi4StoredData();
+  const formData = new FormData(form);
+
+  const payload = {
+    full_name: (formData.get('full_name') || '').toString().trim(),
+    email: (formData.get('email') || '').toString().trim().toLowerCase(),
+    phone: (formData.get('phone') || '').toString().trim(),
+    company: (formData.get('company') || '').toString().trim(),
+    message: (formData.get('message') || '').toString().trim(),
+    plan: stored.purchaseType,
+    language: 'es',
+    source: 'offer.html',
+    source_url: window.location.href,
+    domain_credit_accepted: sessionStorage.getItem('ai4_domain_credit_accepted') === 'true',
+    business_name: stored.company,
+    site_data: stored.siteData
+  };
+
+  if (!payload.full_name || !payload.email) {
+    status.textContent = 'Ingresa tu nombre y correo electrónico antes de enviar.';
+    status.classList.add('error');
+    status.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+  status.style.display = 'none';
+  status.classList.remove('error');
+
+  try {
+    const res = await fetch('/.netlify/functions/partner-inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.error) throw new Error(data.error || 'La solicitud falló.');
+
+    status.textContent = 'Solicitud enviada — te contactaremos por correo electrónico.';
+    status.style.display = 'block';
+    btn.textContent = 'Enviado ✓';
+    form.querySelectorAll('input,textarea').forEach(el => el.disabled = true);
+  } catch(err) {
+    console.error('Partner inquiry error:', err);
+    status.textContent = 'No se puede enviar en este momento. Envía un correo a jmitchell@ai4websitedesign.com.';
+    status.classList.add('error');
+    status.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Enviar Solicitud de Consulta →';
+  }
+}
 </script>
 </body>
 </html>
