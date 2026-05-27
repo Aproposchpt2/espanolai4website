@@ -1,10 +1,9 @@
 [build]
 publish = "."
 functions = "netlify/functions"
-command = "npm run build"
 
 [build.environment]
-NODE_VERSION = "20"
+NODE_VERSION = "22"
 
 [build.processing]
 
@@ -30,6 +29,30 @@ for = "/thankyou.html"
   Expires = "0"
 
 [[headers]]
+for = "/*.html"
+
+  [headers.values]
+  Cache-Control = "no-cache, no-store, must-revalidate"
+  Pragma = "no-cache"
+  Expires = "0"
+
+[[headers]]
+for = "/*.js"
+
+  [headers.values]
+  Cache-Control = "no-cache, no-store, must-revalidate"
+  Pragma = "no-cache"
+  Expires = "0"
+
+[[headers]]
+for = "/*.css"
+
+  [headers.values]
+  Cache-Control = "no-cache, no-store, must-revalidate"
+  Pragma = "no-cache"
+  Expires = "0"
+
+[[headers]]
 for = "/*"
 
   [headers.values]
@@ -48,6 +71,18 @@ force = false
 from = "/en"
 to = "https://ai4websitedesign.com"
 status = 301
+force = false
+
+[[redirects]]
+from = "/estudio"
+to = "/ai4-design-studio.html"
+status = 200
+force = false
+
+[[redirects]]
+from = "/vista-previa"
+to = "/ai4-design-studio-preview.html"
+status = 200
 force = false
 
 [[redirects]]

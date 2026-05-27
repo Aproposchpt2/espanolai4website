@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4 Estudio de Diseño Web — Construye Tu Sitio</title>
+<meta name="description" content="Responde 7 preguntas simples. Obtén un sitio web completamente construido, con contenido real, listo para publicar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#030816;--bg2:#061225;
+  --line:rgba(184,196,217,.14);--line-strong:rgba(45,184,255,.34);
+  --blue:#1EA7FF;--blue2:#2DB8FF;--blue4:#5BD3FF;
+  --silver:#D5DEEA;--white:#F5F8FF;--muted:#AEBED3;--muted2:#90A3BC;
+  --shadow:0 28px 90px rgba(0,0,0,.42);
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;--display:'Syne',sans-serif;
+  --r-sm:10px;--r-md:16px;--r-lg:24px;--r-xl:34px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at 18% 12%,rgba(30,167,255,.18),transparent 26%),
+    radial-gradient(circle at 82% 10%,rgba(91,211,255,.10),transparent 30%),
+    linear-gradient(180deg,var(--bg) 0%,#02050e 52%,var(--bg2) 100%);
+  color:var(--muted);font-family:var(--sans);font-size:16px;line-height:1.65;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(45,184,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,184,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.18) 58%,rgba(0,0,0,.05));
+}
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+.page-shell{position:relative;z-index:1}
+
+/* Nav */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  min-height:72px;padding:.7rem clamp(1rem,4vw,2.5rem);
+  background:rgba(3,8,22,.88);backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(184,196,217,.11);
+}
+.nav-brand{display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none}
+.nav-logo{height:52px;width:auto;object-fit:contain;filter:drop-shadow(0 0 14px rgba(30,167,255,0.45))}
+.nav-brand-name{font-family:var(--display);font-size:.9rem;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.nav-sub{font-family:var(--mono);font-size:.58rem;color:var(--muted2);letter-spacing:.14em;text-transform:uppercase}
+
+/* Hero */
+.studio-hero{
+  min-height:100vh;padding:9rem 2rem 5rem;
+  display:flex;align-items:center;
+}
+.hero-inner{width:min(860px,100%);margin:0 auto;text-align:center}
+.hero-logo{height:110px;width:auto;object-fit:contain;filter:drop-shadow(0 0 22px rgba(30,167,255,0.5));margin-bottom:2rem}
+.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--blue4);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem}
+.eyebrow::before{content:'';width:34px;height:1px;background:linear-gradient(90deg,var(--blue),transparent);box-shadow:0 0 16px rgba(30,167,255,.65)}
+.gradient-text{background:linear-gradient(135deg,var(--white) 0%,var(--silver) 34%,var(--blue4) 70%,var(--blue2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h1{font-family:var(--display);font-size:clamp(2.6rem,6vw,5.2rem);line-height:1.04;letter-spacing:-.055em;color:var(--white);margin-bottom:1.2rem}
+.hero-sub{max-width:620px;margin:0 auto 2.5rem;font-size:clamp(1rem,1.8vw,1.15rem);color:var(--silver);line-height:1.65}
+.btn-start{
+  display:inline-flex;align-items:center;gap:.65rem;
+  color:#03101f;background:linear-gradient(135deg,var(--white),var(--blue4) 44%,var(--blue));
+  border:1px solid rgba(245,248,255,.58);border-radius:999px;
+  padding:1rem 2.2rem;font-weight:900;font-size:1rem;cursor:pointer;
+  box-shadow:0 0 36px rgba(30,167,255,.34),inset 0 1px 0 rgba(255,255,255,.74);
+  transition:transform .2s,box-shadow .2s;text-decoration:none;
+}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 0 52px rgba(30,167,255,.5)}
+
+/* Trust strip */
+.trust-strip{display:flex;justify-content:center;flex-wrap:wrap;gap:1.6rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted2);font-family:var(--mono);letter-spacing:.06em}
+.trust-item span{color:var(--blue4)}
+
+/* Studio section */
+#studioSection{display:none;padding:2rem 2rem 6rem}
+.studio-wrap{width:min(760px,100%);margin:0 auto}
+
+/* Progress */
+.progress-wrap{margin-bottom:3rem}
+.progress-track{width:100%;height:3px;background:rgba(184,196,217,.12);border-radius:3px;overflow:hidden;margin-bottom:10px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue4));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(30,167,255,.6)}
+.progress-meta{display:flex;justify-content:space-between;align-items:center}
+.progress-step-label{font-family:var(--mono);font-size:.65rem;color:var(--blue4);letter-spacing:.12em;text-transform:uppercase}
+.progress-count{font-family:var(--mono);font-size:.65rem;color:var(--muted2);letter-spacing:.1em}
+
+/* Steps */
+.form-step{display:none;animation:fadeUp .3s ease}
+.form-step.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.step-q-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:var(--blue4);text-transform:uppercase;margin-bottom:.5rem}
+.step-question{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.15;letter-spacing:-.04em}
+.step-hint{font-size:.9rem;color:var(--muted2);margin-bottom:2rem;line-height:1.55}
+
+/* Inputs */
+.studio-input{
+  width:100%;background:rgba(8,24,47,.85);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:16px 20px;color:var(--white);
+  outline:none;transition:border-color .2s,box-shadow .2s;
+  margin-bottom:2rem;font-size:.97rem;line-height:1.5;
+}
+.studio-input:focus{border-color:rgba(91,211,255,.5);box-shadow:0 0 0 3px rgba(30,167,255,.1)}
+.studio-input::placeholder{color:var(--muted2)}
+textarea.studio-input{min-height:130px;resize:vertical}
+
+/* Contact grid */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.contact-field label{display:block;font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;color:var(--blue4);text-transform:uppercase;margin-bottom:6px}
+.contact-field .studio-input{margin-bottom:0}
+@media(max-width:600px){.contact-grid{grid-template-columns:1fr}}
+
+/* Style picker */
+.style-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.style-card{
+  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015)),rgba(8,24,47,.7);
+  border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;
+  cursor:pointer;transition:all .2s ease;text-align:left;
+}
+.style-card:hover{border-color:var(--line-strong);transform:translateY(-1px)}
+.style-card.selected{border-color:var(--blue);background:rgba(30,167,255,.1);box-shadow:0 0 0 1px var(--blue),0 0 24px rgba(30,167,255,.15)}
+.style-card-swatch{width:100%;height:48px;border-radius:10px;margin-bottom:12px}
+.style-card-name{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.style-card-desc{font-size:.8rem;color:var(--muted2);line-height:1.4}
+@media(max-width:540px){.style-grid{grid-template-columns:1fr}}
+
+/* CTA options */
+.cta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:2rem}
+.cta-btn{
+  background:rgba(8,24,47,.7);border:1px solid var(--line);border-radius:var(--r-md);
+  padding:12px 14px;color:var(--muted);font-size:.86rem;font-weight:600;
+  cursor:pointer;text-align:left;transition:all .2s ease;
+}
+.cta-btn:hover{border-color:var(--line-strong);color:var(--white)}
+.cta-btn.selected{border-color:var(--blue);color:var(--white);background:rgba(30,167,255,.12);box-shadow:0 0 0 1px var(--blue)}
+
+/* Nav buttons */
+.step-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:.5rem}
+.btn-back{background:transparent;border:1px solid var(--line);border-radius:999px;padding:13px 26px;color:var(--muted);cursor:pointer;font-weight:700;font-size:.88rem;transition:all .2s}
+.btn-back:hover{border-color:var(--line-strong);color:var(--white)}
+.btn-next,.btn-submit{
+  color:#03101f;background:linear-gradient(135deg,var(--white),var(--blue4) 44%,var(--blue));
+  border:1px solid rgba(245,248,255,.58);border-radius:999px;padding:14px 36px;
+  font-weight:900;font-size:.92rem;cursor:pointer;
+  box-shadow:0 0 36px rgba(30,167,255,.28),inset 0 1px 0 rgba(255,255,255,.74);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-next:hover,.btn-submit:hover{transform:translateY(-2px);box-shadow:0 0 52px rgba(30,167,255,.44)}
+.step-error{color:#f87171;font-size:.8rem;margin-bottom:12px;padding:8px 12px;background:rgba(239,68,68,.08);border-left:2px solid #f87171;border-radius:0 4px 4px 0}
+
+/* ── PANTALLA DE CARGA DEL PIPELINE ── */
+#pipelineScreen{
+  display:none;
+  min-height:100vh;
+  padding:6rem 2rem;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+#pipelineScreen.active{display:flex}
+.pipeline-logo{height:90px;width:auto;object-fit:contain;filter:drop-shadow(0 0 28px rgba(30,167,255,0.6));margin-bottom:2.5rem;animation:pulse-logo 2.5s ease-in-out infinite}
+@keyframes pulse-logo{0%,100%{filter:drop-shadow(0 0 18px rgba(30,167,255,0.4))}50%{filter:drop-shadow(0 0 40px rgba(30,167,255,0.8))}}
+.pipeline-title{font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:var(--white);letter-spacing:-.04em;margin-bottom:.6rem}
+.pipeline-sub{font-size:.95rem;color:var(--muted);margin-bottom:3rem;max-width:460px}
+
+/* Barra de progreso cinematográfica */
+.pipeline-progress-wrap{width:min(480px,100%);margin:0 auto 1.2rem}
+.pipeline-progress-track{width:100%;height:4px;background:rgba(184,196,217,.1);border-radius:4px;overflow:hidden}
+.pipeline-progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue4));border-radius:4px;width:0%;transition:width .8s cubic-bezier(.4,0,.2,1);box-shadow:0 0 12px rgba(30,167,255,.7)}
+.pipeline-stage-label{font-family:var(--mono);font-size:.72rem;color:var(--blue4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2.5rem;min-height:1.2em}
+
+/* Etapas */
+.stage-list{display:flex;flex-direction:column;gap:10px;width:min(480px,100%);text-align:left}
+.stage-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));transition:all .4s ease}
+.stage-item.running{border-color:var(--blue);background:rgba(30,167,255,.07)}
+.stage-item.done{border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.04)}
+.stage-icon{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:all .4s}
+.stage-item.running .stage-icon{background:rgba(30,167,255,.2);animation:glow-icon 1s ease infinite}
+.stage-item.done .stage-icon{background:rgba(16,185,129,.2)}
+@keyframes glow-icon{0%,100%{box-shadow:0 0 0 0 rgba(30,167,255,.4)}50%{box-shadow:0 0 14px 4px rgba(30,167,255,.2)}}
+.stage-name{font-size:.88rem;font-weight:600;color:var(--silver);flex:1}
+.stage-status{font-family:var(--mono);font-size:.65rem;color:var(--muted2);letter-spacing:.08em}
+.stage-item.running .stage-status{color:var(--blue4)}
+.stage-item.done .stage-status{color:#10b981}
+
+/* Footer */
+footer{padding:2rem;color:var(--muted2);text-align:center;border-top:1px solid rgba(184,196,217,.1);margin-top:4rem}
+.footer-brand{font-family:var(--display);color:var(--white);font-weight:800}
+
+@media(max-width:768px){
+  .studio-hero{padding:7rem 1.2rem 4rem}
+  #studioSection{padding:2rem 1rem 5rem}
+  .step-nav{flex-direction:column-reverse}
+  .btn-next,.btn-submit,.btn-back{width:100%;text-align:center;justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="ai4-approved-logo.png" alt="AI4">
+      <span>
+        <div class="nav-brand-name">AI4 Estudio de Diseño Web</div>
+        <div class="nav-sub">Impulsado por Apropos Group LLC</div>
+      </span>
+    </a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="studio-hero" id="heroSection">
+    <div class="hero-inner">
+      <img class="hero-logo" src="ai4-approved-logo.png" alt="AI4 Estudio de Diseño">
+      <div class="eyebrow">AI4 Constructor de Sitios Web</div>
+      <h1>Tu sitio web,<br><span class="gradient-text">completamente construido en minutos.</span></h1>
+      <p class="hero-sub">Responde 7 preguntas simples sobre tu negocio. AI4 Estudio de Diseño Web escribe el contenido, elige la dirección de diseño y entrega un sitio web completo, listo para publicar.</p>
+      <button class="btn-start" onclick="startStudio()">
+        Construir Mi Sitio Web
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="trust-strip">
+        <div class="trust-item"><span>✓</span> Sin marcadores de posición</div>
+        <div class="trust-item"><span>✓</span> Contenido real escrito</div>
+        <div class="trust-item"><span>✓</span> 4 variaciones de diseño premium</div>
+        <div class="trust-item"><span>✓</span> Listo para publicar</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección del Estudio -->
+  <section id="studioSection">
+    <div class="studio-wrap">
+
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:14.285%"></div></div>
+        <div class="progress-meta">
+          <div class="progress-step-label" id="progressStepLabel">Paso 1 de 7</div>
+          <div class="progress-count" id="progressCount">Pregunta 1</div>
+        </div>
+      </div>
+
+      <!-- P1 — Nombre del Negocio -->
+      <div class="form-step active" data-step="1">
+        <div class="step-q-label">Paso 1 — Identidad</div>
+        <div class="step-question">¿Cuál es el nombre de tu negocio?</div>
+        <div class="step-hint">Esto aparece en todo tu sitio web — títulos, pie de página, pestaña del navegador.</div>
+        <input type="text" class="studio-input" id="q1_businessName" placeholder="Ej. Calefacción Mesa, Estudio Skyline, Grupo Rodríguez" maxlength="80" autocomplete="organization">
+        <div class="step-nav">
+          <div></div>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- P2 — Qué hace tu negocio -->
+      <div class="form-step" data-step="2">
+        <div class="step-q-label">Paso 2 — Tu Negocio</div>
+        <div class="step-question">¿Qué hace tu negocio?</div>
+        <div class="step-hint">¿Qué productos o servicios ofreces? Sé específico — AI4 escribe mejor contenido con más detalles.</div>
+        <textarea class="studio-input" id="q2_whatYouDo" placeholder="Ejemplo: Somos una empresa familiar de HVAC que sirve a Las Vegas. Ofrecemos reparación, instalación y mantenimiento de AC para hogares y pequeños negocios. También hacemos ajustes de calefacción y llamadas de emergencia." maxlength="600"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- P3 — Clientes ideales -->
+      <div class="form-step" data-step="3">
+        <div class="step-q-label">Paso 3 — Tus Clientes</div>
+        <div class="step-question">¿Quiénes son tus clientes ideales?</div>
+        <div class="step-hint">Describe a quién sirves. Ubicación, tipo de persona o tipo de negocio — todo es útil.</div>
+        <textarea class="studio-input" id="q3_customers" placeholder="Ejemplo: Propietarios de hogares y pequeños negocios en el área de Las Vegas y Henderson que necesitan servicio de HVAC rápido y confiable. Principalmente familias y administradores de propiedades." maxlength="400"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- P4 — Diferenciadores -->
+      <div class="form-step" data-step="4">
+        <div class="step-q-label">Paso 4 — Lo Que Te Hace Diferente</div>
+        <div class="step-question">¿Qué te diferencia de la competencia?</div>
+        <div class="step-hint">Piensa en: experiencia, rapidez, garantías, certificaciones, precio, personalidad, área de servicio, especializaciones.</div>
+        <textarea class="studio-input" id="q4_differentiators" placeholder="Ejemplo: Servicio de emergencia 24/7, licenciado y asegurado, 15 años de experiencia, citas el mismo día, garantía de satisfacción al 100%, empresa local y familiar." maxlength="400"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- P5 — CTA Principal -->
+      <div class="form-step" data-step="5">
+        <div class="step-q-label">Paso 5 — Objetivo Principal</div>
+        <div class="step-question">¿Qué quieres que hagan los visitantes cuando lleguen a tu sitio?</div>
+        <div class="step-hint">Elige uno — esto se convierte en el llamado a la acción principal en todo tu sitio.</div>
+        <div class="cta-grid" id="ctaGrid">
+          <button type="button" class="cta-btn" data-value="Llámanos">📞 Llámanos</button>
+          <button type="button" class="cta-btn" data-value="Reservar una cita">📅 Reservar una cita</button>
+          <button type="button" class="cta-btn" data-value="Solicitar cotización">💬 Solicitar cotización</button>
+          <button type="button" class="cta-btn" data-value="Ver nuestros productos">🛒 Ver nuestros productos</button>
+          <button type="button" class="cta-btn" data-value="Más información / contáctanos">✉️ Más información / contáctanos</button>
+        </div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- P6 — Información de contacto -->
+      <div class="form-step" data-step="6">
+        <div class="step-q-label">Paso 6 — Información de Contacto</div>
+        <div class="step-question">¿Cómo pueden contactarte los clientes?</div>
+        <div class="step-hint">Llena lo que aplique — al menos un campo. Esto aparece en tu sección de contacto y pie de página.</div>
+        <div class="contact-grid">
+          <div class="contact-field">
+            <label>Número de Teléfono</label>
+            <input type="tel" class="studio-input" id="q6_phone" placeholder="(702) 555-0100" autocomplete="tel">
+          </div>
+          <div class="contact-field">
+            <label>Correo Electrónico</label>
+            <input type="email" class="studio-input" id="q6_email" placeholder="hola@tunegocio.com" autocomplete="email">
+          </div>
+          <div class="contact-field">
+            <label>Dirección del Negocio</label>
+            <input type="text" class="studio-input" id="q6_address" placeholder="123 Calle Principal, Las Vegas, NV" autocomplete="street-address">
+          </div>
+          <div class="contact-field">
+            <label>Sitio Web Existente (opcional)</label>
+            <input type="url" class="studio-input" id="q6_website" placeholder="https://tunegocio.com">
+          </div>
+          <div class="contact-field">
+            <label>URL de Facebook (opcional)</label>
+            <input type="url" class="studio-input" id="q6_facebook" placeholder="https://facebook.com/tunegocio">
+          </div>
+          <div class="contact-field">
+            <label>URL de Instagram (opcional)</label>
+            <input type="url" class="studio-input" id="q6_instagram" placeholder="https://instagram.com/tunegocio">
+          </div>
+        </div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- P7 — Información adicional -->
+      <div class="form-step" data-step="7">
+        <div class="step-q-label">Paso 7 — Algo Más</div>
+        <div class="step-question">¿Hay algo más que quieras que los visitantes sepan?</div>
+        <div class="step-hint">Opcional — pero cuanto más compartas, más rico será el contenido de tu sitio.</div>
+        <textarea class="studio-input" id="q7_extras" placeholder="Premios, certificaciones, ofertas especiales, horarios, áreas de servicio, tamaño del equipo, año de fundación, una historia que quieras contar..." maxlength="600"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-submit" onclick="submitForm()">
+            Construir Mi Sitio Web →
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PANTALLA DE CARGA DEL PIPELINE -->
+  <div id="pipelineScreen">
+    <img class="pipeline-logo" src="ai4-approved-logo.png" alt="AI4">
+    <div class="pipeline-title">Construyendo tu <span class="gradient-text">sitio web</span></div>
+    <div class="pipeline-sub" id="pipelineSub">AI4 Estudio de Diseño está escribiendo tu contenido, diseñando tu maquetación y ensamblando tu sitio web completo.</div>
+
+    <div class="pipeline-progress-wrap">
+      <div class="pipeline-progress-track">
+        <div class="pipeline-progress-fill" id="pipelineProgressFill"></div>
+      </div>
+    </div>
+    <div class="pipeline-stage-label" id="pipelineStageLabel">Iniciando...</div>
+
+    <div class="stage-list">
+      <div class="stage-item" id="stage-1">
+        <div class="stage-icon">✍️</div>
+        <div class="stage-name">Creando tu mensaje...</div>
+        <div class="stage-status" id="stage-1-status">esperando</div>
+      </div>
+      <div class="stage-item" id="stage-2">
+        <div class="stage-icon">🎨</div>
+        <div class="stage-name">Diseñando tu maquetación...</div>
+        <div class="stage-status" id="stage-2-status">esperando</div>
+      </div>
+      <div class="stage-item" id="stage-3">
+        <div class="stage-icon">🏗️</div>
+        <div class="stage-name">Construyendo tus secciones...</div>
+        <div class="stage-status" id="stage-3-status">esperando</div>
+      </div>
+      <div class="stage-item" id="stage-4">
+        <div class="stage-icon">✨</div>
+        <div class="stage-name">Puliendo tu contenido...</div>
+        <div class="stage-status" id="stage-4-status">esperando</div>
+      </div>
+      <div class="stage-item" id="stage-5">
+        <div class="stage-icon">🚀</div>
+        <div class="stage-name">Renderizando tu sitio web...</div>
+        <div class="stage-status" id="stage-5-status">esperando</div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="siteFooter">
+    <div class="footer-brand">AI4 Estudio de Diseño Web</div>
+    <div style="margin-top:.3rem;font-size:.85rem">© 2026 Apropos Group LLC</div>
+  </footer>
+
+</div><!-- /page-shell -->
+
+<script>
+// ── Estado ─────────────────────────────────────────────────────────
+const TOTAL_STEPS = 7;
+let currentStep = 1;
+const answers = {};
+let selectedStyle = 'auto-infer-platinum';
+let selectedCta = null;
+
+// ── Iniciar ────────────────────────────────────────────────────────
+function startStudio() {
+  document.getElementById('heroSection').style.display = 'none';
+  document.getElementById('studioSection').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Progreso ───────────────────────────────────────────────────────
+function updateProgress() {
+  const pct = (currentStep / TOTAL_STEPS) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressStepLabel').textContent = `Paso ${currentStep} de ${TOTAL_STEPS}`;
+  document.getElementById('progressCount').textContent = `Pregunta ${currentStep}`;
+}
+
+// ── Navegación ─────────────────────────────────────────────────────
+function nextStep() {
+  if (!validateStep(currentStep)) return;
+  collectStep(currentStep);
+  document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep++;
+  document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevStep() {
+  if (currentStep <= 1) return;
+  document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep--;
+  document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Validación ─────────────────────────────────────────────────────
+function validateStep(step) {
+  clearError(step);
+  if (step === 1) {
+    const v = document.getElementById('q1_businessName').value.trim();
+    if (!v) { showError(step, 'Por favor ingresa el nombre de tu negocio.'); return false; }
+  }
+  if (step === 2) {
+    const v = document.getElementById('q2_whatYouDo').value.trim();
+    if (v.length < 20) { showError(step, 'Por favor describe tu negocio con un poco más de detalle.'); return false; }
+  }
+  if (step === 3) {
+    const v = document.getElementById('q3_customers').value.trim();
+    if (!v) { showError(step, 'Por favor describe a tus clientes ideales.'); return false; }
+  }
+  if (step === 4) {
+    const v = document.getElementById('q4_differentiators').value.trim();
+    if (!v) { showError(step, 'Por favor comparte qué te hace diferente.'); return false; }
+  }
+  if (step === 5) {
+    if (!selectedCta) { showError(step, 'Por favor elige qué quieres que hagan los visitantes.'); return false; }
+  }
+  if (step === 6) {
+    const phone = document.getElementById('q6_phone').value.trim();
+    const email = document.getElementById('q6_email').value.trim();
+    const address = document.getElementById('q6_address').value.trim();
+    if (!phone && !email && !address) { showError(step, 'Por favor ingresa al menos un método de contacto.'); return false; }
+  }
+  return true;
+}
+
+function showError(step, msg) {
+  const stepEl = document.querySelector(`[data-step="${step}"]`);
+  let err = stepEl.querySelector('.step-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.className = 'step-error';
+    stepEl.querySelector('.step-nav').before(err);
+  }
+  err.textContent = msg;
+}
+
+function clearError(step) {
+  const stepEl = document.querySelector(`[data-step="${step}"]`);
+  const err = stepEl.querySelector('.step-error');
+  if (err) err.remove();
+}
+
+// ── Recolectar ─────────────────────────────────────────────────────
+function collectStep(step) {
+  const fields = {
+    1: () => { answers.businessName = document.getElementById('q1_businessName').value.trim(); },
+    2: () => { answers.whatYouDo = document.getElementById('q2_whatYouDo').value.trim(); },
+    3: () => { answers.customers = document.getElementById('q3_customers').value.trim(); },
+    4: () => { answers.differentiators = document.getElementById('q4_differentiators').value.trim(); },
+    5: () => { answers.primaryCta = selectedCta; },
+    6: () => {
+      answers.phone = document.getElementById('q6_phone').value.trim();
+      answers.email = document.getElementById('q6_email').value.trim();
+      answers.address = document.getElementById('q6_address').value.trim();
+      answers.website = document.getElementById('q6_website').value.trim();
+      answers.facebook = document.getElementById('q6_facebook').value.trim();
+      answers.instagram = document.getElementById('q6_instagram').value.trim();
+    },
+    7: () => {
+      answers.extras = document.getElementById('q7_extras').value.trim();
+      answers.style = 'auto-infer-platinum';
+      answers.designMode = 'ai4-auto-infer';
+    },
+  };
+  if (fields[step]) fields[step]();
+}
+
+// ── Selector de CTA ────────────────────────────────────────────────
+document.getElementById('ctaGrid').querySelectorAll('.cta-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('ctaGrid').querySelectorAll('.cta-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedCta = btn.dataset.value;
+  });
+});
+
+// ── Envío y Pipeline ───────────────────────────────────────────────
+async function submitForm() {
+  if (!validateStep(7)) return;
+  collectStep(7);
+  answers.style = 'auto-infer-platinum';
+  answers.designMode = 'ai4-auto-infer';
+
+  // Ocultar estudio, mostrar pipeline
+  document.getElementById('studioSection').style.display = 'none';
+  document.getElementById('siteFooter').style.display = 'none';
+  const pipelineEl = document.getElementById('pipelineScreen');
+  pipelineEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Iniciar animación de progreso cinematográfica
+  animatePipeline();
+
+  try {
+    const response = await fetch('/.netlify/functions/generate-website', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers })
+    });
+
+    if (!response.ok) throw new Error(`La función devolvió ${response.status}`);
+    const data = await response.json();
+    completePipeline(data);
+
+  } catch (err) {
+    console.warn('Error en función del pipeline, usando respaldo del cliente:', err);
+    const fallback = buildClientFallback(answers);
+    completePipeline(fallback);
+  }
+}
+
+// ── Animación del pipeline ─────────────────────────────────────────
+const STAGE_LABELS = [
+  'Creando tu mensaje...',
+  'Diseñando tu maquetación...',
+  'Construyendo tus secciones...',
+  'Puliendo tu contenido...',
+  'Renderizando tu sitio web...'
+];
+const STAGE_DELAYS  = [0,    3000, 6000, 9000,  12000];
+const STAGE_DONE_AT = [2500, 5500, 8500, 11500, 15000];
+const STAGE_PROGRESS = [20, 40, 60, 80, 95];
+
+let pipelineDone = false;
+const pipelineTimers = [];
+
+function animatePipeline() {
+  STAGE_DELAYS.forEach((delay, i) => {
+    pipelineTimers.push(setTimeout(() => {
+      if (pipelineDone) return;
+      setStage(i + 1, 'running');
+      document.getElementById('pipelineStageLabel').textContent = STAGE_LABELS[i];
+      document.getElementById('pipelineProgressFill').style.width = STAGE_PROGRESS[i] + '%';
+    }, delay));
+
+    pipelineTimers.push(setTimeout(() => {
+      if (pipelineDone) return;
+      setStage(i + 1, 'done');
+    }, STAGE_DONE_AT[i]));
+  });
+}
+
+function setStage(n, state) {
+  const el = document.getElementById(`stage-${n}`);
+  const statusEl = document.getElementById(`stage-${n}-status`);
+  if (!el) return;
+  el.classList.remove('running', 'done');
+  if (state === 'running') { el.classList.add('running'); statusEl.textContent = 'procesando...'; }
+  if (state === 'done') { el.classList.add('done'); statusEl.textContent = 'completo ✓'; }
+}
+
+function completePipeline(data) {
+  if (pipelineDone) return;
+  pipelineDone = true;
+  pipelineTimers.forEach(clearTimeout);
+
+  for (let i = 1; i <= 5; i++) setStage(i, 'done');
+  document.getElementById('pipelineProgressFill').style.width = '100%';
+  document.getElementById('pipelineStageLabel').textContent = '¡Tu sitio web está listo!';
+
+  persistData(data, answers);
+
+  setTimeout(() => {
+    window.location.href = 'ai4-design-studio-preview.html';
+  }, 1200);
+}
+
+// ── Persistir datos ────────────────────────────────────────────────
+function persistData(data, rawAnswers) {
+  try {
+    sessionStorage.setItem('ai4DesignBrief', JSON.stringify(data.brief || data));
+    sessionStorage.setItem('ai4_design_brief', JSON.stringify(data.brief || data));
+    sessionStorage.setItem('ai4_built_html', data.html || buildClientFallback(rawAnswers).html);
+    if (data.templates && Array.isArray(data.templates)) {
+      sessionStorage.setItem('ai4_templates', JSON.stringify(data.templates));
+      sessionStorage.setItem('ai4_active_template', '0');
+    }
+    sessionStorage.setItem('ai4_site_data', JSON.stringify({
+      source: 'ai4-design-studio',
+      businessName: rawAnswers.businessName,
+      business_name: rawAnswers.businessName,
+      websitePurpose: 'Sitio Web de Negocio',
+      primaryGoal: rawAnswers.primaryCta,
+      designSystem: rawAnswers.style || 'auto-infer-platinum',
+      creativeDirection: rawAnswers.whatYouDo,
+      sectionPlan: data.brief?.sectionPlan || [],
+      qualityScore: data.brief?.qualityScore || 88
+    }));
+  } catch (e) {
+    console.warn('Error al guardar en sessionStorage:', e);
+  }
+}
+
+// ── Respaldo del cliente ───────────────────────────────────────────
+function inferClientStyle(a) {
+  const text = `${a.businessName || ''} ${a.whatYouDo || ''} ${a.customers || ''} ${a.differentiators || ''} ${a.extras || ''}`.toLowerCase();
+  if (/(música|musica|música|estudio|grabación|grabacion|artista|productor|beats|gospel|hip-hop|rap|soul|music|studio|recording|artist|producer)/.test(text)) return 'dark-premium';
+  if (/(salón|salon|belleza|spa|cabello|peluquer|estética|estetica|barbero|barber|beauty|hair)/.test(text)) return 'warm-trustworthy';
+  if (/(restaurante|restaurant|comida|food|cafe|chef|catering|menú|menu)/.test(text)) return 'warm-trustworthy';
+  if (/(fitness|gimnasio|gym|entrenador|trainer|coach|deporte|sport|rendimiento|performance)/.test(text)) return 'bold-energetic';
+  return 'dark-premium';
+}
+
+function buildClientFallback(a) {
+  const name = a.businessName || 'Tu Negocio';
+  const phone = a.phone || '';
+  const email = a.email || '';
+  const address = a.address || '';
+  const cta = a.primaryCta || 'Contáctanos';
+
+  const styleMap = {
+    'dark-premium':      { bg:'#030816', bg2:'#07172d', text:'#F5F8FF', muted:'#90A3BC', accent:'#1EA7FF', accent2:'#5BD3FF', panel:'rgba(8,24,47,.8)', heading:'Syne', body:'Inter' },
+    'light-professional':{ bg:'#ffffff', bg2:'#f8fafc', text:'#0f172a', muted:'#64748b', accent:'#2563eb', accent2:'#60a5fa', panel:'#f1f5f9', heading:'Inter',  body:'Inter' },
+    'bold-energetic':    { bg:'#0d0118', bg2:'#1a0533', text:'#faf5ff', muted:'#c4b5fd', accent:'#7c3aed', accent2:'#f59e0b', panel:'rgba(124,58,237,.15)', heading:'Syne', body:'Inter' },
+    'warm-trustworthy':  { bg:'#1c1208', bg2:'#2d1a07', text:'#fef3c7', muted:'#d97706', accent:'#f59e0b', accent2:'#fbbf24', panel:'rgba(120,53,15,.5)',  heading:'Syne', body:'Inter' }
+  };
+  const inferredStyle = (!a.style || a.style === 'auto-infer-platinum') ? inferClientStyle(a) : a.style;
+  const s = styleMap[inferredStyle] || styleMap['dark-premium'];
+
+  const templateHtml = buildTemplate(a, s, name, phone, email, address, cta);
+
+  const brief = {
+    brandName: name,
+    qualityScore: 88,
+    status: 'approved',
+    websitePurpose: 'Sitio Web de Negocio',
+    recommendedDesignSystem: inferredStyle || 'dark-premium',
+    creativeDirection: a.whatYouDo,
+    colorSystem: { primary: s.accent, secondary: s.bg2, accent: s.accent2, background: s.bg, surface: s.panel, colorMoodDescription: `Tema ${inferredStyle}` },
+    typographySystem: { headingFont: s.heading, bodyFont: s.body, typographyRationale: `Combinación ${s.heading} + ${s.body}` },
+    sectionPlan: [
+      { sectionName: 'Hero', headlineDirection: `Apertura audaz para ${name}` },
+      { sectionName: 'Servicios', headlineDirection: 'Lo que ofreces' },
+      { sectionName: '¿Por qué nosotros?', headlineDirection: 'Tus diferenciadores' },
+      { sectionName: 'Testimonios', headlineDirection: 'Prueba social' },
+      { sectionName: 'Contacto', headlineDirection: 'Ponerse en contacto' }
+    ],
+    ctaStrategy: { primary: cta, secondary: 'Más información' }
+  };
+
+  return { html: templateHtml, brief, templates: [templateHtml] };
+}
+
+function buildTemplate(a, s, name, phone, email, address, cta) {
+  const esc = str => String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const ph = phone ? `<a href="tel:${esc(phone)}" style="color:${s.accent}">${esc(phone)}</a>` : '';
+  const em = email ? `<a href="mailto:${esc(email)}" style="color:${s.accent}">${esc(email)}</a>` : '';
+  const fb = a.facebook ? `<a href="${esc(a.facebook)}" target="_blank" rel="noopener" style="color:${s.accent}">Facebook</a>` : '';
+  const ig = a.instagram ? `<a href="${esc(a.instagram)}" target="_blank" rel="noopener" style="color:${s.accent}">Instagram</a>` : '';
+  return `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>${esc(name)}</title>
+<link href="https://fonts.googleapis.com/css2?family=${encodeURIComponent(s.heading)}:wght@600;700;800&family=${encodeURIComponent(s.body)}:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'${s.body}',sans-serif;background:${s.bg};color:${s.text};line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:100;background:${s.bg};border-bottom:1px solid rgba(128,128,128,.15);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(12px)}
+.nav-logo{font-family:'${s.heading}',sans-serif;font-size:1.2rem;font-weight:800;color:${s.text}}
+.nav-cta{background:${s.accent};color:${s.bg};padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.88rem;cursor:pointer;border:none}
+.hero{min-height:90vh;display:flex;align-items:center;padding:5rem 2rem;background:radial-gradient(circle at 20% 50%,${s.accent}22,transparent 50%)}
+.hero-inner{max-width:960px;margin:0 auto}
+.hero h1{font-family:'${s.heading}',sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-.04em;color:${s.text};margin-bottom:1.5rem}
+.hero p{font-size:1.15rem;color:${s.muted};max-width:580px;margin-bottom:2.5rem;line-height:1.7}
+.btn-hero{display:inline-flex;align-items:center;gap:.6rem;background:${s.accent};color:${s.bg};padding:1rem 2rem;border-radius:999px;font-weight:800;font-size:1rem;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 0 32px ${s.accent}44}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 0 48px ${s.accent}66}
+.section{padding:5rem 2rem}
+.section-inner{max-width:960px;margin:0 auto}
+.section-label{font-family:'${s.body}',monospace;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:${s.accent};margin-bottom:1rem}
+.section h2{font-family:'${s.heading}',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:${s.text};margin-bottom:1.2rem;letter-spacing:-.03em}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:2.5rem}
+.service-card{background:${s.panel};border:1px solid rgba(128,128,128,.15);border-radius:20px;padding:28px;transition:transform .2s}
+.service-card:hover{transform:translateY(-3px)}
+.service-icon{font-size:2rem;margin-bottom:12px}
+.service-card h3{font-family:'${s.heading}',sans-serif;font-size:1.15rem;font-weight:700;color:${s.text};margin-bottom:8px}
+.service-card p{font-size:.9rem;color:${s.muted};line-height:1.6}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:2rem}
+.why-item{display:flex;gap:12px;align-items:flex-start}
+.why-check{color:${s.accent};font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.why-text h4{font-weight:700;color:${s.text};margin-bottom:4px;font-size:.95rem}
+.why-text p{font-size:.85rem;color:${s.muted}}
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:2rem}
+.testimonial{background:${s.panel};border:1px solid rgba(128,128,128,.1);border-radius:16px;padding:24px}
+.testimonial-quote{font-size:.95rem;color:${s.muted};line-height:1.65;margin-bottom:16px;font-style:italic}
+.testimonial-author{font-weight:700;color:${s.text};font-size:.88rem}
+.testimonial-title{font-size:.8rem;color:${s.accent};margin-top:2px}
+.cta-section{background:radial-gradient(circle at 50% 50%,${s.accent}18,transparent 70%);padding:5rem 2rem;text-align:center}
+.cta-section h2{font-family:'${s.heading}',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:${s.text};margin-bottom:1rem}
+.cta-section p{font-size:1.05rem;color:${s.muted};margin-bottom:2.5rem}
+.contact-section{padding:5rem 2rem;border-top:1px solid rgba(128,128,128,.12)}
+.contact-inner{max-width:700px;margin:0 auto;text-align:center}
+.contact-details{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-top:2rem}
+.contact-item{display:flex;flex-direction:column;gap:4px;font-size:.95rem}
+.contact-item span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:${s.accent};font-weight:700}
+footer{padding:2rem;text-align:center;font-size:.85rem;color:${s.muted};border-top:1px solid rgba(128,128,128,.1)}
+@media(max-width:768px){
+  .hero h1{font-size:2.6rem}
+  nav{padding:.8rem 1rem}
+  .section{padding:3.5rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">${esc(name)}</div>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">${esc(cta)}</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="section-label">${esc(name)}</div>
+    <h1>Estamos aquí cuando<br>más nos necesitas.</h1>
+    <p>${esc(a.whatYouDo)}</p>
+    <button class="btn-hero" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      ${esc(cta)}
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-label">Lo Que Ofrecemos</div>
+    <h2>Servicios diseñados para tus necesidades.</h2>
+    <p style="color:${s.muted};max-width:560px">Todo lo que hacemos está diseñado para facilitar tu vida y mantener tu hogar o negocio funcionando sin problemas.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">⚡</div><h3>Respuesta Rápida</h3><p>Llegamos cuando lo prometemos. Servicio de emergencia y el mismo día disponible.</p></div>
+      <div class="service-card"><div class="service-icon">🛡️</div><h3>Licenciado y Asegurado</h3><p>Profesionales completamente certificados que se enorgullecen de la calidad en cada trabajo.</p></div>
+      <div class="service-card"><div class="service-icon">💰</div><h3>Precios Justos</h3><p>Cotizaciones transparentes sin sorpresas. Sabrás exactamente cuánto pagas antes de comenzar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about" style="background:${s.panel}">
+  <div class="section-inner">
+    <div class="section-label">¿Por Qué Elegirnos?</div>
+    <h2>Qué hace diferente a ${esc(name)}.</h2>
+    <div class="why-grid" style="margin-top:2rem">
+      ${(a.differentiators || '').split(/[,\.]+/).filter(d => d.trim().length > 3).slice(0,6).map(d =>
+        `<div class="why-item"><div class="why-check">✓</div><div class="why-text"><h4>${esc(d.trim())}</h4><p>Respaldamos todo lo que hacemos.</p></div></div>`
+      ).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-label">Lo Que Dicen los Clientes</div>
+    <h2>Resultados reales, personas reales.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial"><p class="testimonial-quote">"Servicio absolutamente increíble. Llegaron a tiempo, explicaron todo y dejaron el lugar impecable. Los volveré a contratar sin dudarlo."</p><div class="testimonial-author">María G.</div><div class="testimonial-title">Dueña de Casa</div></div>
+      <div class="testimonial"><p class="testimonial-quote">"He trabajado con muchas empresas a lo largo de los años y ${esc(name)} es la única en la que confío completamente. Profesionales, rápidos y justos."</p><div class="testimonial-author">Carlos R.</div><div class="testimonial-title">Dueño de Pequeño Negocio</div></div>
+      <div class="testimonial"><p class="testimonial-quote">"Llamé a las 8pm con una emergencia y llegaron en menos de una hora. No tengo palabras suficientes de elogio. Verdaderamente por encima y más allá."</p><div class="testimonial-author">Sandra M.</div><div class="testimonial-title">Administradora de Propiedades</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="section-label">Empieza Hoy</div>
+  <h2>¿Listo para obtener la ayuda que necesitas?</h2>
+  <p>No esperes — contáctanos ahora y nosotros nos encargamos del resto.</p>
+  <button class="btn-hero" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">${esc(cta)}</button>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Contacto</div>
+    <h2 style="font-family:'${s.heading}',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:${s.text};margin-bottom:.8rem">${esc(name)}</h2>
+    <p style="color:${s.muted};margin-bottom:1.5rem">Nos encantaría saber de ti. Contáctanos por cualquiera de los métodos a continuación.</p>
+    <div class="contact-details">
+      ${phone ? `<div class="contact-item"><span>Teléfono</span>${ph}</div>` : ''}
+      ${email ? `<div class="contact-item"><span>Correo</span>${em}</div>` : ''}
+      ${address ? `<div class="contact-item"><span>Dirección</span><span style="color:${s.text}">${esc(address)}</span></div>` : ''}
+      ${fb ? `<div class="contact-item"><span>Facebook</span>${fb}</div>` : ''}
+      ${ig ? `<div class="contact-item"><span>Instagram</span>${ig}</div>` : ''}
+    </div>
+    ${a.extras ? `<p style="margin-top:2rem;font-size:.9rem;color:${s.muted};max-width:500px;margin-left:auto;margin-right:auto">${esc(a.extras)}</p>` : ''}
+  </div>
+</section>
+
+<footer>
+  <strong style="color:${s.text}">${esc(name)}</strong><br>
+  © ${new Date().getFullYear()} ${esc(name)}. Todos los derechos reservados.
+  ${phone ? ` · ${esc(phone)}` : ''}${email ? ` · ${esc(email)}` : ''}
+</footer>
+
+</body>
+</html>`;
+}
+</script>
+</body>
+</html>

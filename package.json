@@ -8,11 +8,13 @@
     "dev": "netlify dev"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.20.0",
     "@supabase/supabase-js": "^2.105.4",
-    "stripe": "^14.0.0"
+    "stripe": "^14.0.0",
+    "ws": "^8.18.0"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "author": "Apropos Group LLC",
   "license": "PRIVATE"
