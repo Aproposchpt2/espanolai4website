@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bienvenido de Vuelta — AI4 Diseño de Sitios Web</title>
+<meta name="description" content="Panel de miembro de AI4 Diseño de Sitios Web para estado del paquete, estado de Gestión del Sitio y construcciones restantes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#030816;
+  --bg2:#061225;
+  --panel:rgba(8,24,47,.72);
+  --line:rgba(184,196,217,.14);
+  --line-strong:rgba(45,184,255,.34);
+  --blue:#1EA7FF;
+  --blue2:#2DB8FF;
+  --blue4:#5BD3FF;
+  --silver:#D5DEEA;
+  --white:#F5F8FF;
+  --muted:#AEBED3;
+  --muted2:#90A3BC;
+  --display:'Syne',sans-serif;
+  --sans:'Inter',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(30,167,255,.18),transparent 26%),
+    radial-gradient(circle at 82% 10%,rgba(91,211,255,.10),transparent 30%),
+    linear-gradient(180deg,var(--bg) 0%,#02050e 52%,var(--bg2) 100%);
+  color:var(--muted);
+  font-family:var(--sans);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(45,184,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(45,184,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.18) 58%,rgba(0,0,0,.05));
+}
+a{color:inherit}
+button{font:inherit}
+.shell{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
+nav{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:.75rem clamp(1rem,4vw,2.5rem);
+  background:rgba(3,8,22,.82);
+  backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(184,196,217,.11);
+}
+.brand{display:flex;align-items:center;gap:.78rem;text-decoration:none;color:var(--white);min-width:0}
+.brand img{
+  width:58px;
+  height:36px;
+  border-radius:12px;
+  object-fit:cover;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(91,211,255,.22);
+  box-shadow:0 0 24px rgba(30,167,255,.18);
+}
+.brand-name{font-family:var(--display);font-size:.92rem;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.brand-sub{display:block;font-family:var(--mono);font-size:.58rem;color:var(--muted2);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.nav-actions{display:flex;align-items:center;gap:.7rem}
+.nav-link,.nav-button{
+  color:var(--muted);
+  font-size:.84rem;
+  font-weight:800;
+  text-decoration:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.nav-link:hover,.nav-button:hover{color:var(--white)}
+main{flex:1;padding:clamp(2rem,5vw,4.5rem) 1rem}
+.container{width:min(1120px,100%);margin:0 auto}
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(280px,.42fr);
+  gap:1rem;
+  align-items:stretch;
+  margin-bottom:1rem;
+}
+.panel{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:32px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.018)),
+    var(--panel);
+  box-shadow:0 28px 90px rgba(0,0,0,.42);
+}
+.panel::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.12),transparent 24%),
+    radial-gradient(circle at 20% 0%,rgba(45,184,255,.18),transparent 34%);
+  opacity:.88;
+}
+.panel>*{position:relative;z-index:1}
+.hero-card{padding:clamp(1.35rem,4vw,2.4rem)}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  font-family:var(--mono);
+  font-size:.72rem;
+  font-weight:700;
+  color:var(--blue4);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.eyebrow::before{
+  content:'';
+  width:34px;
+  height:1px;
+  background:linear-gradient(90deg,var(--blue),transparent);
+  box-shadow:0 0 16px rgba(30,167,255,.65);
+}
+h1{
+  color:var(--white);
+  font-family:var(--display);
+  font-size:clamp(2.35rem,6vw,4.5rem);
+  line-height:.98;
+  letter-spacing:-.065em;
+  margin-bottom:1rem;
+}
+.copy{color:var(--silver);max-width:720px;font-size:1.03rem}
+.status-card{padding:1.25rem;display:grid;align-content:center;gap:.75rem}
+.kpi{
+  border:1px solid rgba(91,211,255,.17);
+  border-radius:20px;
+  padding:1rem;
+  background:rgba(255,255,255,.035);
+}
+.kpi-label{font-family:var(--mono);font-size:.66rem;color:var(--muted2);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.3rem}
+.kpi-value{font-family:var(--display);font-size:2.2rem;color:var(--white);letter-spacing:-.06em;line-height:1}
+.kpi-note{font-size:.84rem;color:var(--muted);margin-top:.35rem}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+.card{padding:1.35rem;min-height:220px}
+.card h2{font-family:var(--display);font-size:1.32rem;color:var(--white);letter-spacing:-.04em;margin-bottom:.55rem}
+.card p{font-size:.92rem;color:var(--muted);margin-bottom:.9rem}
+.detail-list{display:grid;gap:.55rem;margin-top:1rem}
+.detail{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  border:1px solid rgba(184,196,217,.11);
+  border-radius:14px;
+  padding:.72rem .8rem;
+  background:rgba(255,255,255,.025);
+}
+.detail span:first-child{color:var(--muted2);font-size:.82rem}
+.detail span:last-child{color:var(--silver);font-weight:800;text-align:right;font-size:.82rem}
+.btn-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1rem}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  border-radius:999px;
+  padding:.7rem 1rem;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-weight:900;
+  font-size:.86rem;
+}
+.btn-primary{
+  color:#03101f;
+  background:linear-gradient(135deg,var(--white),var(--blue4) 44%,var(--blue));
+  border-color:rgba(245,248,255,.58);
+  box-shadow:0 0 30px rgba(30,167,255,.28),inset 0 1px 0 rgba(255,255,255,.74);
+}
+.btn-secondary{
+  color:var(--white);
+  background:rgba(255,255,255,.045);
+  border-color:rgba(213,222,234,.18);
+}
+.loading,.empty,.error{
+  width:min(760px,100%);
+  margin:2rem auto 0;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(255,255,255,.04);
+  padding:1.25rem;
+  color:var(--silver);
+}
+.error{border-color:rgba(248,113,113,.25);background:rgba(248,113,113,.08);color:#fecaca}
+.hidden{display:none!important}
+footer{padding:1.5rem;text-align:center;color:var(--muted2);font-size:.82rem}
+@media(max-width:980px){
+  .hero,.grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  nav{min-height:68px;padding:.65rem 1rem}
+  .brand-sub{display:none}
+  .brand img{width:48px;height:30px}
+  .nav-actions{gap:.55rem}
+  .nav-link,.nav-button{font-size:.78rem}
+  .card,.hero-card{padding:1.05rem}
+  .detail{display:grid;gap:.25rem}
+  .detail span:last-child{text-align:left}
+  .btn{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav>
+    <a class="brand" href="index.html" aria-label="AI4 Diseño de Sitios Web inicio">
+      <img src="ai4-approved-logo.png" alt="AI4 Diseño de Sitios Web logo">
+      <span>
+        <span class="brand-name">AI4 Diseño de Sitios Web</span>
+        <span class="brand-sub">Panel de Miembro</span>
+      </span>
+    </a>
+    <div class="nav-actions">
+      <a class="nav-link" href="build.html">Construir</a>
+      <button class="nav-button" type="button" onclick="signOut()">Cerrar Sesión</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div id="loading" class="loading">Cargando tu panel de miembro...</div>
+      <div id="errorBox" class="error hidden"></div>
+
+      <div id="dashboard" class="hidden">
+        <section class="hero">
+          <div class="hero-card panel">
+            <div class="eyebrow">Bienvenido de Vuelta</div>
+            <h1 id="welcomeTitle">Bienvenido de vuelta.</h1>
+            <p class="copy">Usa esta página para revisar el estado de tu paquete, estado del Plan de Cuidado y acciones disponibles de miembro.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="build.html" id="buildBtn">Continuar a Construir</a>
+              <a class="btn btn-secondary" href="mailto:jmitchell@ai4websitedesign.com?subject=Solicitud%20de%20Cambio%20AI4%20Gesti%C3%B3n%20del%20Sitio" id="changeRequestBtn">Enviar Solicitud de Cambio</a>
+            </div>
+          </div>
+
+          <aside class="status-card panel">
+            <div class="kpi">
+              <div class="kpi-label">Construcciones Restantes</div>
+              <div class="kpi-value" id="remainingBuilds">—</div>
+              <div class="kpi-note" id="remainingNote">Disponible para miembros del paquete empresarial.</div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="grid" aria-label="Resumen de cuenta de miembro">
+          <article class="card panel">
+            <h2>Paquete de Sitio Web</h2>
+            <p id="packageSummary">Verificando estado del paquete...</p>
+            <div class="detail-list">
+              <div class="detail"><span>Plan</span><span id="packagePlan">—</span></div>
+              <div class="detail"><span>Estado</span><span id="packageStatus">—</span></div>
+              <div class="detail"><span>Sitios Permitidos</span><span id="sitesAllowed">—</span></div>
+              <div class="detail"><span>Sitios Usados</span><span id="sitesUsed">—</span></div>
+            </div>
+          </article>
+
+          <article class="card panel">
+            <h2>Gestión del Sitio</h2>
+            <p id="subscriptionSummary">Verificando estado del Plan de Cuidado...</p>
+            <div class="detail-list">
+              <div class="detail"><span>Plan</span><span id="subscriptionPlan">—</span></div>
+              <div class="detail"><span>Estado</span><span id="subscriptionStatus">—</span></div>
+              <div class="detail"><span>Actualizaciones / Mes</span><span id="updatesAllowed">—</span></div>
+              <div class="detail"><span>Solicitudes de Cambio</span><span id="changeRequestStatus">—</span></div>
+            </div>
+          </article>
+
+          <article class="card panel">
+            <h2>Tu Actividad de Sitio Web</h2>
+            <p id="activitySummary">Revisa los registros de sitios lanzados o en progreso conectados a esta cuenta.</p>
+            <div class="detail-list" id="siteList">
+              <div class="detail"><span>Sitios Encontrados</span><span id="sitesFound">—</span></div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>© 2026 Apropos Group LLC · espanola.ai4websitedesign.com</footer>
+</div>
+
+<script>
+'use strict';
+
+const loading = document.getElementById('loading');
+const errorBox = document.getElementById('errorBox');
+const dashboard = document.getElementById('dashboard');
+
+function getStoredEmail() {
+  try {
+    return sessionStorage.getItem('ai4_portal_email') || localStorage.getItem('ai4_portal_email') || '';
+  } catch(e) {
+    return '';
+  }
+}
+
+function signOut() {
+  try {
+    sessionStorage.removeItem('ai4_portal_email');
+    sessionStorage.removeItem('ai4_portal_name');
+    localStorage.removeItem('ai4_portal_email');
+    localStorage.removeItem('ai4_portal_name');
+  } catch(e) {}
+  window.location.href = 'login.html';
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value === null || value === undefined || value === '' ? '—' : String(value);
+}
+
+function statusLabel(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return 'No activo';
+  return raw.charAt(0).toUpperCase() + raw.slice(1).replace(/_/g, ' ');
+}
+
+function displayMoney(value) {
+  const num = Number(value || 0);
+  if (!num) return '';
+  return '$' + num.toFixed(2);
+}
+
+function showError(message) {
+  loading.classList.add('hidden');
+  dashboard.classList.add('hidden');
+  errorBox.textContent = message;
+  errorBox.classList.remove('hidden');
+}
+
+function renderSites(sites) {
+  const siteList = document.getElementById('siteList');
+  siteList.innerHTML = '';
+  const count = Array.isArray(sites) ? sites.length : 0;
+
+  const countRow = document.createElement('div');
+  countRow.className = 'detail';
+  countRow.innerHTML = '<span>Sitios Encontrados</span><span>' + count + '</span>';
+  siteList.appendChild(countRow);
+
+  if (!count) return;
+
+  sites.slice(0, 4).forEach((site, index) => {
+    const label = site.domain_name || site.business_name || site.site_name || ('Sitio ' + (index + 1));
+    const status = site.site_status || site.status || 'Registrado';
+    const row = document.createElement('div');
+    row.className = 'detail';
+    row.innerHTML = '<span>' + label + '</span><span>' + statusLabel(status) + '</span>';
+    siteList.appendChild(row);
+  });
+}
+
+function renderDashboard(data) {
+  const user = data.user || {};
+  const pkg = data.package || {};
+  const sub = data.subscription || {};
+  const builds = data.builds || {};
+  const sites = data.sites || [];
+
+  const customerName = user.full_name || user.name || data.email || 'Miembro';
+  setText('welcomeTitle', 'Bienvenido de vuelta, ' + customerName + '.');
+
+  if (pkg.hasPackage) {
+    const amount = displayMoney(pkg.amount_paid);
+    setText('packageSummary', amount ? 'Tu paquete de sitio web más reciente está activo con una compra registrada de ' + amount + '.' : 'Tu paquete de sitio web más reciente está activo.');
+    setText('packagePlan', pkg.plan_name || 'Paquete de Sitio Web');
+    setText('packageStatus', statusLabel(pkg.status || 'active'));
+    setText('sitesAllowed', builds.allowed);
+    setText('sitesUsed', builds.used);
+  } else {
+    setText('packageSummary', 'No se encontró un paquete de sitio web activo para este correo.');
+    setText('packagePlan', 'Sin paquete activo');
+    setText('packageStatus', 'No activo');
+    setText('sitesAllowed', '—');
+    setText('sitesUsed', '—');
+  }
+
+  if (builds.allowed > 0) {
+    setText('remainingBuilds', builds.remaining);
+    setText('remainingNote', builds.remaining + ' de ' + builds.allowed + ' construcciones disponibles.');
+  } else {
+    setText('remainingBuilds', '—');
+    setText('remainingNote', 'Disponible después de una compra de paquete de sitio web elegible.');
+  }
+
+  if (sub.hasSubscription) {
+    setText('subscriptionSummary', 'Tu suscripción de Gestión del Sitio está activa o registrada en el sistema.');
+    setText('subscriptionPlan', sub.plan_name || 'Gestión del Sitio');
+    setText('subscriptionStatus', statusLabel(sub.status || 'active'));
+    setText('updatesAllowed', sub.updates_allowed || '—');
+    setText('changeRequestStatus', 'Disponible');
+    document.getElementById('changeRequestBtn').style.display = 'inline-flex';
+  } else {
+    setText('subscriptionSummary', 'No se encontró suscripción activa de Gestión del Sitio para este correo.');
+    setText('subscriptionPlan', 'Sin Plan de Cuidado activo');
+    setText('subscriptionStatus', 'No activo');
+    setText('updatesAllowed', '—');
+    setText('changeRequestStatus', 'Requiere Plan de Cuidado activo');
+    document.getElementById('changeRequestBtn').style.display = 'none';
+  }
+
+  renderSites(sites);
+
+  loading.classList.add('hidden');
+  errorBox.classList.add('hidden');
+  dashboard.classList.remove('hidden');
+}
+
+async function loadPortal() {
+  const email = getStoredEmail();
+  if (!email) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  try {
+    const res = await fetch('/.netlify/functions/get_portal?email=' + encodeURIComponent(email));
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+      throw new Error(data.error || 'No se pudo cargar tu panel de miembro.');
+    }
+
+    renderDashboard(data);
+  } catch (err) {
+    showError(err.message || 'No se pudo cargar tu panel de miembro. Por favor inténtalo de nuevo.');
+  }
+}
+
+loadPortal();
+</script>
+</body>
+</html>

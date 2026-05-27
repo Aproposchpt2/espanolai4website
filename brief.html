@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Resumen de Diseño Web — AI4 Diseño de Sitios Web</title>
+  <style>
+    :root{--accent:#4F6EF7;--accent2:#7C3AED;--bg:#06060a;--surface:#0f0f1c;--border:rgba(251,244,231,.12);--ivory:#fbf4e7;--muted:rgba(251,244,231,.6);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ivory);min-height:100vh;}
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--border);background:rgba(6,6,10,.85);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);}
+    .logo{font-size:14px;font-weight:950;letter-spacing:.22em;text-transform:uppercase;}
+    .logo span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .qa-badge{font-size:10px;padding:4px 12px;border-radius:999px;font-weight:700;letter-spacing:.06em;}
+    .qa-pass{background:rgba(40,200,64,.15);border:1px solid rgba(40,200,64,.35);color:#28c840;}
+    .qa-warn{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#ef4444;}
+    .wrap{max-width:720px;margin:0 auto;padding:36px 24px 60px;}
+    .page-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+    .page-hdr-left .eyebrow{font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin-bottom:6px;}
+    .page-hdr-left h1{font-size:24px;font-weight:900;color:var(--ivory);}
+    .globe{width:48px;height:48px;border-radius:50%;background:rgba(79,110,247,.12);border:1px solid rgba(79,110,247,.28);display:flex;align-items:center;justify-content:center;font-size:22px;}
+    .card{background:#0f0f1c;border-radius:18px;border:1px solid var(--border);overflow:hidden;margin-bottom:20px;}
+    .card-accent{height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+    .card-hero{padding:24px 26px 20px;border-bottom:1px solid var(--border);}
+    .card-hero .eyebrow{font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;}
+    .card-hero h2{font-size:26px;font-weight:900;color:var(--ivory);}
+    .card-hero .biz-type{font-size:14px;color:var(--muted);margin-top:4px;}
+    .template-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;margin-top:14px;font-size:12px;font-weight:700;}
+    .badge-dot{width:8px;height:8px;border-radius:50%;}
+    .sections{padding:20px 26px;display:flex;flex-direction:column;gap:18px;}
+    .section{border-bottom:1px solid rgba(251,244,231,.06);padding-bottom:18px;}
+    .section:last-child{border-bottom:none;padding-bottom:0;}
+    .sec-label{font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;}
+    .sec-value{font-size:14px;color:var(--muted);line-height:1.7;}
+    .color-row{display:flex;align-items:center;gap:10px;}
+    .color-swatch{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;}
+    .tag-feat{padding:3px 12px;border-radius:999px;background:rgba(251,244,231,.06);border:1px solid var(--border);font-size:12px;color:var(--muted);}
+    .preview-box{margin:0 26px 24px;border-radius:12px;border:1px solid var(--border);background:var(--bg);overflow:hidden;}
+    .preview-box-header{padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .preview-box-label{font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;}
+    .preview-toggle{font-size:11px;color:var(--accent);cursor:pointer;font-weight:600;}
+    #site-preview-frame{width:100%;height:480px;border:none;display:none;}
+    .no-preview{padding:32px;text-align:center;font-size:13px;color:var(--muted);line-height:1.7;}
+    .eco-box{margin:0 26px 24px;background:rgba(79,110,247,.06);border:1px solid rgba(79,110,247,.2);border-radius:12px;padding:16px 18px;}
+    .eco-title{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+    .eco-text{font-size:12px;color:var(--muted);line-height:1.65;}
+    .card-foot{padding:14px 26px;background:var(--bg);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .card-foot span{font-size:11px;color:rgba(251,244,231,.3);}
+    .cta-wrap{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+    .btn-primary{width:100%;padding:16px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;letter-spacing:.04em;text-transform:uppercase;transition:opacity .2s;}
+    .btn-primary:hover{opacity:.88;}
+    .btn-secondary{width:100%;padding:14px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--ivory);}
+    .cta-note{text-align:center;font-size:12px;color:rgba(251,244,231,.3);}
+    #upsell-page{display:none;}
+    #upsell-page .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:60px;}
+    .upsell-check{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:24px;box-shadow:0 0 40px rgba(79,110,247,.4);}
+    .upsell-h{font-size:28px;font-weight:900;color:var(--ivory);max-width:500px;line-height:1.2;margin-bottom:10px;}
+    .upsell-sub{font-size:15px;color:var(--muted);max-width:420px;line-height:1.65;margin-bottom:36px;}
+    .perks{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px;width:100%;margin-bottom:28px;}
+    .perk{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:left;}
+    .perk-icon{font-size:22px;margin-bottom:8px;}
+    .perk-title{font-size:13px;font-weight:700;color:var(--ivory);margin-bottom:4px;}
+    .perk-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+    .price-card{background:var(--surface);border-radius:18px;padding:28px 36px;max-width:380px;width:100%;text-align:center;margin-bottom:16px;}
+    .price-eyebrow{font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;}
+    .price-row{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:4px;}
+    .price-main{font-size:52px;font-weight:900;color:var(--ivory);}
+    .price-cents{font-size:22px;color:var(--muted);}
+    .price-note{font-size:12px;color:rgba(251,244,231,.3);margin-bottom:24px;}
+    .eco-strip{max-width:380px;width:100%;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:12px;text-align:left;}
+    .eco-strip-icon{font-size:22px;}
+    .eco-strip-title{font-size:12px;font-weight:700;color:var(--ivory);margin-bottom:2px;}
+    .eco-strip-text{font-size:11px;color:rgba(251,244,231,.3);line-height:1.5;}
+    #loading{display:none;position:fixed;inset:0;background:rgba(6,6,10,.92);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+    #loading.on{display:flex;}
+    .spinner{width:40px;height:40px;border:3px solid rgba(79,110,247,.2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .loading-txt{font-size:14px;color:var(--muted);}
+    @media(max-width:540px){.perks{grid-template-columns:1fr;}.sections{padding:16px;}.card-hero{padding:18px 16px;}}
+  </style>
+</head>
+<body>
+<div id="loading"><div class="spinner"></div><div class="loading-txt">Generando tu resumen...</div></div>
+<div id="brief-page">
+  <header>
+    <div class="logo">AI4 <span>Diseño de Sitios Web</span></div>
+    <div class="qa-badge qa-pass" id="qa-badge" style="display:none">✓ QA Aprobado</div>
+  </header>
+  <div class="wrap">
+    <div class="page-hdr">
+      <div class="page-hdr-left"><div class="eyebrow">espanola.ai4websitedesign.com</div><h1>Tu Resumen de Diseño Web</h1></div>
+      <div class="globe">🌐</div>
+    </div>
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-hero">
+        <div class="eyebrow">Preparado para</div>
+        <h2 id="biz-name">Tu Negocio</h2>
+        <div class="biz-type" id="biz-type"></div>
+        <div class="template-badge" id="template-badge"><div class="badge-dot" id="badge-dot"></div><span id="badge-text"></span></div>
+      </div>
+      <div class="sections">
+        <div class="section"><div class="sec-label">Titular Principal</div><div class="sec-value" id="hero-headline">—</div></div>
+        <div class="section"><div class="sec-label">Público Objetivo</div><div class="sec-value" id="target-audience">—</div></div>
+        <div class="section"><div class="sec-label">Dirección de Estilo</div><div class="sec-value" id="style-direction">—</div></div>
+        <div class="section"><div class="sec-label">Servicios / Declaraciones Clave</div><div class="sec-value" id="services-list">—</div></div>
+        <div class="section"><div class="sec-label">Color de Marca</div><div class="color-row"><div class="color-swatch" id="color-swatch"></div><span class="sec-value" id="color-hex"></span></div></div>
+        <div class="section"><div class="sec-label">Páginas y Estructura</div><div class="tags" id="pages-tags"></div></div>
+        <div class="section"><div class="sec-label">Funciones Incluidas</div><div class="tags" id="features-tags"></div></div>
+        <div class="section"><div class="sec-label">Información de Contacto</div><div class="sec-value" id="contact-info">—</div></div>
+        <div class="section"><div class="sec-label">Horario de Atención</div><div class="sec-value" id="hours-info">—</div></div>
+        <div class="section"><div class="sec-label">Cronograma</div><div class="sec-value" id="timeline">Listo para lanzar de inmediato.</div></div>
+      </div>
+      <div class="preview-box" id="preview-box" style="display:none;">
+        <div class="preview-box-header"><div class="preview-box-label">Vista Previa del Sitio</div><div class="preview-toggle" onclick="togglePreview()">Mostrar Vista Previa ▾</div></div>
+        <div class="no-preview" id="no-preview-msg">Haz clic en "Mostrar Vista Previa" para ver tu sitio.</div>
+        <iframe id="site-preview-frame" title="Vista previa de tu sitio web"></iframe>
+      </div>
+      <div class="eco-box">
+        <div class="eco-title">El Ecosistema Apropos Group</div>
+        <div class="eco-text">Tu sitio web es solo el comienzo. A medida que tu negocio crece, The Apropos Group escala contigo — herramientas de negocio con IA en AI4Businesses.org, recepción de llamadas IA en aiflowdeskpro.com, y finalmente la Asociación de Marca Blanca.</div>
+      </div>
+      <div class="card-foot"><span>© 2026 Apropos Group LLC · espanola.ai4websitedesign.com</span><span id="brief-date"></span></div>
+    </div>
+    <div class="cta-wrap">
+      <button class="btn-primary" id="download-btn" onclick="handleDownload()">⬇ Descargar Mi Resumen de Diseño — GRATIS</button>
+      <button class="btn-secondary" onclick="handleLaunch()">🚀 Verlo en Vivo — Lanzar Mi Sitio</button>
+      <div class="cta-note">Sin tarjeta de crédito para descargar · Pago con Stripe para lanzar</div>
+    </div>
+  </div>
+</div>
+<div id="upsell-page">
+  <header><div class="logo">AI4 <span>Diseño de Sitios Web</span></div></header>
+  <div class="wrap">
+    <div class="upsell-check">✓</div>
+    <h2 class="upsell-h">¿Listo para ver <span id="upsell-biz" style="font-style:italic;"></span> en internet?</h2>
+    <p class="upsell-sub">Tu sitio está construido y listo. Un clic lo lanza con tu dominio, hosting y formulario de contacto — todo incluido.</p>
+    <div class="perks">
+      <div class="perk"><div class="perk-icon">🌐</div><div class="perk-title">Sitio web en vivo, dominio real</div><div class="perk-desc">Tu sitio se activa de inmediato en tu propio dominio.</div></div>
+      <div class="perk"><div class="perk-icon">✏️</div><div class="perk-title">Edita cuando quieras</div><div class="perk-desc">Cambia textos, colores y páginas — solo pídele a la IA.</div></div>
+      <div class="perk"><div class="perk-icon">💳</div><div class="perk-title">Formulario de contacto incluido</div><div class="perk-desc">Captura clientes potenciales desde el primer día — sin configuración extra.</div></div>
+      <div class="perk"><div class="perk-icon">📈</div><div class="perk-title">Crece con Apropos Group</div><div class="perk-desc">Desbloquea AI4Businesses.org + FlowDesk Pro a medida que escales.</div></div>
+    </div>
+    <div class="price-card" id="price-card">
+      <div class="price-eyebrow">Lanza tu sitio</div>
+      <div class="price-row"><span class="price-main">$19</span><span class="price-cents">.99<span style="font-size:14px;">/mes</span></span></div>
+      <div class="price-note">Cancela cuando quieras · 30 días de garantía de devolución</div>
+      <button class="btn-primary" onclick="handleStripe()">🚀 Lanzar Mi Sitio Ahora</button>
+      <div style="font-size:11px;color:rgba(251,244,231,.3);margin-top:10px;">Impulsado por Stripe · Encriptado 256-bit</div>
+    </div>
+    <div class="eco-strip"><div class="eco-strip-icon">🌱</div><div><div class="eco-strip-title">Este es solo el comienzo</div><div class="eco-strip-text">ai4websitedesign → AI4Businesses.org → FlowDesk Pro → White Label Partner</div></div></div>
+  </div>
+</div>
+<script>
+const STRIPE_LINK='https://buy.stripe.com/cNi7sK3Zw8SHcNt2UE7EQ0k';
+let brief={},builtHTML=null,previewVisible=false;
+try{const r=sessionStorage.getItem('ai4_design_brief');brief=r?JSON.parse(r):getSample();}catch(e){brief=getSample();}
+try{builtHTML=sessionStorage.getItem('ai4_built_html')||null;}catch(e){}
+try{const pr=JSON.parse(sessionStorage.getItem('ai4_pipeline_result')||'{}');if(pr.qaPass!==undefined){const b=document.getElementById('qa-badge');b.style.display='inline-flex';if(!pr.qaPass){b.className='qa-badge qa-warn';b.textContent=`⚠ ${pr.unresolvedTokens} tokens sin resolver`;}}}catch(e){}
+function getSample(){return{businessName:'Mitchell AI Systems',businessType:'Negocio de Servicios',city:'Las Vegas, NV',phone:'(702) 555-0100',email:'info@example.com',heroHeadline:'El Socio de Automatización IA Más Confiable de Las Vegas',targetAudience:'Pequeñas y medianas empresas que buscan automatizar operaciones.',styleDirection:'Moderno, innovador y autoritario.',statements:['Automatización de Flujo IA','Recepción de Llamadas 24/7','Soluciones de Marca Blanca'],service1:'Automatización de Flujo IA',service2:'Recepción de Llamadas 24/7',service3:'Soluciones de Marca Blanca',hours:'Lun–Vie · 8am–6pm',accentColor:'#7C3AED',recommendedTemplate:'Command Authority',pages:['Inicio','Nosotros','Servicios','Contacto'],features:['Formulario de Contacto','Pagos Stripe','Responsive Móvil','Listo para SEO'],contentAssets:'Todo el contenido capturado del formulario del cliente.',timeline:'Listo para lanzar de inmediato.'};}
+function set(id,val){const e=document.getElementById(id);if(e)e.textContent=val;}
+function render(){
+  const accent=brief.accentColor||'#4F6EF7';
+  set('biz-name',brief.businessName||'Tu Negocio');set('biz-type',brief.businessType||'');
+  set('hero-headline',brief.heroHeadline||'—');set('target-audience',brief.targetAudience||'—');
+  set('style-direction',brief.styleDirection||'—');set('timeline',brief.timeline||'Listo para lanzar de inmediato.');
+  set('brief-date',new Date().toLocaleDateString('es-MX'));set('upsell-biz',brief.businessName||'tu sitio');set('color-hex',accent);
+  const stmts=brief.statements||[brief.service1,brief.service2,brief.service3].filter(Boolean);
+  const sl=document.getElementById('services-list');if(sl){sl.textContent=stmts.map((s,i)=>`${i+1}. ${s}`).join('\n');sl.style.whiteSpace='pre-line';}
+  const ci=document.getElementById('contact-info');if(ci){ci.textContent=[brief.phone&&`📞 ${brief.phone}`,brief.email&&`✉ ${brief.email}`,brief.city&&`📍 ${brief.city}`,brief.address&&`🏢 ${brief.address}`].filter(Boolean).join('\n')||'—';ci.style.whiteSpace='pre-line';}
+  set('hours-info',brief.hours||'—');
+  document.getElementById('color-swatch').style.background=accent;
+  const badge=document.getElementById('template-badge');badge.style.background=accent+'22';badge.style.border=`1px solid ${accent}44`;
+  document.getElementById('badge-dot').style.background=accent;document.getElementById('badge-text').style.color=accent;
+  set('badge-text',`${brief.recommendedTemplate||'Premium'} Template · ${accent}`);
+  const pe=document.getElementById('pages-tags');(brief.pages||[]).forEach(p=>{const sp=document.createElement('span');sp.style.cssText=`border:1px solid ${accent};color:${accent};padding:3px 12px;border-radius:999px;font-size:12px;`;sp.textContent=p;pe.appendChild(sp);});
+  const fe=document.getElementById('features-tags');(brief.features||[]).forEach(f=>{const sp=document.createElement('span');sp.className='tag-feat';sp.textContent=f;fe.appendChild(sp);});
+  if(builtHTML)document.getElementById('preview-box').style.display='block';
+  document.getElementById('price-card').style.border=`1px solid ${accent}55`;
+}
+function togglePreview(){if(!builtHTML)return;previewVisible=!previewVisible;const frame=document.getElementById('site-preview-frame');const msg=document.getElementById('no-preview-msg');const btn=document.querySelector('.preview-toggle');if(previewVisible){frame.srcdoc=builtHTML;frame.style.display='block';msg.style.display='none';btn.textContent='Ocultar Vista Previa ▴';}else{frame.style.display='none';msg.style.display='block';btn.textContent='Mostrar Vista Previa ▾';}}
+async function handleDownload(){const btn=document.getElementById('download-btn');btn.disabled=true;btn.textContent='Generando PDF...';document.getElementById('loading').classList.add('on');try{const res=await fetch('/.netlify/functions/generate-brief',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(brief)});const data=await res.json();if(data.pdf_base64){const bytes=atob(data.pdf_base64);const arr=new Uint8Array(bytes.length);for(let i=0;i<bytes.length;i++)arr[i]=bytes.charCodeAt(i);const blob=new Blob([arr],{type:'application/pdf'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`${(brief.businessName||'Resumen-Diseno').replace(/\s+/g,'-')}-Resumen.pdf`;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);}else{printFallback();}}catch(e){printFallback();}document.getElementById('loading').classList.remove('on');setTimeout(()=>{document.getElementById('brief-page').style.display='none';document.getElementById('upsell-page').style.display='block';window.scrollTo({top:0,behavior:'smooth'});},1200);}
+function handleLaunch(){document.getElementById('brief-page').style.display='none';document.getElementById('upsell-page').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+function handleStripe(){window.open(STRIPE_LINK,'_blank');}
+function printFallback(){const accent=brief.accentColor||'#4F6EF7';const w=window.open('','_blank');const stmts=(brief.statements||[brief.service1,brief.service2,brief.service3].filter(Boolean)).map(s=>`<li>${s}</li>`).join('');w.document.write(`<!DOCTYPE html><html><head><title>${brief.businessName} — Resumen de Diseño</title><style>body{font-family:Georgia,serif;color:#111;padding:48px;max-width:720px;margin:0 auto}h1{font-size:28px}h2{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;margin:22px 0 5px;border-bottom:1px solid #eee;padding-bottom:4px}p,li{font-size:14px;line-height:1.7}.badge{display:inline-block;padding:4px 12px;border-radius:20px;background:${accent};color:white;font-size:11px;font-weight:bold;margin-top:8px}.hdr{border-bottom:4px solid ${accent};padding-bottom:18px;margin-bottom:28px}.eco{margin-top:28px;padding:14px;background:#f9f9ff;border:1px solid #e0e0ff;border-radius:8px;font-size:12px;color:#555;line-height:1.6}.foot{margin-top:40px;padding-top:14px;border-top:1px solid #eee;font-size:10px;color:#aaa;display:flex;justify-content:space-between}ul{padding-left:18px;margin:0}</style></head><body><div class="hdr"><div style="font-size:10px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">AI4 Diseño de Sitios Web · Resumen de Diseño</div><h1>${brief.businessName||'Tu Negocio'}</h1><p style="color:#666;margin:4px 0">${brief.businessType||''}</p><span class="badge">${brief.recommendedTemplate||'Premium'} Template</span></div><h2>Titular Principal</h2><p>${brief.heroHeadline||'—'}</p><h2>Público Objetivo</h2><p>${brief.targetAudience||'—'}</p><h2>Dirección de Estilo</h2><p>${brief.styleDirection||'—'}</p><h2>Servicios</h2><ul>${stmts}</ul><h2>Color de Marca</h2><p>${brief.accentColor||accent}</p><h2>Contacto</h2><p>${[brief.phone,brief.email,brief.city].filter(Boolean).join(' · ')}</p><h2>Horario</h2><p>${brief.hours||'—'}</p><h2>Cronograma</h2><p>${brief.timeline||'Listo para lanzar de inmediato.'}</p><div class="eco"><strong style="color:${accent}">EL ECOSISTEMA APROPOS GROUP</strong><br>ai4websitedesign → AI4Businesses.org → FlowDesk Pro → White Label Partner</div><div class="foot"><span>© 2026 Apropos Group LLC · espanola.ai4websitedesign.com</span><span>${new Date().toLocaleDateString('es-MX')}</span></div></body></html>`);w.document.close();w.print();}
+render();
+</script>
+</body>
+</html>
