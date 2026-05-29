@@ -163,7 +163,7 @@ async function logRedemption(record) {
 
 async function sendResendEmail({ to, subject, html, attachments = [] }) {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL || 'AI4 Diseño de Sitios Web <jmitchell@espanola.ai4websitedesign.com>';
+  const from = process.env.RESEND_FROM_EMAIL;
 
   if (!apiKey) {
     return { ok: false, raw: 'Missing RESEND_API_KEY' };
@@ -298,7 +298,7 @@ exports.handler = async (event) => {
       return json(502, { success: false, error: 'La promoción fue verificada, pero no se pudo enviar el correo de entrega. Por favor contacta al soporte.' });
     }
 
-    const ownerTo = process.env.RESEND_TO_EMAIL || 'jmitchell@ai4websitedesign.com';
+    const ownerTo = process.env.RESEND_TO_EMAIL;
     await sendResendEmail({
       to: ownerTo,
       subject: `Oferta Fundador Canjeada — ${record.business_name}`,

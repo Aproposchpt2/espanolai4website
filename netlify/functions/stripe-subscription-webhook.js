@@ -14,14 +14,9 @@ const { createClient } = require('@supabase/supabase-js');
 const WebSocket = require('ws');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const INTERNAL_EMAIL =
-  process.env.AI4_INTERNAL_NOTIFICATION_EMAIL ||
-  process.env.RESEND_TO_EMAIL ||
-  'jmitchell@ai4websitedesign.com';
+const INTERNAL_EMAIL = process.env.RESEND_TO_EMAIL;
 
-const RESEND_FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL ||
-  'AI4 Website Design <jmitchell@ai4websitedesign.com>';
+const RESEND_FROM_EMAIL = process.env.RESEND_FROM_EMAIL;
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseServiceKey =

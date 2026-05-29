@@ -15,6 +15,9 @@ NODE_VERSION = "22"
 
   [build.processing.js]
 
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
 [functions]
 
   [functions."*"]

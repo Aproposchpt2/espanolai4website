@@ -23,14 +23,9 @@ const supabase =
     ? createClient(supabaseUrl, supabaseServiceKey)
     : null;
 
-const INTERNAL_EMAIL =
-  process.env.AI4_INTERNAL_NOTIFICATION_EMAIL ||
-  process.env.RESEND_TO_EMAIL ||
-  'jmitchell@ai4websitedesign.com';
+const INTERNAL_EMAIL = process.env.RESEND_TO_EMAIL;
 
-const RESEND_FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL ||
-  'AI4 Website Design <jmitchell@ai4websitedesign.com>';
+const RESEND_FROM_EMAIL = process.env.RESEND_FROM_EMAIL;
 
 const PLAN_DEFINITIONS = {
   starter: {
