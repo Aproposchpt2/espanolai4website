@@ -1,157 +1,341 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI4 Estudio de Diseño Web — Construye Tu Sitio</title>
-<meta name="description" content="Responde 7 preguntas simples. Obtén un sitio web completamente construido, con contenido real, listo para publicar.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>AI4 Website Design Studio — Build Your Website</title>
+<meta name="description" content="Answer 7 simple questions. Get a fully built, content-complete website ready to launch.">
+
+
 <style>
 :root{
-  --bg:#030816;--bg2:#061225;
-  --line:rgba(184,196,217,.14);--line-strong:rgba(45,184,255,.34);
-  --blue:#1EA7FF;--blue2:#2DB8FF;--blue4:#5BD3FF;
-  --silver:#D5DEEA;--white:#F5F8FF;--muted:#AEBED3;--muted2:#90A3BC;
-  --shadow:0 28px 90px rgba(0,0,0,.42);
-  --mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;--display:'Syne',sans-serif;
-  --r-sm:10px;--r-md:16px;--r-lg:24px;--r-xl:34px;
+  --ink:       #0F2A6A;
+  --ink-2:     #163472;
+  --ink-3:     #1C3878;
+  --steel:     #3A5898;
+  --line:      rgba(255,255,255,.12);
+  --line-2:    rgba(255,255,255,.22);
+  --gold:      #FFFFFF;
+  --white:     #FFFFFF;
+  --silver:    #C3D0E8;
+  --mist:      #9DB0D4;
+  --shadow:    0 32px 80px rgba(0,0,0,.40);
+  --mono:      'Jost',sans-serif;
+  --sans:      'Jost',sans-serif;
+  --display:   'Bodoni Moda',serif;
+  --subdisp:   'Cormorant',serif;
+  --r-sm:      4px;
+  --r-md:      4px;
+  --r-lg:      4px;
+  --r-xl:      4px;
+  --bg:        #0F2A6A;
+  --bg2:       #163472;
+  --bg3:       #1C3878;
+  --blue:      #FFFFFF;
+  --blue2:     #EEF3FF;
+  --blue4:     #C3D0E8;
+  --muted:     rgba(255,255,255,.65);
+  --muted2:    rgba(255,255,255,.42);
 }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   min-height:100vh;
-  background:radial-gradient(circle at 18% 12%,rgba(30,167,255,.18),transparent 26%),
-    radial-gradient(circle at 82% 10%,rgba(91,211,255,.10),transparent 30%),
-    linear-gradient(180deg,var(--bg) 0%,#02050e 52%,var(--bg2) 100%);
-  color:var(--muted);font-family:var(--sans);font-size:16px;line-height:1.65;overflow-x:hidden;
+  background:var(--ink);
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
 }
+
+/* noise texture */
 body::before{
   content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(45,184,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,184,255,.035) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.18) 58%,rgba(0,0,0,.05));
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
 }
+
 a{color:inherit}
 button,input,textarea,select{font:inherit}
 .page-shell{position:relative;z-index:1}
 
-/* Nav */
+/* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:900;
   display:flex;align-items:center;justify-content:space-between;gap:1rem;
   min-height:72px;padding:.7rem clamp(1rem,4vw,2.5rem);
-  background:rgba(3,8,22,.88);backdrop-filter:blur(22px);
-  border-bottom:1px solid rgba(184,196,217,.11);
+  background:rgba(15,42,106,.92);backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--line);
 }
 .nav-brand{display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none}
-.nav-logo{height:52px;width:auto;object-fit:contain;filter:drop-shadow(0 0 14px rgba(30,167,255,0.45))}
-.nav-brand-name{font-family:var(--display);font-size:.9rem;font-weight:800;letter-spacing:.02em;white-space:nowrap}
-.nav-sub{font-family:var(--mono);font-size:.58rem;color:var(--muted2);letter-spacing:.14em;text-transform:uppercase}
+.nav-logo{height:52px;width:auto;object-fit:contain}
+.nav-brand-name{
+  font-family:var(--display);
+  font-size:.95rem;font-weight:500;
+  letter-spacing:.03em;white-space:nowrap;
+  color:var(--white);
+}
+.nav-sub{
+  font-family:var(--sans);font-size:.58rem;
+  color:rgba(255,255,255,.4);
+  letter-spacing:.18em;text-transform:uppercase;
+}
 
-/* Hero */
+/* ── HERO ── */
 .studio-hero{
   min-height:100vh;padding:9rem 2rem 5rem;
   display:flex;align-items:center;
+  position:relative;overflow:hidden;
 }
-.hero-inner{width:min(860px,100%);margin:0 auto;text-align:center}
-.hero-logo{height:110px;width:auto;object-fit:contain;filter:drop-shadow(0 0 22px rgba(30,167,255,0.5));margin-bottom:2rem}
-.eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--blue4);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem}
-.eyebrow::before{content:'';width:34px;height:1px;background:linear-gradient(90deg,var(--blue),transparent);box-shadow:0 0 16px rgba(30,167,255,.65)}
-.gradient-text{background:linear-gradient(135deg,var(--white) 0%,var(--silver) 34%,var(--blue4) 70%,var(--blue2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-h1{font-family:var(--display);font-size:clamp(2.6rem,6vw,5.2rem);line-height:1.04;letter-spacing:-.055em;color:var(--white);margin-bottom:1.2rem}
-.hero-sub{max-width:620px;margin:0 auto 2.5rem;font-size:clamp(1rem,1.8vw,1.15rem);color:var(--silver);line-height:1.65}
+.studio-hero::after{
+  content:'AI4';
+  position:absolute;bottom:-4rem;right:0;
+  font-family:var(--subdisp);font-style:italic;
+  font-size:clamp(14rem,28vw,24rem);
+  color:rgba(255,255,255,.03);
+  line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{width:min(860px,100%);margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-logo{height:110px;width:auto;object-fit:contain;margin-bottom:2rem}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--sans);font-size:.7rem;font-weight:500;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.24em;text-transform:uppercase;
+  margin-bottom:1.2rem;
+}
+.eyebrow::before{
+  content:'';width:30px;height:1px;
+  background:rgba(255,255,255,.4);
+}
+
+.gradient-text{
+  font-style:italic;
+  color:rgba(255,255,255,.55);
+  font-family:var(--subdisp);
+  font-weight:400;
+}
+
+h1{
+  font-family:var(--display);
+  font-size:clamp(2.6rem,6vw,5.2rem);
+  line-height:1.0;
+  letter-spacing:-.03em;
+  color:var(--white);
+  font-weight:400;
+  margin-bottom:1.2rem;
+}
+
+.hero-sub{
+  max-width:620px;margin:0 auto 2.5rem;
+  font-size:clamp(1rem,1.8vw,1.1rem);
+  color:rgba(255,255,255,.6);
+  line-height:1.75;
+}
+
 .btn-start{
   display:inline-flex;align-items:center;gap:.65rem;
-  color:#03101f;background:linear-gradient(135deg,var(--white),var(--blue4) 44%,var(--blue));
-  border:1px solid rgba(245,248,255,.58);border-radius:999px;
-  padding:1rem 2.2rem;font-weight:900;font-size:1rem;cursor:pointer;
-  box-shadow:0 0 36px rgba(30,167,255,.34),inset 0 1px 0 rgba(255,255,255,.74);
-  transition:transform .2s,box-shadow .2s;text-decoration:none;
+  color:var(--ink);background:var(--white);
+  border:none;border-radius:var(--r-sm);
+  padding:1rem 2.2rem;
+  font-weight:600;font-size:.88rem;
+  font-family:var(--sans);
+  letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;
+  transition:background .25s,transform .2s;
+  text-decoration:none;
 }
-.btn-start:hover{transform:translateY(-2px);box-shadow:0 0 52px rgba(30,167,255,.5)}
+.btn-start:hover{background:var(--blue2);transform:translateY(-2px)}
 
 /* Trust strip */
-.trust-strip{display:flex;justify-content:center;flex-wrap:wrap;gap:1.6rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
-.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted2);font-family:var(--mono);letter-spacing:.06em}
-.trust-item span{color:var(--blue4)}
+.trust-strip{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:1.6rem;margin-top:3rem;padding-top:2rem;
+  border-top:1px solid var(--line);
+}
+.trust-item{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.8rem;color:rgba(255,255,255,.45);
+  font-family:var(--sans);letter-spacing:.08em;
+}
+.trust-item span{color:var(--white)}
 
-/* Studio section */
+/* ── STUDIO SECTION ── */
 #studioSection{display:none;padding:2rem 2rem 6rem}
 .studio-wrap{width:min(760px,100%);margin:0 auto}
 
 /* Progress */
 .progress-wrap{margin-bottom:3rem}
-.progress-track{width:100%;height:3px;background:rgba(184,196,217,.12);border-radius:3px;overflow:hidden;margin-bottom:10px}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue4));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(30,167,255,.6)}
+.progress-track{
+  width:100%;height:2px;
+  background:rgba(255,255,255,.1);
+  border-radius:2px;overflow:hidden;margin-bottom:10px;
+}
+.progress-fill{
+  height:100%;
+  background:var(--white);
+  border-radius:2px;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
 .progress-meta{display:flex;justify-content:space-between;align-items:center}
-.progress-step-label{font-family:var(--mono);font-size:.65rem;color:var(--blue4);letter-spacing:.12em;text-transform:uppercase}
-.progress-count{font-family:var(--mono);font-size:.65rem;color:var(--muted2);letter-spacing:.1em}
+.progress-step-label{
+  font-family:var(--sans);font-size:.65rem;
+  color:rgba(255,255,255,.55);
+  letter-spacing:.18em;text-transform:uppercase;
+}
+.progress-count{
+  font-family:var(--sans);font-size:.65rem;
+  color:rgba(255,255,255,.35);letter-spacing:.1em;
+}
 
 /* Steps */
 .form-step{display:none;animation:fadeUp .3s ease}
 .form-step.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.step-q-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:var(--blue4);text-transform:uppercase;margin-bottom:.5rem}
-.step-question{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.15;letter-spacing:-.04em}
-.step-hint{font-size:.9rem;color:var(--muted2);margin-bottom:2rem;line-height:1.55}
+
+.step-q-label{
+  font-family:var(--sans);font-size:.68rem;
+  letter-spacing:.22em;color:rgba(255,255,255,.45);
+  text-transform:uppercase;margin-bottom:.6rem;
+}
+.step-question{
+  font-family:var(--display);
+  font-size:clamp(1.6rem,3.5vw,2.6rem);
+  font-weight:400;color:var(--white);
+  margin-bottom:.6rem;line-height:1.1;
+  letter-spacing:-.02em;
+}
+.step-hint{
+  font-size:.9rem;color:rgba(255,255,255,.45);
+  margin-bottom:2rem;line-height:1.6;
+}
 
 /* Inputs */
 .studio-input{
-  width:100%;background:rgba(8,24,47,.85);border:1px solid var(--line);
-  border-radius:var(--r-md);padding:16px 20px;color:var(--white);
-  outline:none;transition:border-color .2s,box-shadow .2s;
-  margin-bottom:2rem;font-size:.97rem;line-height:1.5;
+  width:100%;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  padding:16px 20px;
+  color:var(--white);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  margin-bottom:2rem;
+  font-size:.97rem;line-height:1.5;
 }
-.studio-input:focus{border-color:rgba(91,211,255,.5);box-shadow:0 0 0 3px rgba(30,167,255,.1)}
-.studio-input::placeholder{color:var(--muted2)}
+.studio-input:focus{
+  border-color:rgba(255,255,255,.4);
+  box-shadow:0 0 0 3px rgba(255,255,255,.06);
+}
+.studio-input::placeholder{color:rgba(255,255,255,.25)}
 textarea.studio-input{min-height:130px;resize:vertical}
 
 /* Contact grid */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
-.contact-field label{display:block;font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;color:var(--blue4);text-transform:uppercase;margin-bottom:6px}
+.contact-field label{
+  display:block;
+  font-family:var(--sans);font-size:.65rem;
+  letter-spacing:.18em;color:rgba(255,255,255,.4);
+  text-transform:uppercase;margin-bottom:6px;
+}
 .contact-field .studio-input{margin-bottom:0}
 @media(max-width:600px){.contact-grid{grid-template-columns:1fr}}
 
 /* Style picker */
 .style-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
 .style-card{
-  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015)),rgba(8,24,47,.7);
-  border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;
-  cursor:pointer;transition:all .2s ease;text-align:left;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:20px;cursor:pointer;
+  transition:all .2s ease;text-align:left;
 }
-.style-card:hover{border-color:var(--line-strong);transform:translateY(-1px)}
-.style-card.selected{border-color:var(--blue);background:rgba(30,167,255,.1);box-shadow:0 0 0 1px var(--blue),0 0 24px rgba(30,167,255,.15)}
-.style-card-swatch{width:100%;height:48px;border-radius:10px;margin-bottom:12px}
-.style-card-name{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px}
-.style-card-desc{font-size:.8rem;color:var(--muted2);line-height:1.4}
+.style-card:hover{border-color:var(--line-2);transform:translateY(-1px)}
+.style-card.selected{
+  border-color:var(--white);
+  background:rgba(255,255,255,.09);
+  box-shadow:0 0 0 1px var(--white);
+}
+.style-card-swatch{width:100%;height:48px;border-radius:4px;margin-bottom:12px}
+.style-card-name{
+  font-family:var(--display);font-size:1rem;
+  font-weight:400;color:var(--white);margin-bottom:4px;
+}
+.style-card-desc{font-size:.8rem;color:rgba(255,255,255,.42);line-height:1.4}
 @media(max-width:540px){.style-grid{grid-template-columns:1fr}}
 
 /* CTA options */
-.cta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:2rem}
-.cta-btn{
-  background:rgba(8,24,47,.7);border:1px solid var(--line);border-radius:var(--r-md);
-  padding:12px 14px;color:var(--muted);font-size:.86rem;font-weight:600;
-  cursor:pointer;text-align:left;transition:all .2s ease;
+.cta-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:10px;margin-bottom:2rem;
 }
-.cta-btn:hover{border-color:var(--line-strong);color:var(--white)}
-.cta-btn.selected{border-color:var(--blue);color:var(--white);background:rgba(30,167,255,.12);box-shadow:0 0 0 1px var(--blue)}
+.cta-btn{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  padding:12px 14px;
+  color:rgba(255,255,255,.55);
+  font-size:.86rem;font-weight:500;
+  cursor:pointer;text-align:left;
+  transition:all .2s ease;
+}
+.cta-btn:hover{border-color:var(--line-2);color:var(--white)}
+.cta-btn.selected{
+  border-color:var(--white);color:var(--white);
+  background:rgba(255,255,255,.1);
+  box-shadow:0 0 0 1px var(--white);
+}
 
 /* Nav buttons */
-.step-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:.5rem}
-.btn-back{background:transparent;border:1px solid var(--line);border-radius:999px;padding:13px 26px;color:var(--muted);cursor:pointer;font-weight:700;font-size:.88rem;transition:all .2s}
-.btn-back:hover{border-color:var(--line-strong);color:var(--white)}
-.btn-next,.btn-submit{
-  color:#03101f;background:linear-gradient(135deg,var(--white),var(--blue4) 44%,var(--blue));
-  border:1px solid rgba(245,248,255,.58);border-radius:999px;padding:14px 36px;
-  font-weight:900;font-size:.92rem;cursor:pointer;
-  box-shadow:0 0 36px rgba(30,167,255,.28),inset 0 1px 0 rgba(255,255,255,.74);
-  transition:transform .2s,box-shadow .2s;
+.step-nav{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  gap:12px;margin-top:.5rem;
 }
-.btn-next:hover,.btn-submit:hover{transform:translateY(-2px);box-shadow:0 0 52px rgba(30,167,255,.44)}
-.step-error{color:#f87171;font-size:.8rem;margin-bottom:12px;padding:8px 12px;background:rgba(239,68,68,.08);border-left:2px solid #f87171;border-radius:0 4px 4px 0}
+.btn-back{
+  background:transparent;
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  padding:13px 26px;
+  color:rgba(255,255,255,.5);
+  cursor:pointer;font-weight:500;
+  font-size:.85rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:all .2s;
+}
+.btn-back:hover{border-color:var(--line-2);color:var(--white)}
 
-/* ── PANTALLA DE CARGA DEL PIPELINE ── */
+.btn-next,.btn-submit{
+  color:var(--ink);
+  background:var(--white);
+  border:none;
+  border-radius:var(--r-sm);
+  padding:14px 36px;
+  font-weight:600;font-size:.85rem;
+  font-family:var(--sans);
+  letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;
+  transition:background .25s,transform .2s;
+}
+.btn-next:hover,.btn-submit:hover{
+  background:var(--blue2);
+  transform:translateY(-2px);
+}
+
+.step-error{
+  color:#f87171;font-size:.8rem;
+  margin-bottom:12px;padding:8px 12px;
+  background:rgba(239,68,68,.08);
+  border-left:2px solid #f87171;
+  border-radius:0 4px 4px 0;
+}
+
+/* ── PIPELINE LOADING SCREEN ── */
 #pipelineScreen{
   display:none;
   min-height:100vh;
@@ -162,35 +346,118 @@ textarea.studio-input{min-height:130px;resize:vertical}
   flex-direction:column;
 }
 #pipelineScreen.active{display:flex}
-.pipeline-logo{height:90px;width:auto;object-fit:contain;filter:drop-shadow(0 0 28px rgba(30,167,255,0.6));margin-bottom:2.5rem;animation:pulse-logo 2.5s ease-in-out infinite}
-@keyframes pulse-logo{0%,100%{filter:drop-shadow(0 0 18px rgba(30,167,255,0.4))}50%{filter:drop-shadow(0 0 40px rgba(30,167,255,0.8))}}
-.pipeline-title{font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:var(--white);letter-spacing:-.04em;margin-bottom:.6rem}
-.pipeline-sub{font-size:.95rem;color:var(--muted);margin-bottom:3rem;max-width:460px}
 
-/* Barra de progreso cinematográfica */
+.pipeline-logo{
+  height:90px;width:auto;object-fit:contain;
+  margin-bottom:2.5rem;
+  animation:pulse-logo 2.5s ease-in-out infinite;
+}
+@keyframes pulse-logo{
+  0%,100%{opacity:.8}
+  50%{opacity:1}
+}
+
+.pipeline-title{
+  font-family:var(--display);
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:400;color:var(--white);
+  letter-spacing:-.02em;margin-bottom:.6rem;
+}
+.pipeline-sub{
+  font-size:.95rem;color:rgba(255,255,255,.5);
+  margin-bottom:3rem;max-width:460px;
+}
+
+/* Pipeline progress */
 .pipeline-progress-wrap{width:min(480px,100%);margin:0 auto 1.2rem}
-.pipeline-progress-track{width:100%;height:4px;background:rgba(184,196,217,.1);border-radius:4px;overflow:hidden}
-.pipeline-progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue4));border-radius:4px;width:0%;transition:width .8s cubic-bezier(.4,0,.2,1);box-shadow:0 0 12px rgba(30,167,255,.7)}
-.pipeline-stage-label{font-family:var(--mono);font-size:.72rem;color:var(--blue4);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2.5rem;min-height:1.2em}
+.pipeline-progress-track{
+  width:100%;height:2px;
+  background:rgba(255,255,255,.1);
+  border-radius:2px;overflow:hidden;
+}
+.pipeline-progress-fill{
+  height:100%;background:var(--white);
+  border-radius:2px;width:0%;
+  transition:width .8s cubic-bezier(.4,0,.2,1);
+}
+.pipeline-stage-label{
+  font-family:var(--sans);font-size:.72rem;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:2.5rem;min-height:1.2em;
+  margin-top:.8rem;
+}
 
-/* Etapas */
-.stage-list{display:flex;flex-direction:column;gap:10px;width:min(480px,100%);text-align:left}
-.stage-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));transition:all .4s ease}
-.stage-item.running{border-color:var(--blue);background:rgba(30,167,255,.07)}
-.stage-item.done{border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.04)}
-.stage-icon{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;transition:all .4s}
-.stage-item.running .stage-icon{background:rgba(30,167,255,.2);animation:glow-icon 1s ease infinite}
-.stage-item.done .stage-icon{background:rgba(16,185,129,.2)}
-@keyframes glow-icon{0%,100%{box-shadow:0 0 0 0 rgba(30,167,255,.4)}50%{box-shadow:0 0 14px 4px rgba(30,167,255,.2)}}
-.stage-name{font-size:.88rem;font-weight:600;color:var(--silver);flex:1}
-.stage-status{font-family:var(--mono);font-size:.65rem;color:var(--muted2);letter-spacing:.08em}
-.stage-item.running .stage-status{color:var(--blue4)}
-.stage-item.done .stage-status{color:#10b981}
+/* Stage items */
+.stage-list{
+  display:flex;flex-direction:column;gap:10px;
+  width:min(480px,100%);text-align:left;
+}
+.stage-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  background:rgba(255,255,255,.03);
+  transition:all .4s ease;
+}
+.stage-item.running{
+  border-color:rgba(255,255,255,.35);
+  background:rgba(255,255,255,.07);
+}
+.stage-item.done{
+  border-color:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.04);
+}
+.stage-icon{
+  width:34px;height:34px;
+  border-radius:4px;
+  background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;transition:all .4s;
+}
+.stage-item.running .stage-icon{
+  background:rgba(255,255,255,.15);
+  animation:glow-icon 1s ease infinite;
+}
+.stage-item.done .stage-icon{background:rgba(255,255,255,.1)}
+@keyframes glow-icon{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.2)}
+  50%{box-shadow:0 0 14px 4px rgba(255,255,255,.1)}
+}
+.stage-name{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.75);flex:1}
+.stage-status{
+  font-family:var(--sans);font-size:.65rem;
+  color:rgba(255,255,255,.35);letter-spacing:.08em;
+}
+.stage-item.running .stage-status{color:rgba(255,255,255,.7)}
+.stage-item.done .stage-status{color:rgba(255,255,255,.5)}
 
-/* Footer */
-footer{padding:2rem;color:var(--muted2);text-align:center;border-top:1px solid rgba(184,196,217,.1);margin-top:4rem}
-.footer-brand{font-family:var(--display);color:var(--white);font-weight:800}
+/* ── GENERATED SITE SECTIONS ── */
+.hero{position:relative;overflow:hidden}
+.section{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)}
+.cta-section{
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+  text-align:center;
+}
+.contact-section{
+  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
+}
 
+/* ── FOOTER ── */
+footer{
+  padding:2rem;
+  color:rgba(255,255,255,.25);
+  text-align:center;
+  border-top:1px solid var(--line);
+  margin-top:4rem;
+}
+.footer-brand{
+  font-family:var(--display);
+  color:var(--white);font-weight:400;
+}
+
+/* ── RESPONSIVE ── */
 @media(max-width:768px){
   .studio-hero{padding:7rem 1.2rem 4rem}
   #studioSection{padding:2rem 1rem 5rem}
@@ -204,10 +471,10 @@ footer{padding:2rem;color:var(--muted2);text-align:center;border-top:1px solid r
 
   <nav>
     <a class="nav-brand" href="index.html">
-      <img class="nav-logo" src="ai4-approved-logo.png" alt="AI4">
+      <img class="nav-logo" src="AI4-approved-logo.png" alt="AI4">
       <span>
-        <div class="nav-brand-name">AI4 Estudio de Diseño Web</div>
-        <div class="nav-sub">Impulsado por Apropos Group LLC</div>
+        <div class="nav-brand-name">AI4 Website Design Studio</div>
+        <div class="nav-sub">Powered by Apropos Group LLC</div>
       </span>
     </a>
   </nav>
@@ -215,228 +482,232 @@ footer{padding:2rem;color:var(--muted2);text-align:center;border-top:1px solid r
   <!-- Hero -->
   <section class="studio-hero" id="heroSection">
     <div class="hero-inner">
-      <img class="hero-logo" src="ai4-approved-logo.png" alt="AI4 Estudio de Diseño">
-      <div class="eyebrow">AI4 Constructor de Sitios Web</div>
-      <h1>Tu sitio web,<br><span class="gradient-text">completamente construido en minutos.</span></h1>
-      <p class="hero-sub">Responde 7 preguntas simples sobre tu negocio. AI4 Estudio de Diseño Web escribe el contenido, elige la dirección de diseño y entrega un sitio web completo, listo para publicar.</p>
+      <img class="hero-logo" src="AI4-approved-logo.png" alt="AI4 Design Studio">
+      <div class="eyebrow">AI4 Website Builder</div>
+      <h1>Your website,<br><span class="gradient-text">fully built in minutes.</span></h1>
+      <p class="hero-sub">Answer 7 simple questions about your business. AI4 Website Design Studio writes the copy, chooses the design direction, and delivers a complete, launch-ready website.</p>
       <button class="btn-start" onclick="startStudio()">
-        Construir Mi Sitio Web
+        Build My Website
         <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <div class="trust-strip">
-        <div class="trust-item"><span>✓</span> Sin marcadores de posición</div>
-        <div class="trust-item"><span>✓</span> Contenido real escrito</div>
-        <div class="trust-item"><span>✓</span> 4 variaciones de diseño premium</div>
-        <div class="trust-item"><span>✓</span> Listo para publicar</div>
+        <div class="trust-item"><span>✓</span> No placeholders</div>
+        <div class="trust-item"><span>✓</span> Real written content</div>
+        <div class="trust-item"><span>✓</span> 4 premium design variations</div>
+        <div class="trust-item"><span>✓</span> Ready to launch</div>
       </div>
     </div>
   </section>
 
-  <!-- Sección del Estudio -->
+  <!-- Studio Section -->
   <section id="studioSection">
     <div class="studio-wrap">
 
       <div class="progress-wrap">
         <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:14.285%"></div></div>
         <div class="progress-meta">
-          <div class="progress-step-label" id="progressStepLabel">Paso 1 de 7</div>
-          <div class="progress-count" id="progressCount">Pregunta 1</div>
+          <div class="progress-step-label" id="progressStepLabel">Step 1 of 7</div>
+          <div class="progress-count" id="progressCount">Question 1</div>
         </div>
       </div>
 
-      <!-- P1 — Nombre del Negocio -->
+      <!-- Q1 — Business Name -->
       <div class="form-step active" data-step="1">
-        <div class="step-q-label">Paso 1 — Identidad</div>
-        <div class="step-question">¿Cuál es el nombre de tu negocio?</div>
-        <div class="step-hint">Esto aparece en todo tu sitio web — títulos, pie de página, pestaña del navegador.</div>
-        <input type="text" class="studio-input" id="q1_businessName" placeholder="Ej. Calefacción Mesa, Estudio Skyline, Grupo Rodríguez" maxlength="80" autocomplete="organization">
+        <div class="step-q-label">Step 1 — Identity</div>
+        <div class="step-question">What is your business name?</div>
+        <div class="step-hint">This appears throughout your website — headlines, footer, browser tab.</div>
+        <input type="text" class="studio-input" id="q1_businessName" placeholder="e.g. Mesa Heating & Cooling, Skyline Studio, The Rodriguez Group" maxlength="80" autocomplete="organization">
         <div class="step-nav">
           <div></div>
-          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
         </div>
       </div>
 
-      <!-- P2 — Qué hace tu negocio -->
+      <!-- Q2 — What you do -->
       <div class="form-step" data-step="2">
-        <div class="step-q-label">Paso 2 — Tu Negocio</div>
-        <div class="step-question">¿Qué hace tu negocio?</div>
-        <div class="step-hint">¿Qué productos o servicios ofreces? Sé específico — AI4 escribe mejor contenido con más detalles.</div>
-        <textarea class="studio-input" id="q2_whatYouDo" placeholder="Ejemplo: Somos una empresa familiar de HVAC que sirve a Las Vegas. Ofrecemos reparación, instalación y mantenimiento de AC para hogares y pequeños negocios. También hacemos ajustes de calefacción y llamadas de emergencia." maxlength="600"></textarea>
+        <div class="step-q-label">Step 2 — Your Business</div>
+        <div class="step-question">What does your business do?</div>
+        <div class="step-hint">What products or services do you offer? Be specific — the AI writes better copy with more detail.</div>
+        <textarea class="studio-input" id="q2_whatYouDo" placeholder="Example: We are a family-owned HVAC company serving Las Vegas. We offer AC repair, installation, and maintenance for homes and small businesses. We also do heater tune-ups and emergency calls." maxlength="600"></textarea>
         <div class="step-nav">
-          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
-          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
         </div>
       </div>
 
-      <!-- P3 — Clientes ideales -->
+      <!-- Q3 — Ideal customers -->
       <div class="form-step" data-step="3">
-        <div class="step-q-label">Paso 3 — Tus Clientes</div>
-        <div class="step-question">¿Quiénes son tus clientes ideales?</div>
-        <div class="step-hint">Describe a quién sirves. Ubicación, tipo de persona o tipo de negocio — todo es útil.</div>
-        <textarea class="studio-input" id="q3_customers" placeholder="Ejemplo: Propietarios de hogares y pequeños negocios en el área de Las Vegas y Henderson que necesitan servicio de HVAC rápido y confiable. Principalmente familias y administradores de propiedades." maxlength="400"></textarea>
+        <div class="step-q-label">Step 3 — Your Customers</div>
+        <div class="step-question">Who are your ideal customers?</div>
+        <div class="step-hint">Describe who you serve. Location, type of person, or type of business — all helpful.</div>
+        <textarea class="studio-input" id="q3_customers" placeholder="Example: Homeowners and small businesses in the Las Vegas and Henderson area who need fast, reliable HVAC service. Mostly families and property managers." maxlength="400"></textarea>
         <div class="step-nav">
-          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
-          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
         </div>
       </div>
 
-      <!-- P4 — Diferenciadores -->
+      <!-- Q4 — Differentiators -->
       <div class="form-step" data-step="4">
-        <div class="step-q-label">Paso 4 — Lo Que Te Hace Diferente</div>
-        <div class="step-question">¿Qué te diferencia de la competencia?</div>
-        <div class="step-hint">Piensa en: experiencia, rapidez, garantías, certificaciones, precio, personalidad, área de servicio, especializaciones.</div>
-        <textarea class="studio-input" id="q4_differentiators" placeholder="Ejemplo: Servicio de emergencia 24/7, licenciado y asegurado, 15 años de experiencia, citas el mismo día, garantía de satisfacción al 100%, empresa local y familiar." maxlength="400"></textarea>
+        <div class="step-q-label">Step 4 — What Makes You Different</div>
+        <div class="step-question">What makes you different from competitors?</div>
+        <div class="step-hint">Think: experience, speed, guarantees, certifications, price, personality, service area, specializations.</div>
+        <textarea class="studio-input" id="q4_differentiators" placeholder="Example: 24/7 emergency service, licensed and insured, 15 years of experience, same-day appointments, 100% satisfaction guarantee, locally owned and operated." maxlength="400"></textarea>
         <div class="step-nav">
-          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
-          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
         </div>
       </div>
 
-      <!-- P5 — CTA Principal -->
+      <!-- Q5 — Primary CTA -->
       <div class="form-step" data-step="5">
-        <div class="step-q-label">Paso 5 — Objetivo Principal</div>
-        <div class="step-question">¿Qué quieres que hagan los visitantes cuando lleguen a tu sitio?</div>
-        <div class="step-hint">Elige uno — esto se convierte en el llamado a la acción principal en todo tu sitio.</div>
+        <div class="step-q-label">Step 5 — Main Goal</div>
+        <div class="step-question">What do you want visitors to do when they land on your website?</div>
+        <div class="step-hint">Pick one — this becomes the primary call-to-action throughout your site.</div>
         <div class="cta-grid" id="ctaGrid">
-          <button type="button" class="cta-btn" data-value="Llámanos">📞 Llámanos</button>
-          <button type="button" class="cta-btn" data-value="Reservar una cita">📅 Reservar una cita</button>
-          <button type="button" class="cta-btn" data-value="Solicitar cotización">💬 Solicitar cotización</button>
-          <button type="button" class="cta-btn" data-value="Ver nuestros productos">🛒 Ver nuestros productos</button>
-          <button type="button" class="cta-btn" data-value="Más información / contáctanos">✉️ Más información / contáctanos</button>
+          <button type="button" class="cta-btn" data-value="Call us">📞 Call us</button>
+          <button type="button" class="cta-btn" data-value="Book an appointment">📅 Book an appointment</button>
+          <button type="button" class="cta-btn" data-value="Request a quote">💬 Request a quote</button>
+          <button type="button" class="cta-btn" data-value="Shop our products">🛒 Shop our products</button>
+          <button type="button" class="cta-btn" data-value="Learn more / contact us">✉️ Learn more / contact us</button>
         </div>
         <div class="step-nav">
-          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
-          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
         </div>
       </div>
 
-      <!-- P6 — Información de contacto -->
+      <!-- Q6 — Contact info -->
       <div class="form-step" data-step="6">
-        <div class="step-q-label">Paso 6 — Información de Contacto</div>
-        <div class="step-question">¿Cómo pueden contactarte los clientes?</div>
-        <div class="step-hint">Llena lo que aplique — al menos un campo. Esto aparece en tu sección de contacto y pie de página.</div>
+        <div class="step-q-label">Step 6 — Contact Information</div>
+        <div class="step-question">How can customers reach you?</div>
+        <div class="step-hint">Fill in what applies — at least one field. This appears in your contact section and footer.</div>
         <div class="contact-grid">
           <div class="contact-field">
-            <label>Número de Teléfono</label>
+            <label>Phone Number</label>
             <input type="tel" class="studio-input" id="q6_phone" placeholder="(702) 555-0100" autocomplete="tel">
           </div>
           <div class="contact-field">
-            <label>Correo Electrónico</label>
-            <input type="email" class="studio-input" id="q6_email" placeholder="hola@tunegocio.com" autocomplete="email">
+            <label>Email Address</label>
+            <input type="email" class="studio-input" id="q6_email" placeholder="hello@yourbusiness.com" autocomplete="email">
           </div>
           <div class="contact-field">
-            <label>Dirección del Negocio</label>
-            <input type="text" class="studio-input" id="q6_address" placeholder="123 Calle Principal, Las Vegas, NV" autocomplete="street-address">
+            <label>Business Address</label>
+            <input type="text" class="studio-input" id="q6_address" placeholder="123 Main St, Las Vegas, NV" autocomplete="street-address">
           </div>
           <div class="contact-field">
-            <label>Sitio Web Existente (opcional)</label>
-            <input type="url" class="studio-input" id="q6_website" placeholder="https://tunegocio.com">
+            <label>Existing Website (optional)</label>
+            <input type="url" class="studio-input" id="q6_website" placeholder="https://yourbusiness.com">
           </div>
           <div class="contact-field">
-            <label>URL de Facebook (opcional)</label>
-            <input type="url" class="studio-input" id="q6_facebook" placeholder="https://facebook.com/tunegocio">
+            <label>Facebook URL (optional)</label>
+            <input type="url" class="studio-input" id="q6_facebook" placeholder="https://facebook.com/yourbusiness">
           </div>
           <div class="contact-field">
-            <label>URL de Instagram (opcional)</label>
-            <input type="url" class="studio-input" id="q6_instagram" placeholder="https://instagram.com/tunegocio">
+            <label>Instagram URL (optional)</label>
+            <input type="url" class="studio-input" id="q6_instagram" placeholder="https://instagram.com/yourbusiness">
           </div>
         </div>
         <div class="step-nav">
-          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
-          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
         </div>
       </div>
 
-      <!-- P7 — Información adicional -->
+      <!-- Q7 — Extra info -->
       <div class="form-step" data-step="7">
-        <div class="step-q-label">Paso 7 — Algo Más</div>
-        <div class="step-question">¿Hay algo más que quieras que los visitantes sepan?</div>
-        <div class="step-hint">Opcional — pero cuanto más compartas, más rico será el contenido de tu sitio.</div>
-        <textarea class="studio-input" id="q7_extras" placeholder="Premios, certificaciones, ofertas especiales, horarios, áreas de servicio, tamaño del equipo, año de fundación, una historia que quieras contar..." maxlength="600"></textarea>
+        <div class="step-q-label">Step 7 — Anything Else</div>
+        <div class="step-question">Anything else you want visitors to know?</div>
+        <div class="step-hint">Optional — but the more you share, the richer your website copy will be.</div>
+        <textarea class="studio-input" id="q7_extras" placeholder="Awards, certifications, special offers, hours, service areas, team size, founding year, a story you want to tell..." maxlength="600"></textarea>
         <div class="step-nav">
-          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
           <button type="button" class="btn-submit" onclick="submitForm()">
-            Construir Mi Sitio Web →
+            Build My Website →
           </button>
         </div>
+      </div>
+
+      <!-- Visual style is intentionally inferred by AI4 Website Design Studio.
+           Customers can change templates and colors on the preview page. -->
       </div>
 
     </div>
   </section>
 
-  <!-- PANTALLA DE CARGA DEL PIPELINE -->
+  <!-- PIPELINE LOADING SCREEN -->
   <div id="pipelineScreen">
-    <img class="pipeline-logo" src="ai4-approved-logo.png" alt="AI4">
-    <div class="pipeline-title">Construyendo tu <span class="gradient-text">sitio web</span></div>
-    <div class="pipeline-sub" id="pipelineSub">AI4 Estudio de Diseño está escribiendo tu contenido, diseñando tu maquetación y ensamblando tu sitio web completo.</div>
+    <img class="pipeline-logo" src="AI4-approved-logo.png" alt="AI4">
+    <div class="pipeline-title">Building your <span class="gradient-text">website</span></div>
+    <div class="pipeline-sub" id="pipelineSub">AI4 Website Design Studio is writing your copy, designing your layout, and assembling your complete website.</div>
 
     <div class="pipeline-progress-wrap">
       <div class="pipeline-progress-track">
         <div class="pipeline-progress-fill" id="pipelineProgressFill"></div>
       </div>
     </div>
-    <div class="pipeline-stage-label" id="pipelineStageLabel">Iniciando...</div>
+    <div class="pipeline-stage-label" id="pipelineStageLabel">Initializing...</div>
 
     <div class="stage-list">
       <div class="stage-item" id="stage-1">
         <div class="stage-icon">✍️</div>
-        <div class="stage-name">Creando tu mensaje...</div>
-        <div class="stage-status" id="stage-1-status">esperando</div>
+        <div class="stage-name">Crafting your message...</div>
+        <div class="stage-status" id="stage-1-status">waiting</div>
       </div>
       <div class="stage-item" id="stage-2">
         <div class="stage-icon">🎨</div>
-        <div class="stage-name">Diseñando tu maquetación...</div>
-        <div class="stage-status" id="stage-2-status">esperando</div>
+        <div class="stage-name">Designing your layout...</div>
+        <div class="stage-status" id="stage-2-status">waiting</div>
       </div>
       <div class="stage-item" id="stage-3">
         <div class="stage-icon">🏗️</div>
-        <div class="stage-name">Construyendo tus secciones...</div>
-        <div class="stage-status" id="stage-3-status">esperando</div>
+        <div class="stage-name">Building your sections...</div>
+        <div class="stage-status" id="stage-3-status">waiting</div>
       </div>
       <div class="stage-item" id="stage-4">
         <div class="stage-icon">✨</div>
-        <div class="stage-name">Puliendo tu contenido...</div>
-        <div class="stage-status" id="stage-4-status">esperando</div>
+        <div class="stage-name">Polishing your content...</div>
+        <div class="stage-status" id="stage-4-status">waiting</div>
       </div>
       <div class="stage-item" id="stage-5">
         <div class="stage-icon">🚀</div>
-        <div class="stage-name">Renderizando tu sitio web...</div>
-        <div class="stage-status" id="stage-5-status">esperando</div>
+        <div class="stage-name">Rendering your website...</div>
+        <div class="stage-status" id="stage-5-status">waiting</div>
       </div>
     </div>
   </div>
 
   <footer id="siteFooter">
-    <div class="footer-brand">AI4 Estudio de Diseño Web</div>
+    <div class="footer-brand">AI4 Website Design Studio</div>
     <div style="margin-top:.3rem;font-size:.85rem">© 2026 Apropos Group LLC</div>
   </footer>
 
 </div><!-- /page-shell -->
 
 <script>
-// ── Estado ─────────────────────────────────────────────────────────
+// ── State ──────────────────────────────────────────────────────────
 const TOTAL_STEPS = 7;
 let currentStep = 1;
 const answers = {};
 let selectedStyle = 'auto-infer-platinum';
 let selectedCta = null;
 
-// ── Iniciar ────────────────────────────────────────────────────────
+// ── Start ──────────────────────────────────────────────────────────
 function startStudio() {
   document.getElementById('heroSection').style.display = 'none';
   document.getElementById('studioSection').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── Progreso ───────────────────────────────────────────────────────
+// ── Progress ───────────────────────────────────────────────────────
 function updateProgress() {
   const pct = (currentStep / TOTAL_STEPS) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressStepLabel').textContent = `Paso ${currentStep} de ${TOTAL_STEPS}`;
-  document.getElementById('progressCount').textContent = `Pregunta ${currentStep}`;
+  document.getElementById('progressStepLabel').textContent = `Step ${currentStep} of ${TOTAL_STEPS}`;
+  document.getElementById('progressCount').textContent = `Question ${currentStep}`;
 }
 
-// ── Navegación ─────────────────────────────────────────────────────
+// ── Navigation ─────────────────────────────────────────────────────
 function nextStep() {
   if (!validateStep(currentStep)) return;
   collectStep(currentStep);
@@ -456,33 +727,33 @@ function prevStep() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── Validación ─────────────────────────────────────────────────────
+// ── Validation ─────────────────────────────────────────────────────
 function validateStep(step) {
   clearError(step);
   if (step === 1) {
     const v = document.getElementById('q1_businessName').value.trim();
-    if (!v) { showError(step, 'Por favor ingresa el nombre de tu negocio.'); return false; }
+    if (!v) { showError(step, 'Please enter your business name.'); return false; }
   }
   if (step === 2) {
     const v = document.getElementById('q2_whatYouDo').value.trim();
-    if (v.length < 20) { showError(step, 'Por favor describe tu negocio con un poco más de detalle.'); return false; }
+    if (v.length < 20) { showError(step, 'Please describe your business in a bit more detail.'); return false; }
   }
   if (step === 3) {
     const v = document.getElementById('q3_customers').value.trim();
-    if (!v) { showError(step, 'Por favor describe a tus clientes ideales.'); return false; }
+    if (!v) { showError(step, 'Please describe your ideal customers.'); return false; }
   }
   if (step === 4) {
     const v = document.getElementById('q4_differentiators').value.trim();
-    if (!v) { showError(step, 'Por favor comparte qué te hace diferente.'); return false; }
+    if (!v) { showError(step, 'Please share what makes you different.'); return false; }
   }
   if (step === 5) {
-    if (!selectedCta) { showError(step, 'Por favor elige qué quieres que hagan los visitantes.'); return false; }
+    if (!selectedCta) { showError(step, 'Please choose what you want visitors to do.'); return false; }
   }
   if (step === 6) {
     const phone = document.getElementById('q6_phone').value.trim();
     const email = document.getElementById('q6_email').value.trim();
     const address = document.getElementById('q6_address').value.trim();
-    if (!phone && !email && !address) { showError(step, 'Por favor ingresa al menos un método de contacto.'); return false; }
+    if (!phone && !email && !address) { showError(step, 'Please enter at least one contact method.'); return false; }
   }
   return true;
 }
@@ -504,7 +775,7 @@ function clearError(step) {
   if (err) err.remove();
 }
 
-// ── Recolectar ─────────────────────────────────────────────────────
+// ── Collect ────────────────────────────────────────────────────────
 function collectStep(step) {
   const fields = {
     1: () => { answers.businessName = document.getElementById('q1_businessName').value.trim(); },
@@ -529,7 +800,7 @@ function collectStep(step) {
   if (fields[step]) fields[step]();
 }
 
-// ── Selector de CTA ────────────────────────────────────────────────
+// ── CTA selector ───────────────────────────────────────────────────
 document.getElementById('ctaGrid').querySelectorAll('.cta-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.getElementById('ctaGrid').querySelectorAll('.cta-btn').forEach(b => b.classList.remove('selected'));
@@ -538,21 +809,30 @@ document.getElementById('ctaGrid').querySelectorAll('.cta-btn').forEach(btn => {
   });
 });
 
-// ── Envío y Pipeline ───────────────────────────────────────────────
+// ── Style selector ─────────────────────────────────────────────────
+function selectStyle(card) {
+  const grid = document.getElementById('styleGrid');
+  if (!grid || !card) return;
+  grid.querySelectorAll('.style-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedStyle = card.dataset.value;
+}
+
+// ── Submit & Pipeline ──────────────────────────────────────────────
 async function submitForm() {
   if (!validateStep(7)) return;
   collectStep(7);
   answers.style = 'auto-infer-platinum';
   answers.designMode = 'ai4-auto-infer';
 
-  // Ocultar estudio, mostrar pipeline
+  // Hide studio, show pipeline
   document.getElementById('studioSection').style.display = 'none';
   document.getElementById('siteFooter').style.display = 'none';
   const pipelineEl = document.getElementById('pipelineScreen');
   pipelineEl.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Iniciar animación de progreso cinematográfica
+  // Start cinematic progress animation
   animatePipeline();
 
   try {
@@ -562,24 +842,25 @@ async function submitForm() {
       body: JSON.stringify({ answers })
     });
 
-    if (!response.ok) throw new Error(`La función devolvió ${response.status}`);
+    if (!response.ok) throw new Error(`Function returned ${response.status}`);
     const data = await response.json();
     completePipeline(data);
 
   } catch (err) {
-    console.warn('Error en función del pipeline, usando respaldo del cliente:', err);
+    console.warn('Pipeline function error, using client fallback:', err);
+    // Build a client-side fallback so the user never gets stuck
     const fallback = buildClientFallback(answers);
     completePipeline(fallback);
   }
 }
 
-// ── Animación del pipeline ─────────────────────────────────────────
+// ── Pipeline animation ─────────────────────────────────────────────
 const STAGE_LABELS = [
-  'Creando tu mensaje...',
-  'Diseñando tu maquetación...',
-  'Construyendo tus secciones...',
-  'Puliendo tu contenido...',
-  'Renderizando tu sitio web...'
+  'Crafting your message...',
+  'Designing your layout...',
+  'Building your sections...',
+  'Polishing your content...',
+  'Rendering your website...'
 ];
 const STAGE_DELAYS  = [0,    3000, 6000, 9000,  12000];
 const STAGE_DONE_AT = [2500, 5500, 8500, 11500, 15000];
@@ -609,8 +890,8 @@ function setStage(n, state) {
   const statusEl = document.getElementById(`stage-${n}-status`);
   if (!el) return;
   el.classList.remove('running', 'done');
-  if (state === 'running') { el.classList.add('running'); statusEl.textContent = 'procesando...'; }
-  if (state === 'done') { el.classList.add('done'); statusEl.textContent = 'completo ✓'; }
+  if (state === 'running') { el.classList.add('running'); statusEl.textContent = 'running...'; }
+  if (state === 'done') { el.classList.add('done'); statusEl.textContent = 'complete ✓'; }
 }
 
 function completePipeline(data) {
@@ -618,18 +899,21 @@ function completePipeline(data) {
   pipelineDone = true;
   pipelineTimers.forEach(clearTimeout);
 
+  // Mark all stages done
   for (let i = 1; i <= 5; i++) setStage(i, 'done');
   document.getElementById('pipelineProgressFill').style.width = '100%';
-  document.getElementById('pipelineStageLabel').textContent = '¡Tu sitio web está listo!';
+  document.getElementById('pipelineStageLabel').textContent = 'Your website is ready!';
 
+  // Persist to sessionStorage
   persistData(data, answers);
 
+  // Redirect after brief pause
   setTimeout(() => {
     window.location.href = 'ai4-design-studio-preview.html';
   }, 1200);
 }
 
-// ── Persistir datos ────────────────────────────────────────────────
+// ── Persist data ───────────────────────────────────────────────────
 function persistData(data, rawAnswers) {
   try {
     sessionStorage.setItem('ai4DesignBrief', JSON.stringify(data.brief || data));
@@ -643,7 +927,7 @@ function persistData(data, rawAnswers) {
       source: 'ai4-design-studio',
       businessName: rawAnswers.businessName,
       business_name: rawAnswers.businessName,
-      websitePurpose: 'Sitio Web de Negocio',
+      websitePurpose: 'Business Website',
       primaryGoal: rawAnswers.primaryCta,
       designSystem: rawAnswers.style || 'auto-infer-platinum',
       creativeDirection: rawAnswers.whatYouDo,
@@ -651,32 +935,32 @@ function persistData(data, rawAnswers) {
       qualityScore: data.brief?.qualityScore || 88
     }));
   } catch (e) {
-    console.warn('Error al guardar en sessionStorage:', e);
+    console.warn('sessionStorage save failed:', e);
   }
 }
 
-// ── Respaldo del cliente ───────────────────────────────────────────
+// ── Client-side fallback ───────────────────────────────────────────
+
 function inferClientStyle(a) {
   const text = `${a.businessName || ''} ${a.whatYouDo || ''} ${a.customers || ''} ${a.differentiators || ''} ${a.extras || ''}`.toLowerCase();
-  if (/(música|musica|música|estudio|grabación|grabacion|artista|productor|beats|gospel|hip-hop|rap|soul|music|studio|recording|artist|producer)/.test(text)) return 'dark-premium';
-  if (/(salón|salon|belleza|spa|cabello|peluquer|estética|estetica|barbero|barber|beauty|hair)/.test(text)) return 'warm-trustworthy';
-  if (/(restaurante|restaurant|comida|food|cafe|chef|catering|menú|menu)/.test(text)) return 'warm-trustworthy';
-  if (/(fitness|gimnasio|gym|entrenador|trainer|coach|deporte|sport|rendimiento|performance)/.test(text)) return 'bold-energetic';
+  if (/(music|studio|gospel|hip-hop|hip hop|rap|soul|recording|artist|producer|beats)/.test(text)) return 'dark-premium';
+  if (/(salon|beauty|spa|lashes|hair|barber|esthetician)/.test(text)) return 'warm-trustworthy';
+  if (/(restaurant|food|cafe|chef|catering|menu)/.test(text)) return 'warm-trustworthy';
+  if (/(fitness|gym|trainer|coach|sports|performance)/.test(text)) return 'bold-energetic';
   return 'dark-premium';
 }
-
 function buildClientFallback(a) {
-  const name = a.businessName || 'Tu Negocio';
+  const name = a.businessName || 'Your Business';
   const phone = a.phone || '';
   const email = a.email || '';
   const address = a.address || '';
-  const cta = a.primaryCta || 'Contáctanos';
+  const cta = a.primaryCta || 'Contact us';
 
   const styleMap = {
-    'dark-premium':      { bg:'#030816', bg2:'#07172d', text:'#F5F8FF', muted:'#90A3BC', accent:'#1EA7FF', accent2:'#5BD3FF', panel:'rgba(8,24,47,.8)', heading:'Syne', body:'Inter' },
-    'light-professional':{ bg:'#ffffff', bg2:'#f8fafc', text:'#0f172a', muted:'#64748b', accent:'#2563eb', accent2:'#60a5fa', panel:'#f1f5f9', heading:'Inter',  body:'Inter' },
-    'bold-energetic':    { bg:'#0d0118', bg2:'#1a0533', text:'#faf5ff', muted:'#c4b5fd', accent:'#7c3aed', accent2:'#f59e0b', panel:'rgba(124,58,237,.15)', heading:'Syne', body:'Inter' },
-    'warm-trustworthy':  { bg:'#1c1208', bg2:'#2d1a07', text:'#fef3c7', muted:'#d97706', accent:'#f59e0b', accent2:'#fbbf24', panel:'rgba(120,53,15,.5)',  heading:'Syne', body:'Inter' }
+    'dark-premium':      { bg:'#0F2A6A', bg2:'#163472', text:'#FFFFFF', muted:'#C3D0E8', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(22,52,114,.85)', heading:'Bodoni Moda', body:'Jost' },
+    'light-professional':{ bg:'#0F2A6A', bg2:'#163472', text:'#FFFFFF', muted:'#9DB0D4', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(28,56,120,.8)', heading:'Bodoni Moda',  body:'Jost' },
+    'bold-energetic':    { bg:'#0F2A6A', bg2:'#1C3878', text:'#FFFFFF', muted:'#C3D0E8', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(15,42,106,.9)', heading:'Bodoni Moda', body:'Jost' },
+    'warm-trustworthy':  { bg:'#0F2A6A', bg2:'#163472', text:'#FFFFFF', muted:'#9DB0D4', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(22,52,114,.8)',  heading:'Bodoni Moda', body:'Jost' }
   };
   const inferredStyle = (!a.style || a.style === 'auto-infer-platinum') ? inferClientStyle(a) : a.style;
   const s = styleMap[inferredStyle] || styleMap['dark-premium'];
@@ -687,19 +971,19 @@ function buildClientFallback(a) {
     brandName: name,
     qualityScore: 88,
     status: 'approved',
-    websitePurpose: 'Sitio Web de Negocio',
+    websitePurpose: 'Business Website',
     recommendedDesignSystem: inferredStyle || 'dark-premium',
     creativeDirection: a.whatYouDo,
-    colorSystem: { primary: s.accent, secondary: s.bg2, accent: s.accent2, background: s.bg, surface: s.panel, colorMoodDescription: `Tema ${inferredStyle}` },
-    typographySystem: { headingFont: s.heading, bodyFont: s.body, typographyRationale: `Combinación ${s.heading} + ${s.body}` },
+    colorSystem: { primary: s.accent, secondary: s.bg2, accent: s.accent2, background: s.bg, surface: s.panel, colorMoodDescription: `${inferredStyle} theme` },
+    typographySystem: { headingFont: s.heading, bodyFont: s.body, typographyRationale: `${s.heading} + ${s.body} pairing` },
     sectionPlan: [
-      { sectionName: 'Hero', headlineDirection: `Apertura audaz para ${name}` },
-      { sectionName: 'Servicios', headlineDirection: 'Lo que ofreces' },
-      { sectionName: '¿Por qué nosotros?', headlineDirection: 'Tus diferenciadores' },
-      { sectionName: 'Testimonios', headlineDirection: 'Prueba social' },
-      { sectionName: 'Contacto', headlineDirection: 'Ponerse en contacto' }
+      { sectionName: 'Hero', headlineDirection: `Bold opening for ${name}` },
+      { sectionName: 'Services', headlineDirection: 'What you offer' },
+      { sectionName: 'Why Us', headlineDirection: 'Your differentiators' },
+      { sectionName: 'Testimonials', headlineDirection: 'Social proof' },
+      { sectionName: 'Contact', headlineDirection: 'Get in touch' }
     ],
-    ctaStrategy: { primary: cta, secondary: 'Más información' }
+    ctaStrategy: { primary: cta, secondary: 'Learn more' }
   };
 
   return { html: templateHtml, brief, templates: [templateHtml] };
@@ -712,7 +996,7 @@ function buildTemplate(a, s, name, phone, email, address, cta) {
   const fb = a.facebook ? `<a href="${esc(a.facebook)}" target="_blank" rel="noopener" style="color:${s.accent}">Facebook</a>` : '';
   const ig = a.instagram ? `<a href="${esc(a.instagram)}" target="_blank" rel="noopener" style="color:${s.accent}">Instagram</a>` : '';
   return `<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -778,7 +1062,7 @@ footer{padding:2rem;text-align:center;font-size:.85rem;color:${s.muted};border-t
 <section class="hero">
   <div class="hero-inner">
     <div class="section-label">${esc(name)}</div>
-    <h1>Estamos aquí cuando<br>más nos necesitas.</h1>
+    <h1>We're here when<br>you need us most.</h1>
     <p>${esc(a.whatYouDo)}</p>
     <button class="btn-hero" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
       ${esc(cta)}
@@ -789,24 +1073,24 @@ footer{padding:2rem;text-align:center;font-size:.85rem;color:${s.muted};border-t
 
 <section class="section" id="services">
   <div class="section-inner">
-    <div class="section-label">Lo Que Ofrecemos</div>
-    <h2>Servicios diseñados para tus necesidades.</h2>
-    <p style="color:${s.muted};max-width:560px">Todo lo que hacemos está diseñado para facilitar tu vida y mantener tu hogar o negocio funcionando sin problemas.</p>
+    <div class="section-label">What We Offer</div>
+    <h2>Services built around your needs.</h2>
+    <p style="color:${s.muted};max-width:560px">Everything we do is designed to make your life easier and your home or business run smoothly.</p>
     <div class="services-grid">
-      <div class="service-card"><div class="service-icon">⚡</div><h3>Respuesta Rápida</h3><p>Llegamos cuando lo prometemos. Servicio de emergencia y el mismo día disponible.</p></div>
-      <div class="service-card"><div class="service-icon">🛡️</div><h3>Licenciado y Asegurado</h3><p>Profesionales completamente certificados que se enorgullecen de la calidad en cada trabajo.</p></div>
-      <div class="service-card"><div class="service-icon">💰</div><h3>Precios Justos</h3><p>Cotizaciones transparentes sin sorpresas. Sabrás exactamente cuánto pagas antes de comenzar.</p></div>
+      <div class="service-card"><div class="service-icon">⚡</div><h3>Fast Response</h3><p>We show up when we say we will. Emergency and same-day service available.</p></div>
+      <div class="service-card"><div class="service-icon">🛡️</div><h3>Licensed &amp; Insured</h3><p>Fully certified professionals who take pride in quality workmanship every time.</p></div>
+      <div class="service-card"><div class="service-icon">💰</div><h3>Fair Pricing</h3><p>Transparent quotes with no surprises. You'll know exactly what you're paying before we start.</p></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="about" style="background:${s.panel}">
   <div class="section-inner">
-    <div class="section-label">¿Por Qué Elegirnos?</div>
-    <h2>Qué hace diferente a ${esc(name)}.</h2>
+    <div class="section-label">Why Choose Us</div>
+    <h2>What makes ${esc(name)} different.</h2>
     <div class="why-grid" style="margin-top:2rem">
       ${(a.differentiators || '').split(/[,\.]+/).filter(d => d.trim().length > 3).slice(0,6).map(d =>
-        `<div class="why-item"><div class="why-check">✓</div><div class="why-text"><h4>${esc(d.trim())}</h4><p>Respaldamos todo lo que hacemos.</p></div></div>`
+        `<div class="why-item"><div class="why-check">✓</div><div class="why-text"><h4>${esc(d.trim())}</h4><p>We stand behind everything we do.</p></div></div>`
       ).join('')}
     </div>
   </div>
@@ -814,32 +1098,32 @@ footer{padding:2rem;text-align:center;font-size:.85rem;color:${s.muted};border-t
 
 <section class="section" id="testimonials">
   <div class="section-inner">
-    <div class="section-label">Lo Que Dicen los Clientes</div>
-    <h2>Resultados reales, personas reales.</h2>
+    <div class="section-label">What Customers Say</div>
+    <h2>Real results, real people.</h2>
     <div class="testimonials-grid">
-      <div class="testimonial"><p class="testimonial-quote">"Servicio absolutamente increíble. Llegaron a tiempo, explicaron todo y dejaron el lugar impecable. Los volveré a contratar sin dudarlo."</p><div class="testimonial-author">María G.</div><div class="testimonial-title">Dueña de Casa</div></div>
-      <div class="testimonial"><p class="testimonial-quote">"He trabajado con muchas empresas a lo largo de los años y ${esc(name)} es la única en la que confío completamente. Profesionales, rápidos y justos."</p><div class="testimonial-author">Carlos R.</div><div class="testimonial-title">Dueño de Pequeño Negocio</div></div>
-      <div class="testimonial"><p class="testimonial-quote">"Llamé a las 8pm con una emergencia y llegaron en menos de una hora. No tengo palabras suficientes de elogio. Verdaderamente por encima y más allá."</p><div class="testimonial-author">Sandra M.</div><div class="testimonial-title">Administradora de Propiedades</div></div>
+      <div class="testimonial"><p class="testimonial-quote">"Absolutely incredible service. They showed up on time, explained everything, and left the place spotless. Will use again without question."</p><div class="testimonial-author">Maria T.</div><div class="testimonial-title">Homeowner</div></div>
+      <div class="testimonial"><p class="testimonial-quote">"I've worked with a lot of companies over the years and ${esc(name)} is the only one I trust completely. Professional, fast, and fair."</p><div class="testimonial-author">James R.</div><div class="testimonial-title">Small Business Owner</div></div>
+      <div class="testimonial"><p class="testimonial-quote">"Called at 8pm with an emergency and they were here within the hour. I can't say enough good things. Truly above and beyond."</p><div class="testimonial-author">Sandra M.</div><div class="testimonial-title">Property Manager</div></div>
     </div>
   </div>
 </section>
 
 <section class="cta-section">
-  <div class="section-label">Empieza Hoy</div>
-  <h2>¿Listo para obtener la ayuda que necesitas?</h2>
-  <p>No esperes — contáctanos ahora y nosotros nos encargamos del resto.</p>
+  <div class="section-label">Get Started Today</div>
+  <h2>Ready to get the help you need?</h2>
+  <p>Don't wait — reach out now and we'll take care of the rest.</p>
   <button class="btn-hero" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">${esc(cta)}</button>
 </section>
 
 <section class="contact-section" id="contact">
   <div class="contact-inner">
-    <div class="section-label">Contacto</div>
+    <div class="section-label">Contact</div>
     <h2 style="font-family:'${s.heading}',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:${s.text};margin-bottom:.8rem">${esc(name)}</h2>
-    <p style="color:${s.muted};margin-bottom:1.5rem">Nos encantaría saber de ti. Contáctanos por cualquiera de los métodos a continuación.</p>
+    <p style="color:${s.muted};margin-bottom:1.5rem">We'd love to hear from you. Reach out through any of the methods below.</p>
     <div class="contact-details">
-      ${phone ? `<div class="contact-item"><span>Teléfono</span>${ph}</div>` : ''}
-      ${email ? `<div class="contact-item"><span>Correo</span>${em}</div>` : ''}
-      ${address ? `<div class="contact-item"><span>Dirección</span><span style="color:${s.text}">${esc(address)}</span></div>` : ''}
+      ${phone ? `<div class="contact-item"><span>Phone</span>${ph}</div>` : ''}
+      ${email ? `<div class="contact-item"><span>Email</span>${em}</div>` : ''}
+      ${address ? `<div class="contact-item"><span>Address</span><span style="color:${s.text}">${esc(address)}</span></div>` : ''}
       ${fb ? `<div class="contact-item"><span>Facebook</span>${fb}</div>` : ''}
       ${ig ? `<div class="contact-item"><span>Instagram</span>${ig}</div>` : ''}
     </div>
@@ -849,7 +1133,7 @@ footer{padding:2rem;text-align:center;font-size:.85rem;color:${s.muted};border-t
 
 <footer>
   <strong style="color:${s.text}">${esc(name)}</strong><br>
-  © ${new Date().getFullYear()} ${esc(name)}. Todos los derechos reservados.
+  © ${new Date().getFullYear()} ${esc(name)}. All rights reserved.
   ${phone ? ` · ${esc(phone)}` : ''}${email ? ` · ${esc(email)}` : ''}
 </footer>
 
