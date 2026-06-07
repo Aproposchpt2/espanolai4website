@@ -34,7 +34,7 @@ body::before{
 }
 
 /* NAV */
-nav{
+.nav-right{display:flex;align-items:center;gap:1rem}.nav-signin{font-size:.78rem;color:var(--muted2);text-decoration:none;border:1px solid rgba(184,196,217,.2);border-radius:999px;padding:.4rem 1rem;transition:all .2s}.nav-signin:hover{color:var(--silver);border-color:rgba(184,196,217,.4)}nav{
   position:sticky;top:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   min-height:72px;padding:.85rem clamp(1rem,4vw,2.75rem);
@@ -279,8 +279,7 @@ footer{
       <span class="nav-logo-sub">Desarrollado por Apropos Group LLC</span>
     </div>
   </a>
-  <div class="nav-badge">★ OFERTA GRATIS ACTIVA</div>
-</nav>
+  <div class="nav-right"><div class="nav-badge">★ OFERTA GRATIS ACTIVA</div><a href="/login.html" class="nav-signin">Iniciar Sesión →</a></div></nav>
 
 <!-- HERO -->
 <section class="hero">
