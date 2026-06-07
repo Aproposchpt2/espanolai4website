@@ -1,95 +1,74 @@
 [build]
-publish = "."
-functions = "netlify/functions"
+  publish = "."
+  functions = "netlify/functions"
 
 [build.environment]
-NODE_VERSION = "22"
+  NODE_VERSION = "18"
+  SECRETS_SCAN_OMIT_KEYS = "SUPABASE_URL,RESEND_TO_EMAIL,RESEND_FROM_EMAIL"
 
-[build.processing]
-
-  [build.processing.css]
-
-  [build.processing.html]
-
-  [build.processing.images]
-
-  [build.processing.js]
+[functions]
+  node_bundler = "esbuild"
 
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
 
-[functions]
-
-  [functions."*"]
-  node_bundler = "esbuild"
+[[headers]]
+  for = "/thankyou.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
 
 [[headers]]
-for = "/thankyou.html"
-
+  for = "/*.html"
   [headers.values]
-  Cache-Control = "no-cache, no-store, must-revalidate"
-  Pragma = "no-cache"
-  Expires = "0"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
 
 [[headers]]
-for = "/*.html"
-
+  for = "/*.js"
   [headers.values]
-  Cache-Control = "no-cache, no-store, must-revalidate"
-  Pragma = "no-cache"
-  Expires = "0"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
 
 [[headers]]
-for = "/*.js"
-
+  for = "/*.css"
   [headers.values]
-  Cache-Control = "no-cache, no-store, must-revalidate"
-  Pragma = "no-cache"
-  Expires = "0"
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma = "no-cache"
+    Expires = "0"
 
 [[headers]]
-for = "/*.css"
-
+  for = "/*"
   [headers.values]
-  Cache-Control = "no-cache, no-store, must-revalidate"
-  Pragma = "no-cache"
-  Expires = "0"
-
-[[headers]]
-for = "/*"
-
-  [headers.values]
-  X-Frame-Options = "DENY"
-  X-Content-Type-Options = "nosniff"
-  Referrer-Policy = "strict-origin-when-cross-origin"
-  Content-Language = "es"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Language = "es"
 
 [[redirects]]
-from = "/"
-to = "/index.html"
-status = 200
-force = false
+  from = "/"
+  to = "/index.html"
+  status = 200
 
 [[redirects]]
-from = "/en"
-to = "https://ai4websitedesign.com"
-status = 301
-force = false
+  from = "/en"
+  to = "https://ai4websitedesign.com"
+  status = 301
 
 [[redirects]]
-from = "/estudio"
-to = "/ai4-design-studio.html"
-status = 200
-force = false
+  from = "/estudio"
+  to = "/ai4-design-studio.html"
+  status = 200
 
 [[redirects]]
-from = "/vista-previa"
-to = "/ai4-design-studio-preview.html"
-status = 200
-force = false
+  from = "/vista-previa"
+  to = "/ai4-design-studio-preview.html"
+  status = 200
 
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-force = false
+  from = "/*"
+  to = "/index.html"
+  status = 200
