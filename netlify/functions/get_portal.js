@@ -1,21 +1,8 @@
-// get_portal.js
-// AI4 Diseño de Sitios Web — Datos del Panel de Miembro
-// Devuelve datos de paquete, suscripción, sitio y construcciones restantes para el portal de inicio de sesión.
-// Tablas activas utilizadas: users, orders, subscriptions, sites.
-
 'use strict';
+// get_portal.js — uses direct REST fetch (no Supabase JS client, no WebSocket dependency)
 
-const { createClient } = require('@supabase/supabase-js');
-
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseServiceKey =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  process.env.SUPABASE_SERVICE_KEY;
-
-const supabase =
-  supabaseUrl && supabaseServiceKey
-    ? createClient(supabaseUrl, supabaseServiceKey)
-    : null;
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SERVICE_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -26,35 +13,33 @@ const headers = {
 
 const ENTREPRENEUR_TOTAL_BUILDS = 5;
 
-function normalizeEmail(value = '') {
-  return String(value || '').trim().toLowerCase();
+function sbHeaders() {
+  return { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` };
 }
 
-function normalizeStatus(value = '') {
-  return String(value || '').trim().toLowerCase();
+async function sbGet(table, email, extra = '') {
+  const res = await fetch(
+    `${SUPABASE_URL}/rest/v1/${table}?email=ilike.${encodeURIComponent(email)}&order=created_at.desc${extra}`,
+    { headers: sbHeaders() }
+  );
+  const rows = await res.json();
+  return Array.isArray(rows) ? rows : [];
 }
 
-function isActiveStatus(value = '') {
-  const status = normalizeStatus(value);
-  if (!status) return true;
-  return !['cancelled', 'canceled', 'deleted', 'failed', 'expired', 'inactive'].includes(status);
+function normalizeEmail(v = '') { return String(v || '').trim().toLowerCase(); }
+function normalizeStatus(v = '') { return String(v || '').trim().toLowerCase(); }
+
+function isActiveStatus(v = '') {
+  const s = normalizeStatus(v);
+  if (!s) return true;
+  return !['cancelled','canceled','deleted','failed','expired','inactive'].includes(s);
 }
 
-function numberOrNull(value) {
-  const num = Number(value);
-  return Number.isFinite(num) ? num : null;
-}
+function numberOrNull(v) { const n = Number(v); return Number.isFinite(n) ? n : null; }
 
 function getPlanKey(row = {}) {
-  const raw = [
-    row.plan_key,
-    row.plan_name,
-    row.package,
-    row.package_name,
-    row.support_tier,
-    row.stripe_product_name
-  ].filter(Boolean).join(' ').toLowerCase();
-
+  const raw = [row.plan_key, row.plan_name, row.package, row.package_name, row.support_tier, row.stripe_product_name]
+    .filter(Boolean).join(' ').toLowerCase();
   if (raw.includes('entrepreneur') || raw.includes('pro')) return 'entrepreneur';
   if (raw.includes('premier') || raw.includes('premium')) return 'premier';
   if (raw.includes('founder') || raw.includes('starter')) return 'founder';
@@ -62,68 +47,29 @@ function getPlanKey(row = {}) {
 }
 
 function getLatestActive(rows = []) {
-  const usable = Array.isArray(rows) ? rows.filter((row) => isActiveStatus(row.status || row.stripe_status)) : [];
-
-  usable.sort((a, b) => {
-    const bDate = new Date(b.updated_at || b.created_at || 0).getTime();
-    const aDate = new Date(a.updated_at || a.created_at || 0).getTime();
-    return bDate - aDate;
-  });
-
+  const usable = (Array.isArray(rows) ? rows : []).filter(r => isActiveStatus(r.status || r.stripe_status));
+  usable.sort((a, b) => new Date(b.updated_at || b.created_at || 0) - new Date(a.updated_at || a.created_at || 0));
   return usable[0] || null;
 }
 
-function getSubscriptionUpdateAllowance(subscription = null) {
-  if (!subscription) return null;
-
-  const explicit =
-    numberOrNull(subscription.monthly_update_limit) ||
-    numberOrNull(subscription.updates_allowed) ||
-    numberOrNull(subscription.update_limit);
-
+function getSubscriptionUpdateAllowance(sub = null) {
+  if (!sub) return null;
+  const explicit = numberOrNull(sub.monthly_update_limit) || numberOrNull(sub.updates_allowed) || numberOrNull(sub.update_limit);
   if (explicit !== null) return explicit;
-
-  const planKey = getPlanKey(subscription);
-  if (planKey === 'entrepreneur') return 25;
-  if (planKey === 'premier') return 5;
-
+  const pk = getPlanKey(sub);
+  if (pk === 'entrepreneur') return 25;
+  if (pk === 'premier') return 5;
   return null;
 }
 
 function getBuildSummary(order = null, sites = []) {
-  if (!order) {
-    return {
-      allowed: 0,
-      used: 0,
-      remaining: 0,
-      source: 'no_package'
-    };
-  }
-
-  const planKey = getPlanKey(order);
-
-  const allowedFromOrder =
-    numberOrNull(order.sites_purchased) ||
-    numberOrNull(order.builds_allowed) ||
-    numberOrNull(order.total_builds);
-
-  const allowed =
-    planKey === 'entrepreneur'
-      ? ENTREPRENEUR_TOTAL_BUILDS
-      : (allowedFromOrder || 1);
-
-  const usedFromOrder =
-    numberOrNull(order.sites_used) ||
-    numberOrNull(order.builds_used);
-
-  const remainingFromOrder =
-    numberOrNull(order.sites_remaining) ||
-    numberOrNull(order.builds_remaining);
-
-  let used;
-  let remaining;
-  let source;
-
+  if (!order) return { allowed: 0, used: 0, remaining: 0, source: 'no_package' };
+  const pk = getPlanKey(order);
+  const allowedFromOrder = numberOrNull(order.sites_purchased) || numberOrNull(order.builds_allowed) || numberOrNull(order.total_builds);
+  const allowed = pk === 'entrepreneur' ? ENTREPRENEUR_TOTAL_BUILDS : (allowedFromOrder || 1);
+  const usedFromOrder = numberOrNull(order.sites_used) || numberOrNull(order.builds_used);
+  const remainingFromOrder = numberOrNull(order.sites_remaining) || numberOrNull(order.builds_remaining);
+  let used, remaining, source;
   if (remainingFromOrder !== null) {
     remaining = Math.max(0, Math.min(allowed, remainingFromOrder));
     used = Math.max(0, allowed - remaining);
@@ -137,158 +83,84 @@ function getBuildSummary(order = null, sites = []) {
     remaining = Math.max(0, allowed - used);
     source = 'sites_count';
   }
-
-  return {
-    allowed,
-    used,
-    remaining,
-    source
-  };
+  return { allowed, used, remaining, source };
 }
 
 function safeOrder(row = null) {
-  if (!row) {
-    return {
-      hasPackage: false
-    };
-  }
-
+  if (!row) return { hasPackage: false };
   return {
-    hasPackage: true,
-    id: row.id || null,
-    plan_key: getPlanKey(row),
+    hasPackage: true, id: row.id || null, plan_key: getPlanKey(row),
     plan_name: row.plan_name || row.package_name || 'Website Package',
-    status: row.status || 'active',
-    amount_paid: row.amount_paid || null,
-    sites_purchased: row.sites_purchased || null,
-    sites_used: row.sites_used || null,
-    sites_remaining: row.sites_remaining || null,
-    created_at: row.created_at || null,
-    updated_at: row.updated_at || null
+    status: row.status || 'active', amount_paid: row.amount_paid || null,
+    sites_purchased: row.sites_purchased || null, sites_used: row.sites_used || null,
+    sites_remaining: row.sites_remaining || null, created_at: row.created_at || null, updated_at: row.updated_at || null
   };
 }
 
 function safeSubscription(row = null) {
-  if (!row) {
-    return {
-      hasSubscription: false
-    };
-  }
-
+  if (!row) return { hasSubscription: false };
   return {
-    hasSubscription: true,
-    id: row.id || null,
-    plan_key: row.plan_key || getPlanKey(row),
+    hasSubscription: true, id: row.id || null, plan_key: row.plan_key || getPlanKey(row),
     plan_name: row.plan_name || row.support_tier || 'Site Management',
-    support_tier: row.support_tier || '',
-    status: row.stripe_status || row.status || 'active',
-    stripe_status: row.stripe_status || '',
-    public_price: row.public_price || '',
-    update_allowance: row.update_allowance || '',
-    updates_allowed: getSubscriptionUpdateAllowance(row),
-    current_period_end: row.current_period_end || null,
-    cancel_at_period_end: Boolean(row.cancel_at_period_end || false),
-    created_at: row.created_at || null,
-    updated_at: row.updated_at || null
+    support_tier: row.support_tier || '', status: row.stripe_status || row.status || 'active',
+    stripe_status: row.stripe_status || '', public_price: row.public_price || '',
+    update_allowance: row.update_allowance || '', updates_allowed: getSubscriptionUpdateAllowance(row),
+    current_period_end: row.current_period_end || null, cancel_at_period_end: Boolean(row.cancel_at_period_end || false),
+    created_at: row.created_at || null, updated_at: row.updated_at || null
   };
 }
 
 function safeSites(rows = []) {
-  return (Array.isArray(rows) ? rows : []).slice(0, 20).map((row) => ({
-    id: row.id || null,
-    order_id: row.order_id || null,
-    email: row.email || '',
-    business_name: row.business_name || '',
-    site_name: row.site_name || '',
-    domain_name: row.domain_name || '',
-    site_status: row.site_status || row.status || '',
-    template_selected: row.template_selected || '',
-    created_at: row.created_at || null,
-    updated_at: row.updated_at || null
+  return (Array.isArray(rows) ? rows : []).slice(0, 20).map(r => ({
+    id: r.id || null, order_id: r.order_id || null, email: r.email || '',
+    business_name: r.business_name || '', site_name: r.site_name || '',
+    domain_name: r.domain_name || '', site_status: r.site_status || r.status || '',
+    template_selected: r.template_selected || '', created_at: r.created_at || null, updated_at: r.updated_at || null
   }));
-}
-
-async function getUser(email) {
-  const { data, error } = await supabase
-    .from('users')
-    .select('*')
-    .ilike('email', email)
-    .maybeSingle();
-
-  if (error) {
-    console.error('Portal user lookup error:', error.message);
-    return null;
-  }
-
-  return data || null;
-}
-
-async function getRows(table, email) {
-  const { data, error } = await supabase
-    .from(table)
-    .select('*')
-    .ilike('email', email)
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error(`Portal ${table} lookup error:`, error.message);
-    return [];
-  }
-
-  return Array.isArray(data) ? data : [];
 }
 
 exports.handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers, body: '' };
+  if (event.httpMethod !== 'GET') return { statusCode: 405, headers, body: JSON.stringify({ error: 'Método no permitido' }) };
 
-  if (event.httpMethod !== 'GET') {
-    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Método no permitido' }) };
+  if (!SUPABASE_URL || !SERVICE_KEY) {
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'El panel de miembro no está configurado.' }) };
   }
 
-  if (!supabase) {
-    console.error('Supabase is not configured for get_portal.');
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'El panel de miembro no está configurado aún.' }) };
-  }
-
-  const email = normalizeEmail(event.queryStringParameters?.email || '');
-
+  const email = normalizeEmail((event.queryStringParameters || {}).email || '');
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Se requiere un correo electrónico válido.' }) };
   }
 
   try {
-    const [user, orders, subscriptions, sites] = await Promise.all([
-      getUser(email),
-      getRows('orders', email),
-      getRows('subscriptions', email),
-      getRows('sites', email)
+    const [userRows, orders, subscriptions, sites] = await Promise.all([
+      sbGet('users', email, '&limit=1'),
+      sbGet('orders', email),
+      sbGet('subscriptions', email),
+      sbGet('sites', email)
     ]);
 
-    const latestOrder = getLatestActive(orders);
-    const latestSubscription = getLatestActive(subscriptions);
-    const buildSummary = getBuildSummary(latestOrder, sites);
+    const user             = userRows[0] || null;
+    const latestOrder      = getLatestActive(orders);
+    const latestSub        = getLatestActive(subscriptions);
+    const buildSummary     = getBuildSummary(latestOrder, sites);
 
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
-        ok: true,
-        email,
+        ok: true, email,
         user: {
           email,
-          full_name: user?.full_name || latestOrder?.full_name || latestSubscription?.full_name || '',
-          phone: user?.phone || latestOrder?.phone || latestSubscription?.phone || '',
+          full_name: user?.full_name || latestOrder?.full_name || latestSub?.full_name || '',
+          phone: user?.phone || latestOrder?.phone || latestSub?.phone || '',
           status: user?.status || ''
         },
-        package: safeOrder(latestOrder),
-        subscription: safeSubscription(latestSubscription),
-        builds: buildSummary,
-        sites: safeSites(sites),
-        counts: {
-          orders: orders.length,
-          subscriptions: subscriptions.length,
-          sites: sites.length
-        }
+        package:      safeOrder(latestOrder),
+        subscription: safeSubscription(latestSub),
+        builds:       buildSummary,
+        sites:        safeSites(sites),
+        counts:       { orders: orders.length, subscriptions: subscriptions.length, sites: sites.length }
       })
     };
   } catch (err) {
