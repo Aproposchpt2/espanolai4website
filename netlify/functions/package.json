@@ -13,7 +13,7 @@
     "stripe": "^14.0.0"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=18.0.0"
   },
   "author": "Apropos Group LLC",
   "license": "PRIVATE"
