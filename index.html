@@ -267,53 +267,52 @@ footer{
   .capture-box{padding:1.75rem 1.25rem}
 }
 
-
-
-/* ── SPLIT HERO LAYOUT ── */
+/* ── HERO CENTERED FINAL ── */
 .hero{
+  position:relative !important;
+  z-index:1 !important;
   min-height:calc(100vh - 72px) !important;
-  display:grid !important;
-  grid-template-columns:1fr 1fr !important;
+  display:flex !important;
+  flex-direction:column !important;
   align-items:center !important;
+  justify-content:center !important;
+  padding:clamp(3rem,6vw,5rem) clamp(1rem,4vw,2.5rem) clamp(2rem,4vw,3rem) !important;
+  text-align:center !important;
   gap:0 !important;
-  padding:clamp(2rem,5vw,4rem) clamp(1.5rem,4vw,3rem) !important;
-  text-align:left !important;
+  overflow:hidden !important;
 }
-.hero-left{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding-right:2rem;
-}
-.hero-right{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:1.2rem;
-}
+/* Kill any split layout */
+.hero-left, .hero-right{ display:contents !important; }
+
+/* Logo wrap — full width centered */
 .hero-logo-wrap{
   position:relative !important;
-  width:min(480px,100%) !important;
-  height:clamp(280px,36vw,460px) !important;
-  margin:0 !important;
-  filter:drop-shadow(0 30px 60px rgba(0,0,0,.48)) !important;
-  flex-shrink:0;
+  width:min(900px,86vw) !important;
+  height:clamp(300px,38vw,520px) !important;
+  margin:0 auto clamp(1.5rem,3vw,3rem) !important;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.55)) !important;
+  flex-shrink:0 !important;
+  display:block !important;
 }
 .hero-logo-wrap::before{
-  content:'';position:absolute;left:50%;top:8%;
-  width:70%;height:55%;transform:translateX(-50%);
-  background:radial-gradient(ellipse at center,rgba(255,255,255,.06),rgba(255,255,255,.02) 48%,transparent 75%);
-  filter:blur(32px);z-index:-1;
+  content:'' !important;
+  position:absolute !important;
+  left:50% !important; top:8% !important;
+  width:65% !important; height:55% !important;
+  transform:translateX(-50%) !important;
+  background:radial-gradient(ellipse at center,rgba(30,167,255,.18),rgba(30,167,255,.06) 48%,transparent 75%) !important;
+  filter:blur(36px) !important; z-index:-1 !important;
 }
 .hero-logo-img{
   position:absolute !important;
   left:50% !important;
-  top:12% !important;
-  width:74% !important;
+  top:11% !important;
+  width:65% !important;
   transform:translateX(-50%) !important;
   height:auto !important;
-  max-height:300px !important;
+  max-height:360px !important;
   object-fit:contain !important;
+  display:block !important;
 }
 .arc-svg{
   position:absolute !important;
@@ -324,65 +323,62 @@ footer{
   z-index:4 !important;
   overflow:visible !important;
 }
+
+/* Eyebrow — hidden, not needed */
+.hero-eyebrow{ display:none !important; }
+
+/* H1 — Bodoni, centered */
 .hero-h1{
   font-family:'Bodoni Moda',Georgia,serif !important;
-  font-size:clamp(2rem,3.8vw,4rem) !important;
+  font-size:clamp(2rem,4.2vw,4rem) !important;
   font-weight:400 !important;
-  line-height:1.08 !important;
+  line-height:1.1 !important;
   letter-spacing:-.02em !important;
   color:#FFFFFF !important;
   background:none !important;
   -webkit-text-fill-color:#FFFFFF !important;
   -webkit-background-clip:unset !important;
   background-clip:unset !important;
-  text-align:left !important;
-  margin-bottom:0 !important;
+  text-align:center !important;
+  max-width:900px !important;
+  margin:0 auto 1rem !important;
 }
-.hero-h1 em, .hero-h1 .gold{
+.hero-h1 em,
+.hero-h1 .gold{
   font-style:italic !important;
   font-family:'Cormorant',Georgia,serif !important;
   font-weight:400 !important;
-  color:rgba(255,255,255,.6) !important;
+  color:rgba(255,255,255,.58) !important;
   background:none !important;
-  -webkit-text-fill-color:rgba(255,255,255,.6) !important;
+  -webkit-text-fill-color:rgba(255,255,255,.58) !important;
   -webkit-background-clip:unset !important;
   background-clip:unset !important;
 }
+
+/* Sub */
 .hero-sub{
-  font-size:clamp(.88rem,1.3vw,1rem) !important;
+  font-size:clamp(.9rem,1.4vw,1.08rem) !important;
   color:rgba(255,255,255,.65) !important;
   line-height:1.75 !important;
-  max-width:none !important;
-  margin:0 !important;
-  text-align:left !important;
+  max-width:660px !important;
+  margin:0 auto 1.5rem !important;
+  text-align:center !important;
 }
+
+/* Proof bar */
 .proof-bar{
   display:flex !important;
   flex-wrap:wrap !important;
-  justify-content:flex-start !important;
-  gap:.4rem .9rem !important;
-  padding-top:1rem !important;
+  justify-content:center !important;
+  gap:.5rem 1.4rem !important;
+  padding-top:1.2rem !important;
   border-top:1px solid rgba(255,255,255,.12) !important;
   margin-bottom:0 !important;
-  width:100% !important;
+  width:min(760px,90vw) !important;
 }
 .proof-item{
   font-size:.75rem !important;
-  color:rgba(255,255,255,.55) !important;
-}
-/* Remove eyebrow entirely in split layout */
-.hero-eyebrow{ display:none !important; }
-
-@media(max-width:768px){
-  .hero{
-    grid-template-columns:1fr !important;
-    text-align:center !important;
-  }
-  .hero-left{ padding-right:0 !important; padding-bottom:1.5rem !important; }
-  .hero-logo-wrap{ width:min(340px,85vw) !important; height:clamp(220px,50vw,320px) !important; }
-  .hero-h1{ text-align:center !important; font-size:clamp(1.8rem,7vw,2.8rem) !important; }
-  .hero-sub{ text-align:center !important; }
-  .proof-bar{ justify-content:center !important; }
+  color:rgba(255,255,255,.52) !important;
 }
 
 </style>
@@ -403,8 +399,7 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-logo-wrap">
+  <div class="hero-logo-wrap">
     <img class="hero-logo-img" src="AI4-approved-logo.png" alt="AI4 Website Design">
     <svg class="arc-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <defs>
@@ -421,17 +416,14 @@ footer{
       <line x1="702" y1="466" x2="930" y2="466" stroke="url(#blueGlow)" stroke-width="1" filter="url(#softGlow)" opacity="0.55"/>
     </svg>
   </div>
-  </div>
-  <div class="hero-right">
-    <h1 class="hero-h1">Obtén Tu Sitio Web de Negocio,<br>Personal o Promocional con una<br><em>Presencia Platinum en Línea.</em></h1>
-    <p class="hero-sub">Responde <strong>6 preguntas</strong>. Nuestro Motor de Diseño IA construye tu sitio web personalizado — diseñado profesionalmente, listo para lanzar. <strong>Opción de lanzamiento el mismo día disponible. Sin plantillas. Sin suposiciones. Sin costo.</strong></p>
-    <div class="proof-bar">
-      <div class="proof-item"><span>✦</span> 6 Agentes de IA</div>
-      <div class="proof-item"><span>✦</span> 12 Sistemas de Diseño</div>
-      <div class="proof-item"><span>✦</span> Negocio · Sitio Personal</div>
-      <div class="proof-item"><span>✦</span> Lanzamiento el Mismo Día</div>
-      <div class="proof-item"><span>✦</span> Español + English</div>
-    </div>
+  <h1 class="hero-h1">Obtén Tu Sitio Web de Negocio, Personal<br>o Promocional con una <em>Presencia Platinum en Línea.</em></h1>
+  <p class="hero-sub">Responde <strong>6 preguntas</strong>. Nuestro Motor de Diseño IA construye tu sitio web personalizado — diseñado profesionalmente, listo para lanzar. <strong>Opción de lanzamiento el mismo día disponible. Sin plantillas. Sin suposiciones. Sin costo.</strong></p>
+  <div class="proof-bar">
+    <div class="proof-item"><span>✦</span> 6 Agentes de IA</div>
+    <div class="proof-item"><span>✦</span> 12 Sistemas de Diseño</div>
+    <div class="proof-item"><span>✦</span> Negocio · Sitio Personal</div>
+    <div class="proof-item"><span>✦</span> Lanzamiento el Mismo Día</div>
+    <div class="proof-item"><span>✦</span> Español + English</div>
   </div>
 </section>
 
