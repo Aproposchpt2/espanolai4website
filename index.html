@@ -267,39 +267,66 @@ footer{
   .capture-box{padding:1.75rem 1.25rem}
 }
 
-/* ── LOGO HERO UPGRADE ── */
 
-/* ── HERO UPGRADE OVERRIDES ── */
-.hero-eyebrow{
-  display:flex !important;
+
+/* ── SPLIT HERO LAYOUT ── */
+.hero{
+  min-height:calc(100vh - 72px) !important;
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
   align-items:center !important;
-  justify-content:center !important;
-  gap:.65rem !important;
-  font-family:'Jost',sans-serif !important;
-  font-size:.62rem !important;
-  font-weight:500 !important;
-  letter-spacing:.22em !important;
-  color:rgba(255,255,255,.55) !important;
-  text-transform:uppercase !important;
-  margin-bottom:1.4rem !important;
-  background:none !important;
-  border:none !important;
-  border-radius:0 !important;
-  padding:0 !important;
-  box-shadow:none !important;
-  backdrop-filter:none !important;
+  gap:0 !important;
+  padding:clamp(2rem,5vw,4rem) clamp(1.5rem,4vw,3rem) !important;
+  text-align:left !important;
 }
-.eyebrow-line{
-  display:inline-block !important;
-  width:36px !important;
-  height:1px !important;
-  background:rgba(255,255,255,.4) !important;
-  border-radius:0 !important;
-  flex-shrink:0 !important;
+.hero-left{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-right:2rem;
+}
+.hero-right{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:1.2rem;
+}
+.hero-logo-wrap{
+  position:relative !important;
+  width:min(480px,100%) !important;
+  height:clamp(280px,36vw,460px) !important;
+  margin:0 !important;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.48)) !important;
+  flex-shrink:0;
+}
+.hero-logo-wrap::before{
+  content:'';position:absolute;left:50%;top:8%;
+  width:70%;height:55%;transform:translateX(-50%);
+  background:radial-gradient(ellipse at center,rgba(255,255,255,.06),rgba(255,255,255,.02) 48%,transparent 75%);
+  filter:blur(32px);z-index:-1;
+}
+.hero-logo-img{
+  position:absolute !important;
+  left:50% !important;
+  top:12% !important;
+  width:74% !important;
+  transform:translateX(-50%) !important;
+  height:auto !important;
+  max-height:300px !important;
+  object-fit:contain !important;
+}
+.arc-svg{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  pointer-events:none !important;
+  z-index:4 !important;
+  overflow:visible !important;
 }
 .hero-h1{
   font-family:'Bodoni Moda',Georgia,serif !important;
-  font-size:clamp(2.4rem,5vw,4.5rem) !important;
+  font-size:clamp(2rem,3.8vw,4rem) !important;
   font-weight:400 !important;
   line-height:1.08 !important;
   letter-spacing:-.02em !important;
@@ -308,8 +335,8 @@ footer{
   -webkit-text-fill-color:#FFFFFF !important;
   -webkit-background-clip:unset !important;
   background-clip:unset !important;
-  margin-bottom:1rem !important;
-  text-align:center !important;
+  text-align:left !important;
+  margin-bottom:0 !important;
 }
 .hero-h1 em, .hero-h1 .gold{
   font-style:italic !important;
@@ -321,23 +348,43 @@ footer{
   -webkit-background-clip:unset !important;
   background-clip:unset !important;
 }
-.hero-h1 .gold{
-  font-style:italic !important;
-  font-family:'Cormorant',Georgia,serif !important;
-  font-weight:400 !important;
-  color:rgba(255,255,255,.6) !important;
-  background:none !important;
-  -webkit-text-fill-color:rgba(255,255,255,.6) !important;
-  -webkit-background-clip:unset !important;
+.hero-sub{
+  font-size:clamp(.88rem,1.3vw,1rem) !important;
+  color:rgba(255,255,255,.65) !important;
+  line-height:1.75 !important;
+  max-width:none !important;
+  margin:0 !important;
+  text-align:left !important;
+}
+.proof-bar{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  justify-content:flex-start !important;
+  gap:.4rem .9rem !important;
+  padding-top:1rem !important;
+  border-top:1px solid rgba(255,255,255,.12) !important;
+  margin-bottom:0 !important;
+  width:100% !important;
+}
+.proof-item{
+  font-size:.75rem !important;
+  color:rgba(255,255,255,.55) !important;
+}
+/* Remove eyebrow entirely in split layout */
+.hero-eyebrow{ display:none !important; }
+
+@media(max-width:768px){
+  .hero{
+    grid-template-columns:1fr !important;
+    text-align:center !important;
+  }
+  .hero-left{ padding-right:0 !important; padding-bottom:1.5rem !important; }
+  .hero-logo-wrap{ width:min(340px,85vw) !important; height:clamp(220px,50vw,320px) !important; }
+  .hero-h1{ text-align:center !important; font-size:clamp(1.8rem,7vw,2.8rem) !important; }
+  .hero-sub{ text-align:center !important; }
+  .proof-bar{ justify-content:center !important; }
 }
 
-.hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:.65rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;color:var(--blue4);text-transform:uppercase;margin-bottom:1.4rem}
-.eyebrow-line{display:inline-block;width:28px;height:1px;background:linear-gradient(90deg,transparent,var(--blue4))}
-.eyebrow-line.r{background:linear-gradient(270deg,transparent,var(--blue4))}
-.hero-logo-wrap{position:relative;width:min(960px,88vw);height:clamp(320px,34vw,480px);margin:0 auto clamp(1.5rem,2.5vw,2.8rem);filter:drop-shadow(0 30px 60px rgba(0,0,0,.48))}
-.hero-logo-wrap::before{content:'';position:absolute;left:50%;top:8%;width:70%;height:55%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(30,167,255,.26),rgba(30,167,255,.08) 48%,transparent 75%);filter:blur(32px);z-index:-1}
-.hero-logo-img{position:absolute;left:50%;top:10%;width:min(720px,76%);transform:translateX(-50%);height:auto;max-height:380px;object-fit:contain;display:block;filter:drop-shadow(0 24px 60px rgba(0,0,0,.52)) drop-shadow(0 0 30px rgba(30,167,255,.22))}
-.arc-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400;1,6..96,500&family=Cormorant:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
 </head>
@@ -356,8 +403,8 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow"><span class="eyebrow-line"></span>AI4 Estudio de Diseño Web &nbsp;·&nbsp; Motor de Propósito Primero<span class="eyebrow-line r"></span></div>
-  <div class="hero-logo-wrap">
+  <div class="hero-left">
+    <div class="hero-logo-wrap">
     <img class="hero-logo-img" src="AI4-approved-logo.png" alt="AI4 Website Design">
     <svg class="arc-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 540" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <defs>
@@ -374,14 +421,17 @@ footer{
       <line x1="702" y1="466" x2="930" y2="466" stroke="url(#blueGlow)" stroke-width="1" filter="url(#softGlow)" opacity="0.55"/>
     </svg>
   </div>
-  <h1 class="hero-h1">Obtén Tu Sitio Web de Negocio,<br>Personal o Promocional con una<br><em>Presencia Platinum en Línea.</em></h1>
-  <p class="hero-sub">Responde <strong>6 preguntas</strong>. Nuestro Motor de Diseño IA construye tu sitio web personalizado — diseñado profesionalmente, listo para lanzar. <strong>Opción de lanzamiento el mismo día disponible. Sin plantillas. Sin suposiciones. Sin costo.</strong></p>
-  <div class="proof-bar">
-    <div class="proof-item"><span>✦</span> 6 Agentes de IA</div>
-    <div class="proof-item"><span>✦</span> 12 Sistemas de Diseño</div>
-    <div class="proof-item"><span>✦</span> Negocio · Sitio Personal</div>
-    <div class="proof-item"><span>✦</span> Lanzamiento el Mismo Día</div>
-    <div class="proof-item"><span>✦</span> Español + English</div>
+  </div>
+  <div class="hero-right">
+    <h1 class="hero-h1">Obtén Tu Sitio Web de Negocio,<br>Personal o Promocional con una<br><em>Presencia Platinum en Línea.</em></h1>
+    <p class="hero-sub">Responde <strong>6 preguntas</strong>. Nuestro Motor de Diseño IA construye tu sitio web personalizado — diseñado profesionalmente, listo para lanzar. <strong>Opción de lanzamiento el mismo día disponible. Sin plantillas. Sin suposiciones. Sin costo.</strong></p>
+    <div class="proof-bar">
+      <div class="proof-item"><span>✦</span> 6 Agentes de IA</div>
+      <div class="proof-item"><span>✦</span> 12 Sistemas de Diseño</div>
+      <div class="proof-item"><span>✦</span> Negocio · Sitio Personal</div>
+      <div class="proof-item"><span>✦</span> Lanzamiento el Mismo Día</div>
+      <div class="proof-item"><span>✦</span> Español + English</div>
+    </div>
   </div>
 </section>
 
