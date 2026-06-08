@@ -836,7 +836,7 @@ async function submitForm() {
   animatePipeline();
 
   try {
-    const response = await fetch('/.netlify/functions/generate-website', {
+    const response = await fetch('/.netlify/functions/generate-es', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ answers })
