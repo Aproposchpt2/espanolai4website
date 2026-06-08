@@ -237,14 +237,25 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || '{}');
 
     const submittedCode = normalizeCode(body.promo_code || body.code);
-    const configuredCode = normalizeCode(process.env.FOUNDER_PROMO_CODE || 'LAUNCHFREE');
 
-    if (!configuredCode) {
-      return json(500, { success: false, error: 'El código de promoción no está configurado.' });
+    if (!submittedCode) {
+      return json(400, { success: false, error: 'Se requiere un código de promoción.' });
     }
 
-    if (!submittedCode || submittedCode !== configuredCode) {
+    // Look up the code in promo_leads table (generated on the landing page per user)
+    const promoLookup = await supabaseRest(
+      `promo_leads?promo_code=eq.${encodeURIComponent(submittedCode)}&select=id,email,promo_code,used&limit=1`,
+      { method: 'GET' }
+    );
+
+    if (!promoLookup.ok || !Array.isArray(promoLookup.data) || promoLookup.data.length === 0) {
       return json(400, { success: false, error: 'Código de promoción inválido.' });
+    }
+
+    const promoLead = promoLookup.data[0];
+
+    if (promoLead.used) {
+      return json(400, { success: false, error: 'Este código de promoción ya fue utilizado.' });
     }
 
     const email = safeString(body.email).toLowerCase();
@@ -257,13 +268,6 @@ exports.handler = async (event) => {
       return json(400, { success: false, error: 'No se encontró el HTML del sitio web seleccionado. Por favor regresa a la vista previa y elige el sitio web de nuevo.' });
     }
 
-    const promoLimit = Number(process.env.FOUNDER_PROMO_LIMIT || 0);
-    if (promoLimit > 0) {
-      const currentCount = await getExistingRedemptionCount(configuredCode);
-      if (typeof currentCount === 'number' && currentCount >= promoLimit) {
-        return json(403, { success: false, error: 'Este código de promoción ha alcanzado su límite de canjes.' });
-      }
-    }
 
     const record = {
       promo_code: configuredCode,
@@ -280,6 +284,12 @@ exports.handler = async (event) => {
     };
 
     await logRedemption(record);
+
+    // Mark promo code as used so it cannot be redeemed again
+    await supabaseRest(
+      `promo_leads?promo_code=eq.${encodeURIComponent(submittedCode)}`,
+      { method: 'PATCH', body: { used: true }, prefer: 'return=minimal' }
+    );
 
     const attachment = {
       filename: 'index.html',
