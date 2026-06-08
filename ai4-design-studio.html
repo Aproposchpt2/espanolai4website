@@ -694,6 +694,15 @@ let selectedCta = null;
 
 // ── Start ──────────────────────────────────────────────────────────
 function startStudio() {
+  // Clear any stale session data from previous builds
+  try {
+    sessionStorage.removeItem('ai4DesignBrief');
+    sessionStorage.removeItem('ai4_design_brief');
+    sessionStorage.removeItem('ai4_built_html');
+    sessionStorage.removeItem('ai4_templates');
+    sessionStorage.removeItem('ai4_active_template');
+    sessionStorage.removeItem('ai4_site_data');
+  } catch(e) {}
   document.getElementById('heroSection').style.display = 'none';
   document.getElementById('studioSection').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -824,6 +833,8 @@ async function submitForm() {
   collectStep(7);
   answers.style = 'auto-infer-platinum';
   answers.designMode = 'ai4-auto-infer';
+  // Mark that a fresh build is actively in progress
+  try { sessionStorage.setItem('ai4_active_build', '1'); } catch(e) {}
 
   // Hide studio, show pipeline
   document.getElementById('studioSection').style.display = 'none';
@@ -836,7 +847,7 @@ async function submitForm() {
   animatePipeline();
 
   try {
-    const response = await fetch('/.netlify/functions/generate-es', {
+    const response = await fetch('/.netlify/functions/generate-website', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ answers })
@@ -943,11 +954,20 @@ function persistData(data, rawAnswers) {
 
 function inferClientStyle(a) {
   const text = `${a.businessName || ''} ${a.whatYouDo || ''} ${a.customers || ''} ${a.differentiators || ''} ${a.extras || ''}`.toLowerCase();
-  if (/(music|studio|gospel|hip-hop|hip hop|rap|soul|recording|artist|producer|beats)/.test(text)) return 'dark-premium';
-  if (/(salon|beauty|spa|lashes|hair|barber|esthetician)/.test(text)) return 'warm-trustworthy';
-  if (/(restaurant|food|cafe|chef|catering|menu)/.test(text)) return 'warm-trustworthy';
-  if (/(fitness|gym|trainer|coach|sports|performance)/.test(text)) return 'bold-energetic';
-  return 'dark-premium';
+  // Music, entertainment, nightlife, tech startups → dark premium
+  if (/(music|studio|gospel|hip-hop|hip hop|rap|soul|recording|artist|producer|beats|nightclub|entertainment|tech|software|ai|startup|agency)/.test(text)) return 'dark-premium';
+  // Beauty, wellness, personal care, personal websites → warm trustworthy
+  if (/(salon|beauty|spa|lashes|hair|barber|esthetician|wellness|yoga|massage|personal|portfolio|blog|photography)/.test(text)) return 'warm-trustworthy';
+  // Food, hospitality, community → warm trustworthy
+  if (/(restaurant|food|cafe|chef|catering|menu|bakery|church|community|nonprofit|faith)/.test(text)) return 'warm-trustworthy';
+  // Fitness, real estate, legal, finance, professional services → light professional
+  if (/(fitness|gym|trainer|coach|sports|real estate|realtor|law|attorney|finance|insurance|consulting|medical|dental|clinic)/.test(text)) return 'light-professional';
+  // Bold, energetic for trades, construction, automotive, high energy
+  if (/(construction|contractor|plumbing|hvac|electric|auto|truck|towing|security|cleaning|landscaping)/.test(text)) return 'bold-energetic';
+  // Default: rotate based on business name first letter for variety
+  const first = (a.businessName || 'A').charAt(0).toLowerCase();
+  const map = { a:'dark-premium', b:'warm-trustworthy', c:'light-professional', d:'bold-energetic', e:'dark-premium', f:'warm-trustworthy', g:'light-professional', h:'bold-energetic', i:'dark-premium', j:'warm-trustworthy', k:'light-professional', l:'bold-energetic', m:'dark-premium', n:'warm-trustworthy', o:'light-professional', p:'bold-energetic', q:'dark-premium', r:'warm-trustworthy', s:'light-professional', t:'bold-energetic', u:'dark-premium', v:'warm-trustworthy', w:'light-professional', x:'bold-energetic', y:'dark-premium', z:'warm-trustworthy' };
+  return map[first] || 'dark-premium';
 }
 function buildClientFallback(a) {
   const name = a.businessName || 'Your Business';
@@ -957,10 +977,10 @@ function buildClientFallback(a) {
   const cta = a.primaryCta || 'Contact us';
 
   const styleMap = {
-    'dark-premium':      { bg:'#0F2A6A', bg2:'#163472', text:'#FFFFFF', muted:'#C3D0E8', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(22,52,114,.85)', heading:'Bodoni Moda', body:'Jost' },
-    'light-professional':{ bg:'#0F2A6A', bg2:'#163472', text:'#FFFFFF', muted:'#9DB0D4', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(28,56,120,.8)', heading:'Bodoni Moda',  body:'Jost' },
-    'bold-energetic':    { bg:'#0F2A6A', bg2:'#1C3878', text:'#FFFFFF', muted:'#C3D0E8', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(15,42,106,.9)', heading:'Bodoni Moda', body:'Jost' },
-    'warm-trustworthy':  { bg:'#0F2A6A', bg2:'#163472', text:'#FFFFFF', muted:'#9DB0D4', accent:'#FFFFFF', accent2:'#EEF3FF', panel:'rgba(22,52,114,.8)',  heading:'Bodoni Moda', body:'Jost' }
+    'dark-premium':      { bg:'#030816', bg2:'#07172d', text:'#F5F8FF', muted:'#90A3BC', accent:'#1EA7FF', accent2:'#5BD3FF', panel:'rgba(8,24,47,.8)',    heading:'Syne',       body:'Inter' },
+    'light-professional':{ bg:'#ffffff', bg2:'#f8fafc', text:'#0f172a', muted:'#64748b', accent:'#2563eb', accent2:'#60a5fa', panel:'#f1f5f9',              heading:'Inter',      body:'Inter' },
+    'bold-energetic':    { bg:'#0d0118', bg2:'#1a0533', text:'#faf5ff', muted:'#c4b5fd', accent:'#7c3aed', accent2:'#f59e0b', panel:'rgba(124,58,237,.15)', heading:'Syne',       body:'Inter' },
+    'warm-trustworthy':  { bg:'#1c1208', bg2:'#2d1a07', text:'#fef3c7', muted:'#d97706', accent:'#f59e0b', accent2:'#fbbf24', panel:'rgba(120,53,15,.5)',   heading:'Syne',       body:'Inter' }
   };
   const inferredStyle = (!a.style || a.style === 'auto-infer-platinum') ? inferClientStyle(a) : a.style;
   const s = styleMap[inferredStyle] || styleMap['dark-premium'];
@@ -1137,9 +1157,35 @@ footer{padding:2rem;text-align:center;font-size:.85rem;color:${s.muted};border-t
   ${phone ? ` · ${esc(phone)}` : ''}${email ? ` · ${esc(email)}` : ''}
 </footer>
 
+<script>
+// Clear stale session on fresh page load
+try {
+  if (!sessionStorage.getItem('ai4_active_build')) {
+    sessionStorage.removeItem('ai4DesignBrief');
+    sessionStorage.removeItem('ai4_design_brief');
+    sessionStorage.removeItem('ai4_built_html');
+    sessionStorage.removeItem('ai4_templates');
+    sessionStorage.removeItem('ai4_active_template');
+    sessionStorage.removeItem('ai4_site_data');
+  }
+} catch(e) {}
+</script>
 </body>
 </html>`;
 }
+</script>
+<script>
+// Clear stale session on fresh page load
+try {
+  if (!sessionStorage.getItem('ai4_active_build')) {
+    sessionStorage.removeItem('ai4DesignBrief');
+    sessionStorage.removeItem('ai4_design_brief');
+    sessionStorage.removeItem('ai4_built_html');
+    sessionStorage.removeItem('ai4_templates');
+    sessionStorage.removeItem('ai4_active_template');
+    sessionStorage.removeItem('ai4_site_data');
+  }
+} catch(e) {}
 </script>
 </body>
 </html>
