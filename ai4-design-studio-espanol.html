@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4 Estudio de Diseño Web — Construye Tu Sitio Web</title>
+<meta name="description" content="Answer 7 simple questions. Get a fully built, content-complete website ready to launch.">
+
+
+<style>
+:root{
+  --ink:       #0F2A6A;
+  --ink-2:     #163472;
+  --ink-3:     #1C3878;
+  --steel:     #3A5898;
+  --line:      rgba(255,255,255,.12);
+  --line-2:    rgba(255,255,255,.22);
+  --gold:      #FFFFFF;
+  --white:     #FFFFFF;
+  --silver:    #C3D0E8;
+  --mist:      #9DB0D4;
+  --shadow:    0 32px 80px rgba(0,0,0,.40);
+  --mono:      'Jost',sans-serif;
+  --sans:      'Jost',sans-serif;
+  --display:   'Bodoni Moda',serif;
+  --subdisp:   'Cormorant',serif;
+  --r-sm:      4px;
+  --r-md:      4px;
+  --r-lg:      4px;
+  --r-xl:      4px;
+  --bg:        #0F2A6A;
+  --bg2:       #163472;
+  --bg3:       #1C3878;
+  --blue:      #FFFFFF;
+  --blue2:     #EEF3FF;
+  --blue4:     #C3D0E8;
+  --muted:     rgba(255,255,255,.65);
+  --muted2:    rgba(255,255,255,.42);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:var(--ink);
+  color:var(--muted);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+
+/* noise texture */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+}
+
+a{color:inherit}
+button,input,textarea,select{font:inherit}
+.page-shell{position:relative;z-index:1}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  min-height:72px;padding:.7rem clamp(1rem,4vw,2.5rem);
+  background:rgba(15,42,106,.92);backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--line);
+}
+.nav-brand{display:flex;align-items:center;gap:.75rem;color:var(--white);text-decoration:none}
+.nav-logo{height:52px;width:auto;object-fit:contain}
+.nav-brand-name{
+  font-family:var(--display);
+  font-size:.95rem;font-weight:500;
+  letter-spacing:.03em;white-space:nowrap;
+  color:var(--white);
+}
+.nav-sub{
+  font-family:var(--sans);font-size:.58rem;
+  color:rgba(255,255,255,.4);
+  letter-spacing:.18em;text-transform:uppercase;
+}
+
+/* ── HERO ── */
+.studio-hero{
+  min-height:100vh;padding:9rem 2rem 5rem;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+.studio-hero::after{
+  content:'AI4';
+  position:absolute;bottom:-4rem;right:0;
+  font-family:var(--subdisp);font-style:italic;
+  font-size:clamp(14rem,28vw,24rem);
+  color:rgba(255,255,255,.03);
+  line-height:1;pointer-events:none;user-select:none;
+}
+.hero-inner{width:min(860px,100%);margin:0 auto;text-align:center;position:relative;z-index:1}
+.hero-logo{height:110px;width:auto;object-fit:contain;margin-bottom:2rem}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--sans);font-size:.7rem;font-weight:500;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.24em;text-transform:uppercase;
+  margin-bottom:1.2rem;
+}
+.eyebrow::before{
+  content:'';width:30px;height:1px;
+  background:rgba(255,255,255,.4);
+}
+
+.gradient-text{
+  font-style:italic;
+  color:rgba(255,255,255,.55);
+  font-family:var(--subdisp);
+  font-weight:400;
+}
+
+h1{
+  font-family:var(--display);
+  font-size:clamp(2.6rem,6vw,5.2rem);
+  line-height:1.0;
+  letter-spacing:-.03em;
+  color:var(--white);
+  font-weight:400;
+  margin-bottom:1.2rem;
+}
+
+.hero-sub{
+  max-width:620px;margin:0 auto 2.5rem;
+  font-size:clamp(1rem,1.8vw,1.1rem);
+  color:rgba(255,255,255,.6);
+  line-height:1.75;
+}
+
+.btn-start{
+  display:inline-flex;align-items:center;gap:.65rem;
+  color:var(--ink);background:var(--white);
+  border:none;border-radius:var(--r-sm);
+  padding:1rem 2.2rem;
+  font-weight:600;font-size:.88rem;
+  font-family:var(--sans);
+  letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;
+  transition:background .25s,transform .2s;
+  text-decoration:none;
+}
+.btn-start:hover{background:var(--blue2);transform:translateY(-2px)}
+
+/* Trust strip */
+.trust-strip{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:1.6rem;margin-top:3rem;padding-top:2rem;
+  border-top:1px solid var(--line);
+}
+.trust-item{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.8rem;color:rgba(255,255,255,.45);
+  font-family:var(--sans);letter-spacing:.08em;
+}
+.trust-item span{color:var(--white)}
+
+/* ── STUDIO SECTION ── */
+#studioSection{display:none;padding:2rem 2rem 6rem}
+.studio-wrap{width:min(760px,100%);margin:0 auto}
+
+/* Progress */
+.progress-wrap{margin-bottom:3rem}
+.progress-track{
+  width:100%;height:2px;
+  background:rgba(255,255,255,.1);
+  border-radius:2px;overflow:hidden;margin-bottom:10px;
+}
+.progress-fill{
+  height:100%;
+  background:var(--white);
+  border-radius:2px;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.progress-meta{display:flex;justify-content:space-between;align-items:center}
+.progress-step-label{
+  font-family:var(--sans);font-size:.65rem;
+  color:rgba(255,255,255,.55);
+  letter-spacing:.18em;text-transform:uppercase;
+}
+.progress-count{
+  font-family:var(--sans);font-size:.65rem;
+  color:rgba(255,255,255,.35);letter-spacing:.1em;
+}
+
+/* Steps */
+.form-step{display:none;animation:fadeUp .3s ease}
+.form-step.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+.step-q-label{
+  font-family:var(--sans);font-size:.68rem;
+  letter-spacing:.22em;color:rgba(255,255,255,.45);
+  text-transform:uppercase;margin-bottom:.6rem;
+}
+.step-question{
+  font-family:var(--display);
+  font-size:clamp(1.6rem,3.5vw,2.6rem);
+  font-weight:400;color:var(--white);
+  margin-bottom:.6rem;line-height:1.1;
+  letter-spacing:-.02em;
+}
+.step-hint{
+  font-size:.9rem;color:rgba(255,255,255,.45);
+  margin-bottom:2rem;line-height:1.6;
+}
+
+/* Inputs */
+.studio-input{
+  width:100%;
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  padding:16px 20px;
+  color:var(--white);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  margin-bottom:2rem;
+  font-size:.97rem;line-height:1.5;
+}
+.studio-input:focus{
+  border-color:rgba(255,255,255,.4);
+  box-shadow:0 0 0 3px rgba(255,255,255,.06);
+}
+.studio-input::placeholder{color:rgba(255,255,255,.25)}
+textarea.studio-input{min-height:130px;resize:vertical}
+
+/* Contact grid */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.contact-field label{
+  display:block;
+  font-family:var(--sans);font-size:.65rem;
+  letter-spacing:.18em;color:rgba(255,255,255,.4);
+  text-transform:uppercase;margin-bottom:6px;
+}
+.contact-field .studio-input{margin-bottom:0}
+@media(max-width:600px){.contact-grid{grid-template-columns:1fr}}
+
+/* Style picker */
+.style-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:2rem}
+.style-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:20px;cursor:pointer;
+  transition:all .2s ease;text-align:left;
+}
+.style-card:hover{border-color:var(--line-2);transform:translateY(-1px)}
+.style-card.selected{
+  border-color:var(--white);
+  background:rgba(255,255,255,.09);
+  box-shadow:0 0 0 1px var(--white);
+}
+.style-card-swatch{width:100%;height:48px;border-radius:4px;margin-bottom:12px}
+.style-card-name{
+  font-family:var(--display);font-size:1rem;
+  font-weight:400;color:var(--white);margin-bottom:4px;
+}
+.style-card-desc{font-size:.8rem;color:rgba(255,255,255,.42);line-height:1.4}
+@media(max-width:540px){.style-grid{grid-template-columns:1fr}}
+
+/* CTA options */
+.cta-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:10px;margin-bottom:2rem;
+}
+.cta-btn{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  padding:12px 14px;
+  color:rgba(255,255,255,.55);
+  font-size:.86rem;font-weight:500;
+  cursor:pointer;text-align:left;
+  transition:all .2s ease;
+}
+.cta-btn:hover{border-color:var(--line-2);color:var(--white)}
+.cta-btn.selected{
+  border-color:var(--white);color:var(--white);
+  background:rgba(255,255,255,.1);
+  box-shadow:0 0 0 1px var(--white);
+}
+
+/* Nav buttons */
+.step-nav{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  gap:12px;margin-top:.5rem;
+}
+.btn-back{
+  background:transparent;
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  padding:13px 26px;
+  color:rgba(255,255,255,.5);
+  cursor:pointer;font-weight:500;
+  font-size:.85rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:all .2s;
+}
+.btn-back:hover{border-color:var(--line-2);color:var(--white)}
+
+.btn-next,.btn-submit{
+  color:var(--ink);
+  background:var(--white);
+  border:none;
+  border-radius:var(--r-sm);
+  padding:14px 36px;
+  font-weight:600;font-size:.85rem;
+  font-family:var(--sans);
+  letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;
+  transition:background .25s,transform .2s;
+}
+.btn-next:hover,.btn-submit:hover{
+  background:var(--blue2);
+  transform:translateY(-2px);
+}
+
+.step-error{
+  color:#f87171;font-size:.8rem;
+  margin-bottom:12px;padding:8px 12px;
+  background:rgba(239,68,68,.08);
+  border-left:2px solid #f87171;
+  border-radius:0 4px 4px 0;
+}
+
+/* ── PIPELINE LOADING SCREEN ── */
+#pipelineScreen{
+  display:none;
+  min-height:100vh;
+  padding:6rem 2rem;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+#pipelineScreen.active{display:flex}
+
+.pipeline-logo{
+  height:90px;width:auto;object-fit:contain;
+  margin-bottom:2.5rem;
+  animation:pulse-logo 2.5s ease-in-out infinite;
+}
+@keyframes pulse-logo{
+  0%,100%{opacity:.8}
+  50%{opacity:1}
+}
+
+.pipeline-title{
+  font-family:var(--display);
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:400;color:var(--white);
+  letter-spacing:-.02em;margin-bottom:.6rem;
+}
+.pipeline-sub{
+  font-size:.95rem;color:rgba(255,255,255,.5);
+  margin-bottom:3rem;max-width:460px;
+}
+
+/* Pipeline progress */
+.pipeline-progress-wrap{width:min(480px,100%);margin:0 auto 1.2rem}
+.pipeline-progress-track{
+  width:100%;height:2px;
+  background:rgba(255,255,255,.1);
+  border-radius:2px;overflow:hidden;
+}
+.pipeline-progress-fill{
+  height:100%;background:var(--white);
+  border-radius:2px;width:0%;
+  transition:width .8s cubic-bezier(.4,0,.2,1);
+}
+.pipeline-stage-label{
+  font-family:var(--sans);font-size:.72rem;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:2.5rem;min-height:1.2em;
+  margin-top:.8rem;
+}
+
+/* Stage items */
+.stage-list{
+  display:flex;flex-direction:column;gap:10px;
+  width:min(480px,100%);text-align:left;
+}
+.stage-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  background:rgba(255,255,255,.03);
+  transition:all .4s ease;
+}
+.stage-item.running{
+  border-color:rgba(255,255,255,.35);
+  background:rgba(255,255,255,.07);
+}
+.stage-item.done{
+  border-color:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.04);
+}
+.stage-icon{
+  width:34px;height:34px;
+  border-radius:4px;
+  background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;transition:all .4s;
+}
+.stage-item.running .stage-icon{
+  background:rgba(255,255,255,.15);
+  animation:glow-icon 1s ease infinite;
+}
+.stage-item.done .stage-icon{background:rgba(255,255,255,.1)}
+@keyframes glow-icon{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.2)}
+  50%{box-shadow:0 0 14px 4px rgba(255,255,255,.1)}
+}
+.stage-name{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.75);flex:1}
+.stage-status{
+  font-family:var(--sans);font-size:.65rem;
+  color:rgba(255,255,255,.35);letter-spacing:.08em;
+}
+.stage-item.running .stage-status{color:rgba(255,255,255,.7)}
+.stage-item.done .stage-status{color:rgba(255,255,255,.5)}
+
+/* ── GENERATED SITE SECTIONS ── */
+.hero{position:relative;overflow:hidden}
+.section{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)}
+.cta-section{
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+  text-align:center;
+}
+.contact-section{
+  padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem;
+  color:rgba(255,255,255,.25);
+  text-align:center;
+  border-top:1px solid var(--line);
+  margin-top:4rem;
+}
+.footer-brand{
+  font-family:var(--display);
+  color:var(--white);font-weight:400;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .studio-hero{padding:7rem 1.2rem 4rem}
+  #studioSection{padding:2rem 1rem 5rem}
+  .step-nav{flex-direction:column-reverse}
+  .btn-next,.btn-submit,.btn-back{width:100%;text-align:center;justify-content:center}
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+
+  <nav>
+    <a class="nav-brand" href="index.html">
+      <img class="nav-logo" src="AI4-approved-logo.png" alt="AI4">
+      <span>
+        <div class="nav-brand-name">AI4 Website Design Studio</div>
+        <div class="nav-sub">Powered by Apropos Group LLC</div>
+      </span>
+    </a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="studio-hero" id="heroSection">
+    <div class="hero-inner">
+      <img class="hero-logo" src="AI4-approved-logo.png" alt="AI4 Design Studio">
+      <div class="eyebrow">AI4 Website Builder</div>
+      <h1>Your website,<br><span class="gradient-text">fully built in minutes.</span></h1>
+      <p class="hero-sub">Answer 7 simple questions about your business. AI4 Website Design Studio writes the copy, chooses the design direction, and delivers a complete, launch-ready website.</p>
+      <button class="btn-start" onclick="startStudio()">
+        Build My Website
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="trust-strip">
+        <div class="trust-item"><span>✓</span> No placeholders</div>
+        <div class="trust-item"><span>✓</span> Real written content</div>
+        <div class="trust-item"><span>✓</span> 4 premium design variations</div>
+        <div class="trust-item"><span>✓</span> Ready to launch</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Section -->
+  <section id="studioSection">
+    <div class="studio-wrap">
+
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:14.285%"></div></div>
+        <div class="progress-meta">
+          <div class="progress-step-label" id="progressStepLabel">Step 1 of 7</div>
+          <div class="progress-count" id="progressCount">Question 1</div>
+        </div>
+      </div>
+
+      <!-- Q1 — Business Name -->
+      <div class="form-step active" data-step="1">
+        <div class="step-q-label">Paso 1 — Identity</div>
+        <div class="step-question">What is your business name?</div>
+        <div class="step-hint">This appears throughout your website — headlines, footer, browser tab.</div>
+        <input type="text" class="studio-input" id="q1_businessName" placeholder="e.g. Mesa Heating & Cooling, Skyline Studio, The Rodriguez Group" maxlength="80" autocomplete="organization">
+        <div class="step-nav">
+          <div></div>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Q2 — What you do -->
+      <div class="form-step" data-step="2">
+        <div class="step-q-label">Paso 2 — Your Business</div>
+        <div class="step-question">What does your business do?</div>
+        <div class="step-hint">What products or services do you offer? Be specific — the AI writes better copy with more detail.</div>
+        <textarea class="studio-input" id="q2_whatYouDo" placeholder="Example: We are a family-owned HVAC company serving Las Vegas. We offer AC repair, installation, and maintenance for homes and small businesses. We also do heater tune-ups and emergency calls." maxlength="600"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Q3 — Ideal customers -->
+      <div class="form-step" data-step="3">
+        <div class="step-q-label">Paso 3 — Your Customers</div>
+        <div class="step-question">Who are your ideal customers?</div>
+        <div class="step-hint">Describe who you serve. Location, type of person, or type of business — all helpful.</div>
+        <textarea class="studio-input" id="q3_customers" placeholder="Example: Homeowners and small businesses in the Las Vegas and Henderson area who need fast, reliable HVAC service. Mostly families and property managers." maxlength="400"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Q4 — Differentiators -->
+      <div class="form-step" data-step="4">
+        <div class="step-q-label">Paso 4 — What Makes You Different</div>
+        <div class="step-question">What makes you different from competitors?</div>
+        <div class="step-hint">Think: experience, speed, guarantees, certifications, price, personality, service area, specializations.</div>
+        <textarea class="studio-input" id="q4_differentiators" placeholder="Example: 24/7 emergency service, licensed and insured, 15 years of experience, same-day appointments, 100% satisfaction guarantee, locally owned and operated." maxlength="400"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Q5 — Primary CTA -->
+      <div class="form-step" data-step="5">
+        <div class="step-q-label">Paso 5 — Main Goal</div>
+        <div class="step-question">What do you want visitors to do when they land on your website?</div>
+        <div class="step-hint">Pick one — this becomes the primary call-to-action throughout your site.</div>
+        <div class="cta-grid" id="ctaGrid">
+          <button type="button" class="cta-btn" data-value="Call us">📞 Call us</button>
+          <button type="button" class="cta-btn" data-value="Book an appointment">📅 Book an appointment</button>
+          <button type="button" class="cta-btn" data-value="Request a quote">💬 Request a quote</button>
+          <button type="button" class="cta-btn" data-value="Shop our products">🛒 Shop our products</button>
+          <button type="button" class="cta-btn" data-value="Learn more / contact us">✉️ Learn more / contact us</button>
+        </div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Q6 — Contact info -->
+      <div class="form-step" data-step="6">
+        <div class="step-q-label">Paso 6 — Información de Contacto</div>
+        <div class="step-question">¿Cómo pueden contactarte tus clientes?</div>
+        <div class="step-hint">Llena lo que aplique — al menos un campo. Esto aparece en tu sección de contacto y pie de página.</div>
+        <div class="contact-grid">
+          <div class="contact-field">
+            <label>Teléfono de Negocio</label>
+            <input type="tel" class="studio-input" id="q6_phone" placeholder="(702) 555-0100" autocomplete="tel">
+          </div>
+          <div class="contact-field">
+            <label>Correo del Negocio</label>
+            <input type="email" class="studio-input" id="q6_email" placeholder="hola@tunegocio.com" autocomplete="email">
+          </div>
+          <div class="contact-field">
+            <label>Dirección del Negocio</label>
+            <input type="text" class="studio-input" id="q6_address" placeholder="123 Calle Principal, Las Vegas, NV" autocomplete="street-address">
+          </div>
+          <div class="contact-field">
+            <label>Sitio Web (opcional)</label>
+            <input type="url" class="studio-input" id="q6_website" placeholder="https://tunegocio.com">
+          </div>
+          <div class="contact-field">
+            <label>Facebook (opcional)</label>
+            <input type="url" class="studio-input" id="q6_facebook" placeholder="https://facebook.com/tunegocio">
+          </div>
+          <div class="contact-field">
+            <label>Instagram (opcional)</label>
+            <input type="url" class="studio-input" id="q6_instagram" placeholder="https://instagram.com/tunegocio">
+          </div>
+          <div class="contact-field">
+            <label>TikTok (opcional)</label>
+            <input type="url" class="studio-input" id="q6_tiktok" placeholder="https://tiktok.com/@tunegocio">
+          </div>
+          <div class="contact-field">
+            <label>YouTube (opcional)</label>
+            <input type="url" class="studio-input" id="q6_youtube" placeholder="https://youtube.com/@tunegocio">
+          </div>
+          <div class="contact-field">
+            <label>LinkedIn (opcional)</label>
+            <input type="url" class="studio-input" id="q6_linkedin" placeholder="https://linkedin.com/in/tunombre">
+          </div>
+        </div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- Q7 — Extra info -->
+      <div class="form-step" data-step="7">
+        <div class="step-q-label">Paso 7 — Anything Else</div>
+        <div class="step-question">Anything else you want visitors to know?</div>
+        <div class="step-hint">Optional — but the more you share, the richer your website copy will be.</div>
+        <textarea class="studio-input" id="q7_extras" placeholder="Awards, certifications, special offers, hours, service areas, team size, founding year, a story you want to tell..." maxlength="600"></textarea>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep()">← Atrás</button>
+          <button type="button" class="btn-submit" onclick="submitForm()">
+            Build My Website →
+          </button>
+        </div>
+      </div>
+
+      <!-- Visual style is intentionally inferred by AI4 Website Design Studio.
+           Customers can change templates and colors on the preview page. -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PIPELINE LOADING SCREEN -->
+  <div id="pipelineScreen">
+    <img class="pipeline-logo" src="AI4-approved-logo.png" alt="AI4">
+    <div class="pipeline-title">Building your <span class="gradient-text">website</span></div>
+    <div class="pipeline-sub" id="pipelineSub">AI4 Website Design Studio is writing your copy, designing your layout, and assembling your complete website.</div>
+
+    <div class="pipeline-progress-wrap">
+      <div class="pipeline-progress-track">
+        <div class="pipeline-progress-fill" id="pipelineProgressFill"></div>
+      </div>
+    </div>
+    <div class="pipeline-stage-label" id="pipelineStageLabel">Initializing...</div>
+
+    <div class="stage-list">
+      <div class="stage-item" id="stage-1">
+        <div class="stage-icon">✍️</div>
+        <div class="stage-name">Crafting your message...</div>
+        <div class="stage-status" id="stage-1-status">waiting</div>
+      </div>
+      <div class="stage-item" id="stage-2">
+        <div class="stage-icon">🎨</div>
+        <div class="stage-name">Designing your layout...</div>
+        <div class="stage-status" id="stage-2-status">waiting</div>
+      </div>
+      <div class="stage-item" id="stage-3">
+        <div class="stage-icon">🏗️</div>
+        <div class="stage-name">Building your sections...</div>
+        <div class="stage-status" id="stage-3-status">waiting</div>
+      </div>
+      <div class="stage-item" id="stage-4">
+        <div class="stage-icon">✨</div>
+        <div class="stage-name">Polishing your content...</div>
+        <div class="stage-status" id="stage-4-status">waiting</div>
+      </div>
+      <div class="stage-item" id="stage-5">
+        <div class="stage-icon">🚀</div>
+        <div class="stage-name">Rendering your website...</div>
+        <div class="stage-status" id="stage-5-status">waiting</div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="siteFooter">
+    <div class="footer-brand">AI4 Website Design Studio</div>
+    <div style="margin-top:.3rem;font-size:.85rem">© 2026 Apropos Group LLC</div>
+  </footer>
+
+</div><!-- /page-shell -->
+
+<script>
+// ── State ──────────────────────────────────────────────────────────
+const TOTAL_STEPS = 7;
+let currentStep = 1;
+const answers = {};
+let selectedStyle = 'auto-infer-platinum';
+let selectedCta = null;
+
+// ── Start ──────────────────────────────────────────────────────────
+function startStudio() {
+  // Clear any stale session data from previous builds
+  try {
+    sessionStorage.removeItem('ai4DesignBrief');
+    sessionStorage.removeItem('ai4_design_brief');
+    sessionStorage.removeItem('ai4_built_html');
+    sessionStorage.removeItem('ai4_templates');
+    sessionStorage.removeItem('ai4_active_template');
+    sessionStorage.removeItem('ai4_site_data');
+  } catch(e) {}
+  document.getElementById('heroSection').style.display = 'none';
+  document.getElementById('studioSection').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Progress ───────────────────────────────────────────────────────
+function updateProgress() {
+  const pct = (currentStep / TOTAL_STEPS) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressStepLabel').textContent = `Step ${currentStep} of ${TOTAL_STEPS}`;
+  document.getElementById('progressCount').textContent = `Question ${currentStep}`;
+}
+
+// ── Navigation ─────────────────────────────────────────────────────
+function nextStep() {
+  if (!validateStep(currentStep)) return;
+  collectStep(currentStep);
+  document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep++;
+  document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevStep() {
+  if (currentStep <= 1) return;
+  document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep--;
+  document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Validation ─────────────────────────────────────────────────────
+function validateStep(step) {
+  clearError(step);
+  if (step === 1) {
+    const v = document.getElementById('q1_businessName').value.trim();
+    if (!v) { showError(step, 'Please enter your business name.'); return false; }
+  }
+  if (step === 2) {
+    const v = document.getElementById('q2_whatYouDo').value.trim();
+    if (v.length < 20) { showError(step, 'Please describe your business in a bit more detail.'); return false; }
+  }
+  if (step === 3) {
+    const v = document.getElementById('q3_customers').value.trim();
+    if (!v) { showError(step, 'Please describe your ideal customers.'); return false; }
+  }
+  if (step === 4) {
+    const v = document.getElementById('q4_differentiators').value.trim();
+    if (!v) { showError(step, 'Please share what makes you different.'); return false; }
+  }
+  if (step === 5) {
+    if (!selectedCta) { showError(step, 'Please choose what you want visitors to do.'); return false; }
+  }
+  if (step === 6) {
+    const phone = document.getElementById('q6_phone').value.trim();
+    const email = document.getElementById('q6_email').value.trim();
+    const address = document.getElementById('q6_address').value.trim();
+    if (!phone && !email && !address) { showError(step, 'Por favor ingresa al menos un método de contacto.'); return false; }
+  }
+  return true;
+}
+
+function showError(step, msg) {
+  const stepEl = document.querySelector(`[data-step="${step}"]`);
+  let err = stepEl.querySelector('.step-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.className = 'step-error';
+    stepEl.querySelector('.step-nav').before(err);
+  }
+  err.textContent = msg;
+}
+
+function clearError(step) {
+  const stepEl = document.querySelector(`[data-step="${step}"]`);
+  const err = stepEl.querySelector('.step-error');
+  if (err) err.remove();
+}
+
+// ── Collect ────────────────────────────────────────────────────────
+function collectStep(step) {
+  const fields = {
+    1: () => { answers.businessName = document.getElementById('q1_businessName').value.trim(); },
+    2: () => { answers.whatYouDo = document.getElementById('q2_whatYouDo').value.trim(); },
+    3: () => { answers.customers = document.getElementById('q3_customers').value.trim(); },
+    4: () => { answers.differentiators = document.getElementById('q4_differentiators').value.trim(); },
+    5: () => { answers.primaryCta = selectedCta; },
+    6: () => {
+      answers.phone     = document.getElementById('q6_phone').value.trim();
+      answers.email     = document.getElementById('q6_email').value.trim();
+      answers.address   = document.getElementById('q6_address').value.trim();
+      answers.website   = document.getElementById('q6_website').value.trim();
+      answers.facebook  = document.getElementById('q6_facebook').value.trim();
+      answers.instagram = document.getElementById('q6_instagram').value.trim();
+      answers.tiktok    = document.getElementById('q6_tiktok').value.trim();
+      answers.youtube   = document.getElementById('q6_youtube').value.trim();
+      answers.linkedin  = document.getElementById('q6_linkedin').value.trim();
+    },
+    7: () => {
+      answers.extras = document.getElementById('q7_extras').value.trim();
+      answers.style = 'auto-infer-platinum';
+      answers.designMode = 'ai4-auto-infer';
+    },
+  };
+  if (fields[step]) fields[step]();
+}
+
+// ── CTA selector ───────────────────────────────────────────────────
+document.getElementById('ctaGrid').querySelectorAll('.cta-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('ctaGrid').querySelectorAll('.cta-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedCta = btn.dataset.value;
+  });
+});
+
+// ── Style selector ─────────────────────────────────────────────────
+function selectStyle(card) {
+  const grid = document.getElementById('styleGrid');
+  if (!grid || !card) return;
+  grid.querySelectorAll('.style-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedStyle = card.dataset.value;
+}
+
+// ── Submit & Pipeline ──────────────────────────────────────────────
+async function submitForm() {
+  if (!validateStep(7)) return;
+  collectStep(7);
+  answers.style = 'auto-infer-platinum';
+  answers.designMode = 'ai4-auto-infer';
+  // Mark that a fresh build is actively in progress
+  try { sessionStorage.setItem('ai4_active_build', '1'); } catch(e) {}
+
+  // Hide studio, show pipeline
+  document.getElementById('studioSection').style.display = 'none';
+  document.getElementById('siteFooter').style.display = 'none';
+  const pipelineEl = document.getElementById('pipelineScreen');
+  pipelineEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Start cinematic progress animation
+  animatePipeline();
+
+  try {
+    const response = await fetch('/.netlify/functions/generate-website', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers })
+    });
+
+    if (!response.ok) throw new Error(`Function returned ${response.status}`);
+    const data = await response.json();
+    completePipeline(data);
+
+  } catch (err) {
+    console.warn('Pipeline function error, using client fallback:', err);
+    // Build a client-side fallback so the user never gets stuck
+    const fallback = buildClientFallback(answers);
+    completePipeline(fallback);
+  }
+}
+
+// ── Pipeline animation ─────────────────────────────────────────────
+const STAGE_LABELS = [
+  'Crafting your message...',
+  'Designing your layout...',
+  'Building your sections...',
+  'Polishing your content...',
+  'Rendering your website...'
+];
+const STAGE_DELAYS  = [0,    3000, 6000, 9000,  12000];
+const STAGE_DONE_AT = [2500, 5500, 8500, 11500, 15000];
+const STAGE_PROGRESS = [20, 40, 60, 80, 95];
+
+let pipelineDone = false;
+const pipelineTimers = [];
+
+function animatePipeline() {
+  STAGE_DELAYS.forEach((delay, i) => {
+    pipelineTimers.push(setTimeout(() => {
+      if (pipelineDone) return;
+      setStage(i + 1, 'running');
+      document.getElementById('pipelineStageLabel').textContent = STAGE_LABELS[i];
+      document.getElementById('pipelineProgressFill').style.width = STAGE_PROGRESS[i] + '%';
+    }, delay));
+
+    pipelineTimers.push(setTimeout(() => {
+      if (pipelineDone) return;
+      setStage(i + 1, 'done');
+    }, STAGE_DONE_AT[i]));
+  });
+}
+
+function setStage(n, state) {
+  const el = document.getElementById(`stage-${n}`);
+  const statusEl = document.getElementById(`stage-${n}-status`);
+  if (!el) return;
+  el.classList.remove('running', 'done');
+  if (state === 'running') { el.classList.add('running'); statusEl.textContent = 'running...'; }
+  if (state === 'done') { el.classList.add('done'); statusEl.textContent = 'complete ✓'; }
+}
+
+function completePipeline(data) {
+  if (pipelineDone) return;
+  pipelineDone = true;
+  pipelineTimers.forEach(clearTimeout);
+
+  // Mark all stages done
+  for (let i = 1; i <= 5; i++) setStage(i, 'done');
+  document.getElementById('pipelineProgressFill').style.width = '100%';
+  document.getElementById('pipelineStageLabel').textContent = 'Your website is ready!';
+
+  // Persist to sessionStorage
+  persistData(data, answers);
+
+  // Redirect after brief pause
+  setTimeout(() => {
+    window.location.href = 'ai4-design-studio-preview.html';
+  }, 1200);
+}
+
+// ── Persist data ───────────────────────────────────────────────────
+function persistData(data, rawAnswers) {
+  try {
+    sessionStorage.setItem('ai4DesignBrief', JSON.stringify(data.brief || data));
+    sessionStorage.setItem('ai4_design_brief', JSON.stringify(data.brief || data));
+    sessionStorage.setItem('ai4_built_html', data.html || buildClientFallback(rawAnswers).html);
+    if (data.templates && Array.isArray(data.templates)) {
+      sessionStorage.setItem('ai4_templates', JSON.stringify(data.templates));
+      sessionStorage.setItem('ai4_active_template', '0');
+    }
+    sessionStorage.setItem('ai4_site_data', JSON.stringify({
+      source: 'ai4-design-studio',
+      businessName: rawAnswers.businessName,
+      business_name: rawAnswers.businessName,
+      websitePurpose: 'Business Website',
+      primaryGoal: rawAnswers.primaryCta,
+      designSystem: rawAnswers.style || 'auto-infer-platinum',
+      creativeDirection: rawAnswers.whatYouDo,
+      sectionPlan: data.brief?.sectionPlan || [],
+      qualityScore: data.brief?.qualityScore || 88
+    }));
+  } catch (e) {
+    console.warn('sessionStorage save failed:', e);
+  }
+}
+
+// ── Client-side fallback ───────────────────────────────────────────
+
+function buildClientFallback(a) {
+  // Lightweight fallback — shown only if the Netlify function fails completely
+  const name = (a.businessName || 'Your Business').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const year = new Date().getFullYear();
+  const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${name}</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:#07080f;color:#f0f0f8;line-height:1.65;min-height:100vh}
+nav{padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:rgba(7,8,15,.92);backdrop-filter:blur(16px);z-index:100}
+.logo{font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
+.nav-btn{background:#fff;color:#07080f;padding:.55rem 1.3rem;border-radius:4px;font-weight:700;text-decoration:none;font-size:.82rem;letter-spacing:.04em}
+.hero{min-height:88vh;display:flex;align-items:center;padding:4rem 2rem}
+.hero-inner{max-width:800px;margin:0 auto}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:1.2rem}
+h1{font-size:clamp(3rem,9vw,6.5rem);font-weight:800;line-height:.95;letter-spacing:-.04em;margin-bottom:1.2rem}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.6);max-width:580px;line-height:1.7;margin-bottom:2rem}
+.hero-sub strong{color:#fff;font-weight:600}
+.btn{display:inline-block;background:#fff;color:#07080f;padding:.85rem 2rem;border-radius:4px;font-weight:700;text-decoration:none;font-size:.9rem;margin-right:1rem;transition:opacity .2s}
+.btn:hover{opacity:.88}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.section{padding:5rem 2rem;border-top:1px solid rgba(255,255,255,.07)}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.8rem}
+h2{font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:1rem}
+.section-sub{font-size:1rem;color:rgba(255,255,255,.55);max-width:560px;line-height:1.7;margin-bottom:2.5rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:1.8rem}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:.6rem}
+.card p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.6}
+.contact-section{padding:5rem 2rem;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+.contact-inner{max-width:680px;margin:0 auto}
+form{display:grid;gap:.9rem;margin-top:1.5rem}
+input,textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.8rem 1rem;color:#fff;font-family:inherit;font-size:.95rem;outline:none}
+input:focus,textarea:focus{border-color:rgba(255,255,255,.35)}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.3)}
+textarea{min-height:120px;resize:vertical}
+.submit-btn{background:#fff;color:#07080f;border:none;border-radius:4px;padding:.9rem 2rem;font-weight:700;font-size:.9rem;cursor:pointer;width:100%;margin-top:.5rem}
+.contact-details{margin-top:2rem;display:grid;gap:.6rem}
+.contact-item{font-size:.9rem;color:rgba(255,255,255,.55)}
+.contact-item strong{color:#fff;margin-right:.5rem}
+footer{padding:2rem;text-align:center;border-top:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.25);font-size:.8rem}
+@media(max-width:640px){.hero{padding:3rem 1.2rem}.section,.contact-section{padding:3.5rem 1.2rem}.btn{display:block;text-align:center;margin-bottom:.8rem}}
+</style>
+</head>
+<body>
+<nav>
+  <span class="logo">${name}</span>
+  <a href="#contact" class="nav-btn">${(a.primaryCta||'Contact Us').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}</a>
+</nav>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">${name}</div>
+    <h1>${name}</h1>
+    <p class="hero-sub">${(a.whatYouDo||'Professional services built around your success.').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}</p>
+    <a href="#contact" class="btn">${(a.primaryCta||'Get Started').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}</a>
+    <a href="#services" class="btn btn-ghost">Learn More</a>
+  </div>
+</section>
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-label">What We Offer</div>
+    <h2>Built for your business.</h2>
+    <p class="section-sub">${(a.differentiators||'We deliver quality, speed, and results your customers can count on.').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}</p>
+    <div class="cards">
+      <div class="card"><h3>Quality You Can Trust</h3><p>Every service we deliver is built around your needs and your customers' expectations.</p></div>
+      <div class="card"><h3>Fast & Reliable</h3><p>We move quickly without cutting corners — so you get results on time, every time.</p></div>
+      <div class="card"><h3>Your Success First</h3><p>We measure our success by yours. Everything we do is designed to help your business grow.</p></div>
+    </div>
+  </div>
+</section>
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Contact</div>
+    <h2>Let's talk.</h2>
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" placeholder="Tell us what you need"></textarea>
+      <button type="submit" class="submit-btn">${(a.primaryCta||'Send Message').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}</button>
+    </form>
+    <div class="contact-details">
+      ${a.phone    ? `<div class="contact-item"><strong>Phone:</strong>${a.phone}</div>` : ''}
+      ${a.email    ? `<div class="contact-item"><strong>Email:</strong>${a.email}</div>` : ''}
+      ${a.address  ? `<div class="contact-item"><strong>Address:</strong>${a.address}</div>` : ''}
+      ${a.instagram? `<div class="contact-item"><strong>Instagram:</strong>${a.instagram}</div>` : ''}
+      ${a.facebook ? `<div class="contact-item"><strong>Facebook:</strong>${a.facebook}</div>` : ''}
+      ${a.tiktok   ? `<div class="contact-item"><strong>TikTok:</strong>${a.tiktok}</div>` : ''}
+    </div>
+  </div>
+</section>
+<footer>© ${year} ${name}. All rights reserved. | Built by AI4 Website Design Studio</footer>
+</body>
+</html>`;
+
+  return {
+    html,
+    brief: { brandName: a.businessName, qualityScore: 75, status: 'fallback' },
+    templates: [html]
+  };
+}
+
+
+// Clear stale session on fresh page load
+try {
+  if (!sessionStorage.getItem('ai4_active_build')) {
+    sessionStorage.removeItem('ai4DesignBrief');
+    sessionStorage.removeItem('ai4_design_brief');
+    sessionStorage.removeItem('ai4_built_html');
+    sessionStorage.removeItem('ai4_templates');
+    sessionStorage.removeItem('ai4_active_template');
+    sessionStorage.removeItem('ai4_site_data');
+  }
+} catch(e) {}
+</script>
+</body>
+</html>`;
+}
+</script>
+<script>
+// Clear stale session on fresh page load
+try {
+  if (!sessionStorage.getItem('ai4_active_build')) {
+    sessionStorage.removeItem('ai4DesignBrief');
+    sessionStorage.removeItem('ai4_design_brief');
+    sessionStorage.removeItem('ai4_built_html');
+    sessionStorage.removeItem('ai4_templates');
+    sessionStorage.removeItem('ai4_active_template');
+    sessionStorage.removeItem('ai4_site_data');
+  }
+} catch(e) {}
+</script>
+</body>
+</html>
