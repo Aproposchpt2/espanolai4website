@@ -841,21 +841,36 @@ async function submitForm() {
   // Start cinematic progress animation
   animatePipeline();
 
-  // Encode answers as base64 URL param for cross-origin passthrough
-  try {
-    var pt = {
-      name: answers.businessName || '',
-      what: answers.whatYouDo   || '',
-      who:  answers.customers   || '',
-      diff: answers.differentiators || '',
-      else: answers.extras || answers.primaryCta || '',
-      email: answers.email   || '',
-      phone: answers.phone   || '',
-      site:  answers.website || ''
-    };
-    window._ptEncoded = btoa(unescape(encodeURIComponent(JSON.stringify(pt))));
-  } catch(e) { window._ptEncoded = ''; }
-  completePipeline({});
+  // Call local generate-agency function — stays on ai4websitedesign.com
+  const agencyAnswers = {
+    name:  answers.businessName    || '',
+    what:  answers.whatYouDo       || '',
+    who:   answers.customers       || '',
+    diff:  answers.differentiators || '',
+    else:  answers.extras || answers.primaryCta || '',
+    email: answers.email   || '',
+    phone: answers.phone   || '',
+    site:  answers.website || ''
+  };
+  try { sessionStorage.setItem('ai4_answers', JSON.stringify(agencyAnswers)); } catch(e) {}
+
+  fetch('/.netlify/functions/generate-agency', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ answers: agencyAnswers, mode: 'full' })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data) {
+    try {
+      sessionStorage.setItem('ai4_generated_html', data.html || '');
+      sessionStorage.setItem('ai4_gen_content', JSON.stringify(data.content || {}));
+    } catch(e) {}
+    completePipeline(data);
+  })
+  .catch(function(err) {
+    console.warn('generate-agency error:', err);
+    completePipeline({});
+  });
 }
 
 // ── Pipeline animation ─────────────────────────────────────────────
@@ -913,7 +928,7 @@ function completePipeline(data) {
 
   // Redirect after brief pause
   setTimeout(() => {
-    window.location.href = 'https://sitedesigner.ai4websitedesign.com?mode=passthrough&lang=es&d=' + (window._ptEncoded || '');
+    window.location.href = 'ai4-design-studio-preview.html';
   }, 1200);
 }
 
