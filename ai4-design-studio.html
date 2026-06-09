@@ -841,7 +841,7 @@ async function submitForm() {
   // Start cinematic progress animation
   animatePipeline();
 
-  // Call local generate-agency function — stays on ai4websitedesign.com
+  // Store answers for the preview page, then redirect — preview handles generation
   const agencyAnswers = {
     name:  answers.businessName    || '',
     what:  answers.whatYouDo       || '',
@@ -853,24 +853,7 @@ async function submitForm() {
     site:  answers.website || ''
   };
   try { sessionStorage.setItem('ai4_answers', JSON.stringify(agencyAnswers)); } catch(e) {}
-
-  fetch('/.netlify/functions/generate-agency', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ answers: agencyAnswers, mode: 'full' })
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(data) {
-    try {
-      sessionStorage.setItem('ai4_generated_html', data.html || '');
-      sessionStorage.setItem('ai4_gen_content', JSON.stringify(data.content || {}));
-    } catch(e) {}
-    completePipeline(data);
-  })
-  .catch(function(err) {
-    console.warn('generate-agency error:', err);
-    completePipeline({});
-  });
+  completePipeline({});
 }
 
 // ── Pipeline animation ─────────────────────────────────────────────
